@@ -18,8 +18,12 @@ Dean Lynch & Dave Weir
 * [4. System Architecture](#4-system-architecture)
 * [5. High-Level Design](#5-high-level-design)
 * [6. Preliminary Schedule](#6-preliminary-schedule)
+    * [6.1 Overview of Schedule](#61-overview-of-schedule)
+    * [6.2 GANTT Chart](#62-gantt-chart)
+    * [6.3 Task View](#63-task-view)
 * [7. Appendices](#7-appendices)
 
+---
 
 ### 1. Introduction
 
@@ -51,6 +55,8 @@ The Open Freelance Hub could be deployed in competition to some of the private o
 - **web3.js**: A JavaScript API compatible with the Ethereum blockchain.
 - **MetaMask**: A browser plugin for Chrome and Firefox which allows you to browse Ðapps without running a full Etherium Node.
 
+---
+
 ### 2. General Description
 
 #### 2.1 Product/System Functions
@@ -61,19 +67,30 @@ The Open Freelance Hub could be deployed in competition to some of the private o
 
 #### 2.4 Constraints
 
+---
+
 ### 3. Funtional Requirements
+
+---
 
 ### 4. System Architecture
 
+---
+
 ### 5. High-Level Design
+
+---
 
 ### 6. Preliminary Schedule
 
-#### 6.1 Overview
+---
+
+#### 6.1 Overview of Schedule
 
 #### 6.2 GANTT Chart
 
 #### 6.3 Task View
+
 |**Task Name**                              |**Start**      |**End**            |**Duration**   |**Status**     |
 |-------------------------------------------|---------------|-------------------|---------------|---------------|
 |**Project Proposal**                       |**20/10/17**   |**17:00 27/10/17** |**7d**         |**Completed**  |
@@ -95,4 +112,7 @@ The Open Freelance Hub could be deployed in competition to some of the private o
 |Finalise Presentation                      |6/3/18         |11.59 7/3/18       |1d             |-              |
 |Practice Presentation                      |5/3/18         |11:59 11/3/18      |4d             |-              |
 |Present Project                            |12/3/18        |17:00 16/1/18      |4d             |-              |
+
+---
+
 ### 7. Appendices
