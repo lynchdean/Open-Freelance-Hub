@@ -1,7 +1,10 @@
 # Open Freelance hub
+## CA326 Functional Specification
+Dean Lynch & Dave Weir
 
+---
 
-## Table of Contents
+### Table of Contents
 * [1. Introduction](#1-introduction)
     * [1.1 Overview](#11-overview)
     * [1.2 Business Context](#12-business-context)
@@ -18,7 +21,7 @@
 * [7. Appendices](#7-appendices)
 
 
-## 1. Introduction
+### 1. Introduction
 
 #### 1.1 Overview
 
@@ -42,10 +45,13 @@ The Open Freelance Hub could be deployed in competition to some of the private o
 - **Smart Contracts**: Self-executing programmable contracts that allow for the transfer of currencies on the blockchain, and the updating of the public ledger.
 - **Ethereum**: An open platform that allows for the development of decentralised applications.
 - **Ether**: The common cryptocurrency used in the ethereum environment.
-- **Solidity**: The language used to program smart contracts for the ethereum blockchain.
+- **Ðapp**: An app consisting of a user interface and a decentralised backend built on the the Ethereum blockchain.
+- **Gas Price**: The price paid to process a contract or transaction onto the Ethereum blockchain.
+- **Solidity**: The language used to program smart contracts for the Ethereum blockchain.
+- **web3.js**: A JavaScript API compatible with the Ethereum blockchain.
+- **MetaMask**: A browser plugin for Chrome and Firefox which allows you to browse Ðapps without running a full Etherium Node.
 
-
-## 2. General Description
+### 2. General Description
 
 #### 2.1 Product/System Functions
 
@@ -55,12 +61,38 @@ The Open Freelance Hub could be deployed in competition to some of the private o
 
 #### 2.4 Constraints
 
-## 3. Funtional Requirements
+### 3. Funtional Requirements
 
-## 4. System Architecture
+### 4. System Architecture
 
-## 5. High-Level Design
+### 5. High-Level Design
 
-## 6. Preliminary Schedule
+### 6. Preliminary Schedule
 
-## 7. Appendices
+#### 6.1 Overview
+
+#### 6.2 GANTT Chart
+
+#### 6.3 Task View
+|**Task Name**                              |**Start**      |**End**            |**Duration**   |**Status**     |
+|-------------------------------------------|---------------|-------------------|---------------|---------------|
+|**Project Proposal**                       |**20/10/17**   |**17:00 27/10/17** |**7d**         |**Completed**  |
+|Write Proposal                             |20/10/17       |11.59 23/10/17     |3d             |Completed      |
+|Finalise Proposal                          |20/10/17       |11.59 24/10/17     |1d             |Completed      |
+|Approved by Supervisor                     |24/10/17       |11:00 25/10/17     |1d             |Completed      |
+|Submit Proposal                            |26/10/17       |17:00 27/10/17     |1d             |Completed      |
+|**Presentation of Project Proposal**       |**31/10/17**   |**12:00 6/11/17**  |**7d**         |**In Progress**|
+|Prepare Slideshow                          |31/10/17       |11.59 4/11/17      |4d             |In Progress    |
+|**Submission of Functional Specification** |**1/11/17**    |**17:00 1/12/17**  |**30d**        |**In Progress**|
+|**Submission of Project**                  |**1/10/17**    |**17:00 9/3/18**   |**160d**       |**In Progress**|
+|Idea Brainstorming                         |1/10/17        |11.59 10/10/17     |10d            |Completed      |
+|Idea Feasibility Research                  |10/10/17       |11.59 20/10/17     |10d            |Completed      |
+|Create GitLab Project Page                 |27/10/17       |18:00 28/10/17     |1d             |Completed      |
+|Practice Solidity & web3.js                |28/10/17       |11.59 30/11/17     |32d            |In Progress    |
+|Start Development                          |1/12/17        |-                  |-              |-              |
+|**Project Demonstrations**                 |**1/3/18**     |**17:00 16/3/18**  |**16d**        |**-**          |
+|Prepare Presentation                       |1/3/18         |11:59 6/3/18       |6d             |-              |
+|Finalise Presentation                      |6/3/18         |11.59 7/3/18       |1d             |-              |
+|Practice Presentation                      |5/3/18         |11:59 11/3/18      |4d             |-              |
+|Present Project                            |12/3/18        |17:00 16/1/18      |4d             |-              |
+### 7. Appendices
