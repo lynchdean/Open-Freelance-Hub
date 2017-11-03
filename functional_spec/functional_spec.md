@@ -8,8 +8,8 @@ Dean Lynch & Dave Weir
     * [1.2 Business Context](#12-business-context)
     * [1.3 Glossary](#13-glossary)
 * [2. General Description](#2-general-description)
-    * [∟ 2.1 Product / System Functions](#21-productsystem-functions)
-    * [∟ 2.2 User Characteristics and Objectives](#22-user-characteristics-and-objectives)
+    * [2.1 Product / System Functions](#21-productsystem-functions)
+    * [2.2 User Characteristics and Objectives](#22-user-characteristics-and-objectives)
     * [2.3 Operational Scenarios](#23-operational-scenarios)
     * [2.4 Constraints](#24-constraints)
 * [3. Functional Requirements](#3-funtional-requirements)
@@ -72,7 +72,7 @@ The Open Freelance Hub could be deployed in competition to some of the private o
 ---
 
 ### 4. System Architecture
-
+![System Architecture](system_architechture.png)
 ---
 
 ### 5. High-Level Design
