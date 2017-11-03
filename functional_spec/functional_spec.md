@@ -72,7 +72,7 @@ The Open Freelance Hub could be deployed in competition to some of the private o
 ---
 
 ### 4. System Architecture
-![System Architecture](system_architechture.png)
+![System Architecture](system_architecture.png)
 ---
 
 ### 5. High-Level Design
