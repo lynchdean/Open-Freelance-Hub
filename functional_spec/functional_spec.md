@@ -81,8 +81,6 @@ The Open Freelance Hub could be deployed in competition to some of the private o
 
 ### 6. Preliminary Schedule
 
----
-
 #### 6.1 Overview of Schedule
 
 #### 6.2 Task View
@@ -113,5 +111,7 @@ The Open Freelance Hub could be deployed in competition to some of the private o
 
 #### 6.3 GANTT Chart
 ![GANTT Chart](gantt.png)
+
+---
 
 ### 7. Appendices
