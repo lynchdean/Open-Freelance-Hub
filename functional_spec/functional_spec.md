@@ -2,16 +2,14 @@
 ## CA326 Functional Specification
 Dean Lynch & Dave Weir
 
----
-
 ### Table of Contents
 * [1. Introduction](#1-introduction)
     * [1.1 Overview](#11-overview)
     * [1.2 Business Context](#12-business-context)
     * [1.3 Glossary](#13-glossary)
 * [2. General Description](#2-general-description)
-    * [2.1 Product / System Functions](#21-productsystem-functions)
-    * [2.2 User Characteristics and Objectives](#22-user-characteristics-and-objectives)
+    * [∟ 2.1 Product / System Functions](#21-productsystem-functions)
+    * [∟ 2.2 User Characteristics and Objectives](#22-user-characteristics-and-objectives)
     * [2.3 Operational Scenarios](#23-operational-scenarios)
     * [2.4 Constraints](#24-constraints)
 * [3. Functional Requirements](#3-funtional-requirements)
@@ -19,8 +17,8 @@ Dean Lynch & Dave Weir
 * [5. High-Level Design](#5-high-level-design)
 * [6. Preliminary Schedule](#6-preliminary-schedule)
     * [6.1 Overview of Schedule](#61-overview-of-schedule)
-    * [6.2 GANTT Chart](#62-gantt-chart)
-    * [6.3 Task View](#63-task-view)
+    * [6.2 Task View](#62-task-view)
+    * [6.3 GANTT Chart](#63-gantt-chart)
 * [7. Appendices](#7-appendices)
 
 ---
@@ -87,12 +85,13 @@ The Open Freelance Hub could be deployed in competition to some of the private o
 
 #### 6.1 Overview of Schedule
 
-#### 6.2 GANTT Chart
-
-#### 6.3 Task View
+#### 6.2 Task View
 
 |**Task Name**                              |**Start**      |**End**            |**Duration**   |**Status**     |
 |-------------------------------------------|---------------|-------------------|---------------|---------------|
+|**Idea Research**                          |**1/10/17**    |**11.59 20/10/17** |**19d**        |**Completed**  |
+|Idea Brainstorming                         |1/10/17        |11.59 10/10/17     |10d            |Completed      |
+|Idea Feasibility Research                  |10/10/17       |11.59 20/10/17     |10d            |Completed      |
 |**Project Proposal**                       |**20/10/17**   |**17:00 27/10/17** |**7d**         |**Completed**  |
 |Write Proposal                             |20/10/17       |11.59 23/10/17     |3d             |Completed      |
 |Finalise Proposal                          |20/10/17       |11.59 24/10/17     |1d             |Completed      |
@@ -101,18 +100,18 @@ The Open Freelance Hub could be deployed in competition to some of the private o
 |**Presentation of Project Proposal**       |**31/10/17**   |**12:00 6/11/17**  |**7d**         |**In Progress**|
 |Prepare Slideshow                          |31/10/17       |11.59 4/11/17      |4d             |In Progress    |
 |**Submission of Functional Specification** |**1/11/17**    |**17:00 1/12/17**  |**30d**        |**In Progress**|
-|**Submission of Project**                  |**1/10/17**    |**17:00 9/3/18**   |**160d**       |**In Progress**|
-|Idea Brainstorming                         |1/10/17        |11.59 10/10/17     |10d            |Completed      |
-|Idea Feasibility Research                  |10/10/17       |11.59 20/10/17     |10d            |Completed      |
+|**Project Development**                    |**6/12/17**    |**17:00 8/3/18**   |**92d**        |**In Progress**|
 |Create GitLab Project Page                 |27/10/17       |18:00 28/10/17     |1d             |Completed      |
 |Practice Solidity & web3.js                |28/10/17       |11.59 30/11/17     |32d            |In Progress    |
-|Start Development                          |1/12/17        |-                  |-              |-              |
+|Start Development (Provisional)            |1/12/17        |11.59 8/3/17       |97d            |-              |
+|**Submission of Project**                  |**8/3/18**     |**17:00 9/3/18**   |**1d**         |**-**          |
 |**Project Demonstrations**                 |**1/3/18**     |**17:00 16/3/18**  |**16d**        |**-**          |
 |Prepare Presentation                       |1/3/18         |11:59 6/3/18       |6d             |-              |
 |Finalise Presentation                      |6/3/18         |11.59 7/3/18       |1d             |-              |
 |Practice Presentation                      |5/3/18         |11:59 11/3/18      |4d             |-              |
 |Present Project                            |12/3/18        |17:00 16/1/18      |4d             |-              |
 
----
+#### 6.3 GANTT Chart
+![GANTT Chart](gantt.png)
 
 ### 7. Appendices
