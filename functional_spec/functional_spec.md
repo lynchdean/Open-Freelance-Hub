@@ -10,7 +10,7 @@ Dean Lynch & David Weir
     * [1.4 Glossary](#14-glossary)
 * [2. General Description](#2-general-description)
     * [2.1 Product / System Functions](#21-productsystem-functions)
-    * [2.2 User Characteristics and Objectives](#22-user-characteristics-and-objectives)
+    * [2.2 User Characteristics](#22-user-characteristics)
     * [2.3 Operational Scenarios](#23-operational-scenarios)
     * [2.4 Constraints](#24-constraints)
 * [3. Functional Requirements](#3-funtional-requirements)
@@ -45,7 +45,7 @@ A unique aspect of this project would be the possibility for two parties to trad
 
 ### 1.2 Business Context
 
-The Open Freelance Hub could be deployed in competition alongside some of the private online freelance organisations that are in use in the real world today. This system would appeal to users of these sites, both employers and employees, as it would provide them with a more open and transparent marketplace for them to work in.
+The Open Freelance Hub could be deployed in competition alongside some of the private online freelance organisations that are in use in the real world today. This system would appeal to users of these sites, both employers and employees, as it would provide them with a more open and transparent marketplace to work in.
 
 With the storage of transaction information and reviews in a public ledger, more power would be provided to the users of the site as they do not have to worry about the behind-the-scenes actions of a trusted third party. Small businesses and startups would also be attracted to this marketplace as it would allow them to trade work and services as opposed to paying for work entirely using the Ether cryptocurrency.
 
@@ -58,7 +58,7 @@ Once the MVP is created, we aim to develop the function of the site which will a
 The following are most likely out of scope, but would be good additions to this project. We hope to expand the review function by allowing users to provide a more detailed review of the other party. This is not part of the the MVP as it creates a difficult problem due to some users using profane language and the immutable nature of the blockchain. If all previous items are completed we will then aim to add some form of communication between users using the Ethereum whisper protocol. This is not part of the scope as the same functionality can be completed using existing Ðapps.
 
 ### 1.4 Glossary
-- **Blockchain**: A distributed digital public ledger that records transactions accross multiple computers to prevent transaction history from being altered.
+- **Blockchain**: A distributed digital public ledger that records transactions across multiple computers to prevent transaction history from being altered.
 - **Smart Contracts**: Self-executing programmable contracts that allow for the transfer of currencies on the blockchain, and the updating of the public ledger.
 - **Ethereum**: An open platform that allows for the development of decentralised applications.
 - **Ether**: The common cryptocurrency used in the Ethereum environment.
@@ -66,7 +66,7 @@ The following are most likely out of scope, but would be good additions to this 
 - **Gas Price**: The price paid to process a contract or transaction onto the Ethereum blockchain.
 - **Solidity**: The language used to program smart contracts for the Ethereum blockchain.
 - **web3.js**: A JavaScript API compatible with the Ethereum blockchain.
-- **MetaMask**: A browser plugin for Chrome and Firefox which allows you to browse Ðapps without running a full Etherium Node.
+- **MetaMask**: A browser plugin for Chrome and Firefox which allows you to browse Ðapps without running a full Ethereum Node.
 
 ---
 
@@ -79,7 +79,7 @@ The main focus of this project is to provide an open and completely honest platf
 Every transaction, contract and review created/completed will be directly associated with each account holder and saved onto the Ethereum blockchain. This will give the user peace of mind while reviewing potential employers/employees that every detail provided is genuine. What’s unique about our service is that we plan to allow businesses to trade contracts with each other directly, only requiring each party to pay the maintenance fees. This feature is particularly aimed at small businesses who require urgent work, but may not have the necessary funds at the time.
 
 
-### 2.2 User Characteristics and Objectives
+### 2.2 User Characteristics
 
 The prospective users for this site include:
 
@@ -95,28 +95,29 @@ In order for users to be able to use this site correctly some basic knowledge of
 ##### Scenario 1 -  New User:
 
 1. User enters site with connected Ethereum account.
-2. User chooses register account.
-3. User chooses either employer or freelancer.
-4. The user will then be asked to fill out a bio for their account, with experience, skills etc.. for freelancer and employers will fill out their own employer information.
+2. User selects register account.
+3. User chooses to create either an employer or freelancer account.
+4. A freelance user will be asked to fill out a biography for their account, with experience, skills etc.. Employers will fill out their own employer information.
 
 ##### Scenario 2 - Employer Creates a Job:
 
-1. User enters site with employer registered user account.
-2. Employer chooses create job.
+1. User enters site with employer user account.
+2. Employer selects create job.
 3. Employer fills in description of job and tags it with appropriate skills.
-4. Once the employer pays the necessary gas prices for posting, the job is live.
+4. The employer pays the necessary gas price and maintenance fee for posting
+5. The job is live.
 
 ##### Scenario 3 - Employer Browsing Candidates:
 
-1. Employer will create a job listing.
+1. Employer views their job listing.
 2. Employer can search through all active candidates who are looking for employment based on the skills listed on their profile.
 3. Employer can contact a freelancer to ask them to apply.
 4. The employer will be provided with a list of all freelancers who have applied.
 
 ##### Scenario 4 - Freelancer Browsing Available Jobs:
 
-1. User enters site with freelancer registered user account.
-2. Landing page is displayed with all open jobs.
+1. User enters site with freelancer user account.
+2. The landing page is displayed with all open jobs.
 3. User can filter available jobs by the skills that the jobs are tagged with.
 4. When the user finds a job they wish to apply for, they enter their price per hour and an estimate of time.
 5. The freelancer's account is added to a list of candidates for the employer to view.
@@ -125,29 +126,32 @@ In order for users to be able to use this site correctly some basic knowledge of
 
 1. A freelancer is chosen for a job
 2. Freelancer completes the work.
-3. Invoice for the hours worked is paid by employer.
-4. Review of each user is completed by the other user, paid to be stored on the blockchain by employer.
+3. Invoice for the hours worked is created by the employer.
+4. The employer pays the freelancer, as well as the gas prices and maintenance fees.
+5. Review of each user is completed by the other user.
+6. The review is stored on the blockchain.
 
 ##### Scenario 6: Two Users Trading Work:
 
-1. Employer posts a job, says in the posting that they are available for trading work.
-2. This employer contacts another employer who is available for trading OR is contacted by another trade-friendly employer.
-3. The two employers come to an agreement of how much work each should complete.
-4. Employers agree that work is completed to a satisfactory amount. Contract is completed.
+1. Employer posts a job, and indicates that they are available for trading work.
+2. This employer contacts another employer who is available for trading or is contacted by another trade employer looking to trade work.
+3. The two employers come to an agreement of how much work each should be completed by each party.
+4. Employers agree that work is completed to a satisfactory amount.
+5. The contract is completed.
 
-##### Scenario 7: Review Containing Bad Language:
+##### Scenario 7: Review Containing Bad Language (If full reviews are implemented):
 
-1. A job is completed and payment is processed.
-2. Both parties involved review the other, one user uses bad language in their review  and the review is placed on the blockchain.
+1. A job is completed and the payment is processed.
+2. Both parties involved review each other, one user uses profanities in their review and the review is placed on the blockchain.
 3. Another user views the employer from the previous transaction and views the reviews for this employer.
-4. The review containing the bad language is censored for the new user.
+4. The review containing the profanities is censored.
 
 
 ### 2.4 Constraints
 
 ##### 2.4.1 Learning:
 
-We will need to spend some amount of time getting to grips developing on the Ethereum platform (Programming smart contracts with Solidity and interaction between the blockchain and web3js), as this is a unique style of programming.
+We will need to spend some amount of time getting to grips development on the Ethereum platform (Programming smart contracts with Solidity and interaction between the blockchain and web3.js), as this is an unfamiliar style of programming to us.
 
 ##### 2.4.2 Ethereum:
 
@@ -155,7 +159,7 @@ This project requires that the Ethereum environment does not become less stable 
 
 ##### 2.4.3 Security:
 
-A great deal of care must be taken when dealing with people’s money, so we must ensure that our site functions reliably and efficiently. Less efficient code costs real world money when using Ethereum as it impacts the cost to add it to the blockchain.
+A great deal of care must be taken when dealing with users currency, so we must ensure that our site functions reliably and efficiently. Less efficient code costs real world money when using Ethereum as it impacts the cost to add it to the blockchain.
 
 ##### 2.4.4 Time:
 
@@ -163,23 +167,32 @@ The project must be completed by Friday 9th March 2018, which provides roughly t
 
 ##### 2.4.5 Slander:
 
-It was brought up during our proposal presentation that we will need some way to handle slander and bad language in the reviews. This will be a difficult problem due to the immutable nature of the blockchain.
-
-##### 2.4.6 User requirements:
-
-At a bare minimum the completed project must be able to allow for the payment of work completed between two parties for a certain amount of work completed.
-
+It was brought up during our proposal presentation that we will need some way to handle profanities and slander in the reviews. This will be a difficult problem due to the immutable nature of the blockchain.
 ---
 
-## 3. Funtional Requirements
+## 3. Functional Requirements
 
-### 3.1 Posting a Job:
+### 3.1 New Users
 
 ##### Description:
-- Employer accounts must be the only account that is able to post jobs to the site.
+- User enters the site through Ethereum connected browser. User registers their account as a freelancer or employer.
 
 ##### Criticality:
-- Very important to the use of the system as employers will create jobs that the site is designed to cater for.
+- The site cannot function without the users.
+
+##### Technical Issues:
+- Linking Ethereum accounts to the site and storing the associated information will be difficult due to the anonymity associated with Ethereum accounts.
+
+##### Dependencies:
+- N/A
+
+### 3.2 Posting a Job:
+
+##### Description:
+- Employer accounts must be the only account that is allowed to post jobs to the site.
+
+##### Criticality:
+- This is very important to the use of the system, as employers will create jobs that the site is designed to cater for.
 
 ##### Technical Issues:
 - Limiting posting features to certain Ethereum accounts could raise issues.
@@ -187,24 +200,24 @@ At a bare minimum the completed project must be able to allow for the payment of
 ##### Dependencies:
 - N/A
 
-### 3.2 Applying to a Job:
+### 3.3 Applying to a Job:
 
 ##### Description:
-- Freelancer accounts can apply to open jobs, with a price and estimate. A list of candidates that apply is accessible to the employer who posted the job.
+- Freelance accounts can apply to open jobs with a price and estimate. A list of candidates that have applied is made accessible to the employer who posted the job.
 
 ##### Criticality:
-- Integral part of the system as this is how workers for jobs will be selected.
+- This is an integral part of the system as this is how workers for jobs will be selected.
 
 ##### Technical Issues:
 - Possible issues with limiting functions to certain Ethereum accounts.
 
 ##### Dependencies:
-- Relies on 3.3 as freelancers must be able to find jobs.
+- Relies on job browsing as freelancers must be able to find jobs. (Requirement 3.4)
 
-### 3.3 Browsing All Open Jobs/Available Candidates:
+### 3.4 Browsing All Open Jobs/Available Candidates:
 
 ##### Description:
-- All users of the site, regardless of whether they are employer or freelancer users will be able to browse all jobs and candidates. Employer can contact candidates to apply to job.
+- All users of the site, regardless of whether they are an employer or a freelance user, will be able to browse all jobs and candidates. Employers can contact candidates to apply to job.
 
 ##### Criticality:
 - Very important piece of the system as this is how the two people needed for a transaction will come in contact.
@@ -213,9 +226,9 @@ At a bare minimum the completed project must be able to allow for the payment of
 - Pulling all available jobs from the blockchain in order to display them may cause issues.
 
 ##### Dependencies:
-- Relies on 3.1 as it requires jobs to be posted.
+- Relies on jobs being posted. (Requirement 3.2)
 
-### 3.4 Employer Accepts Candidate:
+### 3.5 Employer Accepts Candidate:
 
 ##### Description:
 - Employer chooses a candidate from the list of applications. Candidate is notified.
@@ -227,12 +240,12 @@ At a bare minimum the completed project must be able to allow for the payment of
 - Notifying the accepted candidate could cause issues, unsure if this can be accomplished through Ethereum.
 
 ##### Dependencies:
-- Relies on the apply and job posting functionalities.
+- Relies on the apply and job posting functionalities. (Requirements 3.3 & 3.4)
 
-### 3.5 Trading Work Instead of Currency:
+### 3.6 Trading Work Instead of Currency:
 
 ##### Description:
-- Employers who have chosen the work trade option when creating their job will be able to browse other trade-friendly employers in a similar way that they browse users, contact each other in the same way, and complete a trade contract instead of a normal transaction contract.
+- Employers who are open to trading work will be able to browse other employers open to trading work in a similar way that they browse freelance users, contact each other in the same way, and complete a trade contract instead of a normal transaction contract.
 
 ##### Criticality:
 - Not part of the basic functionality of the service but will be a nice addition on top of the basic functionality.
@@ -241,9 +254,9 @@ At a bare minimum the completed project must be able to allow for the payment of
 - Development of an Ethereum smart contract could be difficult when not primarily trading in Ether.
 
 ##### Dependencies:
-- Will rely on the browse and job posting functionality of the site.
+- Will rely on the job browsing and job posting functionalities. (Requirements 3.4 & 3.2)
 
-### 3.6 Contact Between Users:
+### 3.7 Contact Between Users:
 
 ##### Description:
 - Users can contact each other to arrange the terms of the contracts.
@@ -252,10 +265,10 @@ At a bare minimum the completed project must be able to allow for the payment of
 - Not as critical as previous requirements as users could simply have their chosen emails associated with their accounts instead.
 
 ##### Technical Issues:
-- A built-in version could be developed using the Ethereum whisper protocal, although the same could be achieved through email.
+- A built-in version could be developed using the Ethereum whisper protocol, although the same could be achieved through email.
 
 ##### Dependencies:
-- Will rely on the browse, apply and job posting functionality.
+- Will rely on the job browsing and job posting functionalities. (Requirements 3.4 & 3.2)
 
 ---
 
@@ -294,16 +307,16 @@ Below are mock ups of possible user interfaces that could be used on the site. T
 
 Testing will be an important part of this project. We will need to be certain of how our code works as cryptocurrency prices can be very volatile and as a result of this, a small error in our codes price or gas calculations could result in a substantial loss of money for some of our users.
 
-We plan for this project to be continously tested. The Truffle development framework we plan to use for smart contract development allows for the creation of unit test cases that can be run in groups, individually or can be programmed to run automatically whenever a build is compiled.
+We plan for this project to be continuously tested. The Truffle development framework we plan to use for smart contract development allows for the creation of unit test cases that can be run in groups, individually or can be programmed to run automatically whenever a build is compiled.
 
-Once the basic site is complete we will create a series of simple test cases to act as our sanity test for each new build we deploy. In addition to this we will have test cases based around each new feature we implement after the minimmum viable products development.
+Once the basic site is complete we will create a series of simple test cases to act as our sanity test for each new build we deploy. In addition to this we will have test cases based around each new feature we implement after the minimum viable products development.
 
 
 ## 8. Preliminary Schedule
 
 ### 8.1 Overview of Schedule
 
-We attend a meeting with our project supervisor every Wednesday at 10:00am. This is an open meeting where three other project groups are also in attendance. This allows us to hear exactly how the other groups are progressing and the ideas that they’ve come up with, some of which could be helpful in our own project. This open meeting style also allows us to give our input on the ideas of the other groups, and vice versa. Each week we take turns to give a description of the project, what we accomplished in the past week, as well as what we aim to accomplish in the upcoming week. This helps us to stay on target and keep a steady progress.
+We attend a meeting with our project supervisor every Wednesday at 10:00am. This is an open meeting with three other project groups also in attendance. This allows us to hear exactly how the other groups are progressing and the ideas that they’ve come up with, some of which could be helpful in our own project. This open meeting style also allows us to give our input on the ideas of the other groups, and vice versa. Each week we take turns to give a description of the project, what we accomplished in the past week, as well as what we aim to accomplish in the upcoming week. This helps us to stay on target and keep a steady progress.
 
 Below we have a provisional Task View and GANTT chart which we plan to update throughout the course of our project.
 
@@ -327,7 +340,7 @@ Below we have a provisional Task View and GANTT chart which we plan to update th
 |**Project Development**                    |**6/12/17**    |**17:00 8/3/18**   |**92d**        |**In Progress**|
 |Create GitLab Project Page                 |27/10/17       |18:00 28/10/17     |1d             |Completed      |
 |Practice Solidity & web3.js                |11/12/17       |11:59 8/1/18       |32d            |In Progress    |
-|Basic Review / Transasction functionality  |21/1/18        |11:59 4/2/18       |14d            |-              |
+|Basic Review / Transaction functionality  |21/1/18        |11:59 4/2/18       |14d            |-              |
 |Job Hosting / Application Process          |28/1/18        |11:59 11/2/18      |14d            |-              |
 |Sanity Test Creation                       |4/2/18         |11:59 11/2/18      |7d             |-              |
 |Work Trading Feature                       |12/2/18        |11:59 1/3/18       |17d            |-              |
