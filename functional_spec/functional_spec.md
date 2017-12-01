@@ -1,6 +1,6 @@
 # Open Freelance hub
 ## CA326 Functional Specification
-Dean Lynch & Dave Weir
+Dean Lynch & David Weir
 
 ## Table of Contents
 * [1. Introduction](#1-introduction)
