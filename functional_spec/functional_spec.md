@@ -1,8 +1,8 @@
 # Open Freelance hub
-## CA326 Functional Specification
-Dean Lynch & David Weir
+#### CA326 Functional Specification
+##### Dean Lynch & David Weir
 
-## Table of Contents
+### Table of Contents
 * [1. Introduction](#1-introduction)
     * [1.1 Overview](#11-overview)
     * [1.2 Business Context](#12-business-context)
@@ -56,6 +56,8 @@ The Open Freelance Hub could be deployed in competition alongside some of the pr
 
 With the storage of transaction information and reviews in a public ledger, more power would be provided to the users of the site as they do not have to worry about the behind-the-scenes actions of a trusted third party. Small businesses and startups would also be attracted to this marketplace as it would allow them to trade work and services as opposed to paying for work entirely using the Ether cryptocurrency.
 
+&nbsp;
+
 ### 1.3 Scope
 
 Our goal is to produce the minimum viable product (MVP) as soon as possible. The MVP in this case is a site that will allow two users to trade Ether with each others Ethereum accounts for some amount of work completed. Users should be able to browse job postings and apply to relevant jobs. These users should also be able to review each other: the most basic form of this will be a score out of five. As part of the MVP the information associated with each transaction will be stored on the Ethereum blockchain.
@@ -74,6 +76,11 @@ The following are most likely out of scope, but would be good additions to this 
 - **Solidity**: The language used to program smart contracts for the Ethereum blockchain.
 - **web3.js**: A JavaScript API compatible with the Ethereum blockchain.
 - **MetaMask**: A browser plugin for Chrome and Firefox which allows you to browse Ðapps without running a full Ethereum Node.
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 
 ---
 
@@ -96,6 +103,9 @@ The prospective users for this site include:
 
 In order for users to be able to use this site correctly some basic knowledge of blockchain and Ethereum in particular will be needed, such as how Ether is transferred, the cost of gas/Ether, etc… Although the knowledge needed to perform transactions in Ether is minimised by the use of easy-to-use programs such as MetaMask for Chrome and others, which make it easier to transfer Ether between accounts.
 
+&nbsp;
+&nbsp;
+&nbsp;
 
 ### 2.3 Operational Scenarios
 
@@ -168,6 +178,10 @@ This project requires that the Ethereum environment does not become less stable 
 
 A great deal of care must be taken when dealing with users currency, so we must ensure that our site functions reliably and efficiently. Less efficient code costs real world money when using Ethereum as it impacts the cost to add it to the blockchain.
 
+&nbsp;
+&nbsp;
+&nbsp;
+
 ##### 2.4.4 Time:
 
 The project must be completed by Friday 9th March 2018, which provides roughly three months from time of writing to complete the project (A relatively tight timeline when other college work is included).
@@ -175,6 +189,11 @@ The project must be completed by Friday 9th March 2018, which provides roughly t
 ##### 2.4.5 Slander:
 
 It was brought up during our proposal presentation that we will need some way to handle profanities and slander in the reviews. This will be a difficult problem due to the immutable nature of the blockchain.
+
+&nbsp;
+&nbsp;
+
+
 ---
 
 ## 3. Functional Requirements
@@ -192,6 +211,12 @@ It was brought up during our proposal presentation that we will need some way to
 
 ##### Dependencies:
 - N/A
+
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 
 ### 3.2 Posting a Job:
 
@@ -221,6 +246,11 @@ It was brought up during our proposal presentation that we will need some way to
 ##### Dependencies:
 - Relies on job browsing as freelancers must be able to find jobs. (Requirement 3.4)
 
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+
 ### 3.4 Browsing All Open Jobs/Available Candidates:
 
 ##### Description:
@@ -248,6 +278,10 @@ It was brought up during our proposal presentation that we will need some way to
 
 ##### Dependencies:
 - Relies on the apply and job posting functionalities. (Requirements 3.3 & 3.4)
+
+&nbsp;
+&nbsp;
+&nbsp;
 
 ### 3.6 Trading Work Instead of Currency:
 
@@ -277,10 +311,31 @@ It was brought up during our proposal presentation that we will need some way to
 ##### Dependencies:
 - Will rely on the job browsing and job posting functionalities. (Requirements 3.4 & 3.2)
 
+&nbsp;
+
+
 ---
 
 ## 4. System Architecture
 ![System Architecture](system_architecture.png)
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 
 ---
 
@@ -290,17 +345,55 @@ It was brought up during our proposal presentation that we will need some way to
 
 ![User Diagram](User_diagram.png)
 
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+
 ### 5.2 Context Diagram
 
 ![Context Diagram](context_diagram.png)
 
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+
 ---
+
 ## 6. User Interface
 
 Below are mock ups of possible user interfaces that could be used on the site. The images showcase some of the information that will need to be displayed to users such as the skills required for a job/the skills a candidate has, and some of the past reviews of transactions associated with the user. The development of mockups forced a more in-depth analysis of the different features of the site.
 
 ### 6.1 Browse Jobs Mockup
 ![Browse Jobs Mockup](Jobs_mockup.png)
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+
 
 ### 6.2 Job Details Mockup
 ![Job Details Mockup](JobDetails_mockup.png)
@@ -318,6 +411,10 @@ We plan for this project to be continuously tested. The Truffle development fram
 
 Once the basic site is complete we will create a series of simple test cases to act as our sanity test for each new build we deploy. In addition to this we will have test cases based around each new feature we implement after the minimum viable products development.
 
+&nbsp;
+&nbsp;
+
+---
 
 ## 8. Preliminary Schedule
 
@@ -326,6 +423,13 @@ Once the basic site is complete we will create a series of simple test cases to 
 We attend a meeting with our project supervisor every Wednesday at 10:00am. This is an open meeting with three other project groups also in attendance. This allows us to hear exactly how the other groups are progressing and the ideas that they’ve come up with, some of which could be helpful in our own project. This open meeting style also allows us to give our input on the ideas of the other groups, and vice versa. Each week we take turns to give a description of the project, what we accomplished in the past week, as well as what we aim to accomplish in the upcoming week. This helps us to stay on target and keep a steady progress.
 
 Below we have a provisional Task View and GANTT chart which we plan to update throughout the course of our project.
+
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 
 
 ### 8.2 Task View
@@ -358,6 +462,14 @@ Below we have a provisional Task View and GANTT chart which we plan to update th
 |Finalise Presentation                      |6/3/18         |11.59 7/3/18       |1d             |-              |
 |Practice Presentation                      |5/3/18         |11:59 11/3/18      |4d             |-              |
 |Present Project                            |12/3/18        |17:00 16/1/18      |4d             |-              |
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+
 
 ### 8.3 GANTT Chart
 
