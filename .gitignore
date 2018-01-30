@@ -1,2 +1,5 @@
-#Truffle build files
-build/
+#Build files
+code/build/
+code/node_modules
+code/package-lock.json
+code/package.json
