@@ -7,22 +7,29 @@ contract JobPost{
     uint payment;
   }
 
-  mapping (string => Job) allJobs;
+  uint totalJobs = 0;
+  mapping (uint => Job) allJobs;
   address[] public posterAccounts;
 
   function addJob(string title, string desc, uint pay) public{
-    var job = allJobs[title];
+    var job = allJobs[totalJobs];
 
     job.title = title;
     job.description = desc;
     job.payment = pay;
 
+    totalJobs += 1;
+
     posterAccounts.push(msg.sender);
   }
 
-  function getJobs(string title) constant returns(string,string, uint) {
+  function getJobs(uint i) constant returns(string,string, uint) {
 
-    return (allJobs[title].title, allJobs[title].description, allJobs[title].payment);
+    return (allJobs[i].title, allJobs[i].description, allJobs[i].payment);
+  }
+
+  function getJobCount() constant returns (uint){
+    return totalJobs;
   }
 
 }
