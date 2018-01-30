@@ -1,6 +1,6 @@
 pragma solidity ^0.4.4;
 
-contract JobPost {
+contract JobPost{
   struct Job {
     string title;
     string description;
@@ -20,7 +20,8 @@ contract JobPost {
     posterAccounts.push(msg.sender);
   }
 
-  function getJobs(string title) returns(string,string, uint) {
+  function getJobs(string title) constant returns(string,string, uint) {
+
     return (allJobs[title].title, allJobs[title].description, allJobs[title].payment);
   }
 
