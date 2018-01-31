@@ -1,35 +1,41 @@
+// initialising web3 provider, or connecting to established provider
 if (typeof web3 !== 'undefined') {
   web3 = new Web3(web3.currentProvider);
 } else {
   // set the provider you want from Web3.providers
   web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 }
+var jobs = [];
 
-console.log(web3.eth.accounts);
-
-var contractAddr = '0x5f34672a95dce82b190b3c0becfec98052ef2460'
+// address & abi of JobPost.sol contract
+var contractAddr = '0xd1e261033c54a77a59f346745a0b6dcf99651498'
 var contractAbi =
 [{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"posterAccounts","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getJobCount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"i","type":"uint256"}],"name":"getJobs","outputs":[{"name":"","type":"string"},{"name":"","type":"string"},{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"title","type":"string"},{"name":"desc","type":"string"},{"name":"pay","type":"uint256"}],"name":"addJob","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}]
 
+// getting an intance of hosted contract
 var contractInstance = web3.eth.contract(contractAbi).at(contractAddr);
 
+web3.eth.getAccounts(function(err, accounts) {
+  contractInstance.getJobCount(function(err, result){if(!err){console.log(result)} else{console.log(err)}});
+})
 
-contractInstance.addJob("Python", "Description of the job it is a hefty long thing i am testing right now. This is from the BLOOOOOCK CHAIN", 1, {gas: 1000000, from: web3.eth.accounts[0]});
-contractInstance.addJob("Java", "Description", 2, {gas: 1000000, from: web3.eth.accounts[0]});
-contractInstance.addJob("Test", "Description", 3, {gas: 1000000, from: web3.eth.accounts[0]});
-contractInstance.addJob("Masm", "Description", 4, {gas: 1000000, from: web3.eth.accounts[0]});
-
-console.log(contractInstance.getJobCount());
-
-var jobs = [];
-
-for (var i=0; i<4; i++){
-  console.log(contractInstance.getJobs(i));
-  jobs.push(contractInstance.getJobs(i));
+// outputs first 7 jobs of the JobPost contract
+function outputToConsole(){
+  for (var i=0; i<7; i++){
+    var a = contractInstance.getJobs.call(i,function(err,result){
+      console.log(result);
+    });
+  };
 }
 
-var app = angular.module('pageDisplay', []);
+// adds a job to the JobPost contract
+function addJob(title, desc, pay){
+  var contractInstance = web3.eth.contract(contractAbi).at(contractAddr);
 
-app.controller('displayPage', function($scope){
-  $scope.jobs = jobs;
-})
+  web3.eth.getAccounts(function(err, accounts){
+    contractInstance.addJob(title, desc, pay, {gas: 1000000, from: accounts[0]}, function(err, result){
+      if(err)
+        console.log(err);
+    });
+  })
+}

@@ -14,5 +14,8 @@
   "license": "",
   "devDependencies": {
     "lite-server": "^2.3.0"
+  },
+  "dependencies": {
+    "web3": "github:ethereum/web3.js"
   }
 }

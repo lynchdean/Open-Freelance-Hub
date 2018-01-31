@@ -1,15 +1,22 @@
 <!doctype html>
-<html lang="en" ng-app="pageDisplay">
+<html lang="en">
   <head>
     <title>JobHub</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="./js/web3.min.js"></script>
+    <script src="./js/JobPostInteraction.js"></script>
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
   </head>
-  <body style="background-color:gray;" ng-controller="displayPage">
+  <body style="background-color:gray;">
     <nav class="navbar navbar-expand static-top pl-5 pr-5" style="background-color:white;">
         <div class="navbar-header">
           <a class="navbar-brand" href="#"><h1>JobHub</h1></a>
@@ -19,20 +26,34 @@
           <li class="nav-item"><a class="nav-link" href="#">Workers</a></li>
         </ul>
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><button class="btn btn-primary"> Post </button></li>
+          <li class="nav-item"><button id="btn" class="btn btn-primary"> Post </button></li>
           <li class="nav-item"><a class="nav-link"href="#"> How it works </a></li>
         </ul>
     </nav>
 
-    <h3 ng-repeat="job in jobs"> {{job}} </h3>
+    <h3> {{job}} </h3>
+
+    <input id="title"></input>
+    <input id="description"></input>
+    <input id="payment"></input>
+    <button id="submit">Submit</button>
+    <button id="output"> OUTPUT </button>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.js"></script>
-    <script src="./js/web3.min.js"></script>
-    <script src="./js/test.js"></script>
+    <script>
+    $(function(){
+      $('#output').click(function() {
+        alert(" first 7 items outputted to console")
+        outputToConsole();
+      });
+      $('#submit').click(function(){
+        var title = $('#title').val();
+        var desc = $('#description').val();
+        var pay = $('#payment').val();
+        addJob(title, desc, pay);
+      });
+    });
+    </script>
   </body>
 </html>
