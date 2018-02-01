@@ -1,3 +1,6 @@
+// display a list of jobs to the html page
+// well hopefully
+
 // initialising web3 provider, or connecting to established provider
 if (typeof web3 !== 'undefined') {
   web3 = new Web3(web3.currentProvider);
@@ -15,27 +18,7 @@ var contractAbi =
 // getting an intance of hosted contract
 var contractInstance = web3.eth.contract(contractAbi).at(contractAddr);
 
-web3.eth.getAccounts(function(err, accounts) {
-  contractInstance.getJobCount(function(err, result){if(!err){console.log(result)} else{console.log(err)}});
-})
-
-// outputs first 7 jobs of the JobPost contract
-function outputToConsole(){
-  for (var i=0; i<7; i++){
-    var a = contractInstance.getJobs.call(i,function(err,result){
-      console.log(result);
-    });
-  };
-}
-
-// adds a job to the JobPost contract
-function addJob(title, desc, pay){
-  var contractInstance = web3.eth.contract(contractAbi).at(contractAddr);
-
-  web3.eth.getAccounts(function(err, accounts){
-    contractInstance.addJob(title, desc, pay, {gas: 1000000, from: accounts[0]}, function(err, result){
-      if(err)
-        console.log(err);
-    });
-  })
-}
+contractInstance.getJobs.call(0,function(err,result){
+  var post = document.getElementById('postTest');
+  post.innerText = result;
+});
