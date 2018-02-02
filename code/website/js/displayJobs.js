@@ -18,7 +18,17 @@ var contractAbi =
 // getting an intance of hosted contract
 var contractInstance = web3.eth.contract(contractAbi).at(contractAddr);
 
-contractInstance.getJobs.call(0,function(err,result){
-  var post = document.getElementById('postTest');
-  post.innerText = result;
-});
+function displayInHtml(i){
+  contractInstance.getJobs.call(i,function(err,result){
+    var post = document.getElementById('post' + i);
+    post.innerText = result;
+  });
+}
+
+async function displayJobs() {
+  for (var i=0; i<10; i++){
+    await displayInHtml(i)
+  }
+}
+
+displayJobs();
