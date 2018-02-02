@@ -11,24 +11,31 @@ if (typeof web3 !== 'undefined') {
 var jobs = [];
 
 // address & abi of JobPost.sol contract
-var contractAddr = '0xc227b59b3c940d632d84c6af6ec318af130ed9da'
+var contractAddr = '0x1c81bee0a13bce16ebc2009ffb37bb43f46c7c48'
 var contractAbi =
 [{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"posterAccounts","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getJobCount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"i","type":"uint256"}],"name":"getJobs","outputs":[{"name":"","type":"string"},{"name":"","type":"string"},{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"title","type":"string"},{"name":"desc","type":"string"},{"name":"pay","type":"uint256"}],"name":"addJob","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}]
 
 // getting an intance of hosted contract
 var contractInstance = web3.eth.contract(contractAbi).at(contractAddr);
 
-function displayInHtml(i){
-  contractInstance.getJobs.call(i,function(err,result){
-    var post = document.getElementById('post' + i);
-    post.innerText = result;
-  });
-}
+// angularjs to display all jobs
+var app = angular.module('displayPage', []);
 
-async function displayJobs() {
-  for (var i=0; i<10; i++){
-    await displayInHtml(i)
-  }
-}
+app.controller('showPages', function($scope){
+  $scope.jobs = [];
 
-displayJobs();
+  contractInstance.getJobCount.call(function(err, count){
+    for (var i=0; i<count; i++){
+      contractInstance.getJobs.call(i,function(err,result){
+        $scope.$apply(function(){
+          var jobObj = {
+            title: result[0],
+            description: result[1],
+            payment: result[2].toNumber()
+          }
+          $scope.jobs.push(jobObj);
+        })
+      });
+    }
+  })
+})
