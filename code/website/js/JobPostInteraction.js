@@ -8,7 +8,7 @@ if (typeof web3 !== 'undefined') {
 var jobs = [];
 
 // address & abi of JobPost.sol contract
-var contractAddr = '0xd1e261033c54a77a59f346745a0b6dcf99651498'
+var contractAddr = '0x2626c5012c3d0bc4152a81d80831bdd854d2a669'
 var contractAbi =
 [{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"posterAccounts","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getJobCount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"i","type":"uint256"}],"name":"getJobs","outputs":[{"name":"","type":"string"},{"name":"","type":"string"},{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"title","type":"string"},{"name":"desc","type":"string"},{"name":"pay","type":"uint256"}],"name":"addJob","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}]
 
