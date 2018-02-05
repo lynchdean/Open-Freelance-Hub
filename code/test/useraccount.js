@@ -10,7 +10,8 @@ contract('UserAccount', function(accounts){
     }).then(function(accs){
       return deployedUsers.getAccount.call(accs[0]);
     }).then(function(me){
-      console.log(me);
+      assert.equal(web3.toAscii(me[0]).replace(/\u0000/g, ''), "Dave", "Firstname returned incorrectly")
+      assert.equal(web3.toAscii(me[1]).replace(/\u0000/g, ''), "Weir", "Secondname returned incorrectly");
     })
   })
 
