@@ -3,3 +3,11 @@ code/build
 code/node_modules
 code/package-lock.json
 code/package.json
+
+
+#Web dependancies
+website/bootstrap
+website/js/angular.min.js
+website/js/jquery-3.2.1.slim.min.js
+website/js/popper.min.js
+website/js/web3.min.js
