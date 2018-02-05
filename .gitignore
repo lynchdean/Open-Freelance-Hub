@@ -1,5 +1,5 @@
 #Build files
-code/build/
+code/build
 code/node_modules
 code/package-lock.json
 code/package.json
