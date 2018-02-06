@@ -6,7 +6,7 @@ An application to replace the middle-man from online freelance/contract work ser
 ## Requirements
 * [Solidity v0.4.20](https://github.com/ethereum/solidity)
 * [web3.js v0.14.0](https://github.com/ethereum/web3.js/)
-* [AngualrJS v1.6](https://angularjs.org/)
+* [AngualrJS v1.6.7](https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js)
 * [Bootstrap v4.0.0](https://getbootstrap.com/)
 * [jQuery v3.2.1](https://code.jquery.com/jquery-3.2.1.slim.min.js)
 * [Popper.js v1](https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js)
