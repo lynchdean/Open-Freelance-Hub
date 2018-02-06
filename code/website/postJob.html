@@ -23,9 +23,9 @@
 
     <!-- Scripts & Contracts -->
     <script src="js/account.js"></script>
+    <script src="js/JobPostInteraction.js"></script>
 
 </head>
-
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-3">
         <a class="navbar-brand" href="#">JobHub</a>
@@ -39,9 +39,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="index.html">Home</a>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown active">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Jobs
+                        <span class="sr-only">(current)</span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="jobList.html">Job List</a>
@@ -66,10 +67,9 @@
                 <li class="nav-item">
                     <span id="welcome"></span>
                 </li>
-                <li class="nav-item dropdown active">
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Account
-                        <span class="sr-only">(current)</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="account.html">My Account</a>
@@ -81,34 +81,36 @@
     </nav>
 
     <div id="page-content-wrapper">
-        <div class="container-fluid">
-            <h3>My Account:</h3>
-            <ul class="list-group">
-                <li class="list-group-item">Name: <span id="name"></span></li>
-                <li class="list-group-item">Block hash: <span id="bh"></span></li>
-                <li class="list-group-item">No. of account changes:<span id="countAccs"></span></li>
-            </ul>
-
-            <br>
-
-            <h3>Update Account:</h3>
+        <div class="container">
+            <div class="row justify-content-center">
+            <div class="col-6">
+                <h2> Post a Job </h2>
+            </div>
+            </div>
             <form>
-                <div class="form-group">
-                    <label for="firstM">First Name</label>
-                    <input type="test" class="form-control" id="firstName" aria-describedby="firstName" placeholder="Enter first name">
+            <div class="form-group row justify-content-center">
+                <div class="col-6">
+                <label for="titleInput">Title</label>
+                <input type="title" class="form-control" id="titleInput" aria-describedby="emailHelp" placeholder="Title...">
                 </div>
-                <div class="form-group">
-                    <label for="firstM">Last Name</label>
-                    <input type="test" class="form-control" id="lastName" aria-describedby="lastName" placeholder="Enter last name">
+            </div>
+            <div class="form-group row justify-content-center">
+                <div class="col-6">
+                <label for="description">Description</label>
+                <textarea type="description" class="form-control" id="descriptionInput" placeholder="Description..." rows="6"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            <div class="form-group row justify-content-center">
+                <div class="col-6">
+                <label for="pay"> Pay </label>
+                <input type="number" class="form-control" id="paymentInput" placeholder="Payment amount...">
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <button type="postButton" class="btn btn-primary" id="postButton">Post Job</button>
+            </div>
             </form>
-
-            <img id="loader" src="https://loading.io/spinners/double-ring/lg.double-ring-spinner.gif">
-            <h6>^^This loady thingy is just for testing at the moment</h6>
-
         </div>
     </div>
-
 </body>
 </html>

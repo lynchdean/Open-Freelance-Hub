@@ -1,0 +1,22 @@
+body {
+    background-color: #F0F0F0;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    padding: 0 15px 15px 15px;
+    margin: 0;
+    background: #EEE;
+}
+
+.container {
+    background: #FFF;
+    padding: 20px;
+}
+
+.container-fluid {
+    background: #FFF;
+    width: 100%;
+    padding: 20px;
+    margin: 0;
+  }
