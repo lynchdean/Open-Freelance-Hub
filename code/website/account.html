@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 
+
 <head>
     <title>JobHub - Home</title>
 
@@ -22,7 +23,9 @@
     <!-- <script src="js/angular.min.js"></script> -->
 
     <!-- Scripts & Contracts -->
-    <script src="js/account.js"></script>
+    <!--<script src="js/account.js"></script>-->
+    <script src="js/contractInfo.js"></script>
+    <script src="js/UserAccountInteraction.js"></script>
 
 </head>
 
@@ -80,35 +83,31 @@
         </div>
     </nav>
 
-    <div id="page-content-wrapper">
-        <div class="container-fluid">
-            <h3>My Account:</h3>
-            <ul class="list-group">
-                <li class="list-group-item">Name: <span id="name"></span></li>
-                <li class="list-group-item">Block hash: <span id="bh"></span></li>
-                <li class="list-group-item">No. of account changes:<span id="countAccs"></span></li>
-            </ul>
-
-            <br>
-
-            <h3>Update Account:</h3>
-            <form>
-                <div class="form-group">
-                    <label for="firstM">First Name</label>
-                    <input type="test" class="form-control" id="firstName" aria-describedby="firstName" placeholder="Enter first name">
-                </div>
-                <div class="form-group">
-                    <label for="firstM">Last Name</label>
-                    <input type="test" class="form-control" id="lastName" aria-describedby="lastName" placeholder="Enter last name">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-
-            <img id="loader" src="https://loading.io/spinners/double-ring/lg.double-ring-spinner.gif">
-            <h6>^^This loady thingy is just for testing at the moment</h6>
-
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-6">
+          <h2> Register an Account </h2>
         </div>
+      </div>
+      <form>
+        <div class="form-group row justify-content-center">
+          <div class="col-6">
+            <label for="firstnameInput">Firstname</label>
+            <input type="title" class="form-control" id="firstnameInput" aria-describedby="emailHelp" placeholder="firstname...">
+          </div>
+        </div>
+        <div class="form-group row justify-content-center">
+          <div class="col-6">
+            <label for="surnameInput">Surname</label>
+            <input type="title" class="form-control" id="surnameInput" aria-describedby="emailHelp" placeholder="surname...">
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <button type="postButton" class="btn btn-primary" id="registerButton">Register</button>
+        </div>
+      </form>
     </div>
 
 </body>
+
 </html>

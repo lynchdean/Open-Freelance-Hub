@@ -42,8 +42,8 @@ app.controller('showPages', function($scope){
 // controller to show details of one job in an individual job page
 app.controller('showJob', function($scope){
   $scope.job;
-  var url = (window.location.href).split("%");
-  var jobId = parseInt(url[1].substring(2));
+  var url = (window.location.href).split("?");
+  var jobId = parseInt(url[1]);
 
   jobPostInstance.getJob.call(jobId, function(err, result){
     $scope.$apply(function(){

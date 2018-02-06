@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="displayPage">
 
 <head>
     <title>JobHub - Home</title>
@@ -19,10 +19,12 @@
 
     <!-- web3.js, AngularJS -->
     <script src="js/web3.min.js"></script>
-    <!-- <script src="js/angular.min.js"></script> -->
+     <script src="js/angular.min.js"></script>
+
+     <script src="js/contractInfo.js"></script>
 
     <!-- Scripts & Contracts -->
-    <script src="js/account.js"></script>
+    <!--<script src="js/account.js"></script>-->
     <script src="js/displayJobs.js"></script>
 
 </head>
@@ -81,7 +83,7 @@
         </div>
     </nav>
 
-    <div class="container">
+    <div class="container" ng-controller="showPages">
       <div ng-repeat="job in jobs">
         <div class="row justify-content-center">
           <div class="col-10 mt-3 p-3" style="background-color:white; border-radius:8px;">

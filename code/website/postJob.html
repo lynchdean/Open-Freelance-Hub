@@ -23,6 +23,7 @@
 
     <!-- Scripts & Contracts -->
     <script src="js/account.js"></script>
+    <script src="js/contractInfo.js"></script>
     <script src="js/JobPostInteraction.js"></script>
 
 </head>
@@ -80,37 +81,35 @@
         </div>
     </nav>
 
-    <div id="page-content-wrapper">
-        <div class="container">
-            <div class="row justify-content-center">
-            <div class="col-6">
-                <h2> Post a Job </h2>
-            </div>
-            </div>
-            <form>
-            <div class="form-group row justify-content-center">
-                <div class="col-6">
-                <label for="titleInput">Title</label>
-                <input type="title" class="form-control" id="titleInput" aria-describedby="emailHelp" placeholder="Title...">
-                </div>
-            </div>
-            <div class="form-group row justify-content-center">
-                <div class="col-6">
-                <label for="description">Description</label>
-                <textarea type="description" class="form-control" id="descriptionInput" placeholder="Description..." rows="6"></textarea>
-                </div>
-            </div>
-            <div class="form-group row justify-content-center">
-                <div class="col-6">
-                <label for="pay"> Pay </label>
-                <input type="number" class="form-control" id="paymentInput" placeholder="Payment amount...">
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <button type="postButton" class="btn btn-primary" id="postButton">Post Job</button>
-            </div>
-            </form>
-        </div>
-    </div>
+      <div class="container">
+          <div class="row justify-content-center">
+          <div class="col-6">
+              <h2> Post a Job </h2>
+          </div>
+          </div>
+          <form>
+          <div class="form-group row justify-content-center">
+              <div class="col-6">
+              <label for="titleInput">Title</label>
+              <input type="title" class="form-control" id="titleInput" aria-describedby="emailHelp" placeholder="Title...">
+              </div>
+          </div>
+          <div class="form-group row justify-content-center">
+              <div class="col-6">
+              <label for="description">Description</label>
+              <textarea type="description" class="form-control" id="descriptionInput" placeholder="Description..." rows="6"></textarea>
+              </div>
+          </div>
+          <div class="form-group row justify-content-center">
+              <div class="col-6">
+              <label for="pay"> Pay </label>
+              <input type="number" class="form-control" id="paymentInput" placeholder="Payment amount...">
+              </div>
+          </div>
+          <div class="row justify-content-center">
+              <button type="postButton" class="btn btn-primary" id="postButton">Post Job</button>
+          </div>
+          </form>
+      </div>
 </body>
 </html>
