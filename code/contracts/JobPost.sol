@@ -2,6 +2,7 @@ pragma solidity ^0.4.4;
 
 contract JobPost{
   struct Job {
+    uint id;
     string title;
     string description;
     uint payment;
@@ -14,6 +15,7 @@ contract JobPost{
   function addJob(string title, string desc, uint pay) public{
     var job = allJobs[totalJobs];
 
+    job.id = totalJobs;
     job.title = title;
     job.description = desc;
     job.payment = pay;
@@ -23,9 +25,9 @@ contract JobPost{
     posterAccounts.push(msg.sender);
   }
 
-  function getJobs(uint i) constant returns(string,string, uint) {
+  function getJobs(uint i) constant returns(uint,string,string, uint) {
 
-    return (allJobs[i].title, allJobs[i].description, allJobs[i].payment);
+    return (allJobs[i].id, allJobs[i].title, allJobs[i].description, allJobs[i].payment);
   }
 
   function getJobCount() constant returns (uint){

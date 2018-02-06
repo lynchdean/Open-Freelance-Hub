@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <html lang="en">
 
@@ -90,3 +91,58 @@
 </body>
 
 </html>
+=======
+<!doctype html>
+<html lang="en" ng-app="displayPage">
+  <head>
+    <title>JobHub</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="./js/web3.min.js"></script>
+    <script src="./js/displayJobs.js"></script>
+    <!--<script src="./js/JobPostInteraction.js"></script>-->
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  </head>
+  <body style="background-color:#f0f0f0;" ng-controller="showPages">
+    <nav class="navbar navbar-expand static-top pl-5 pr-5" style="background-color:white;">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="./index.html"><h1>JobHub</h1></a>
+        </div>
+        <ul class="navbar-nav text-primary">
+          <li class="nav-item"><a class="nav-link" href="#">Jobs</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Workers</a></li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="btn btn-primary" href="./jobPosting.html" role="button">POST</a></li>
+          <li class="nav-item"><a class="nav-link"href="#"> How it works </a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+      <div ng-repeat="job in jobs">
+        <div class="row justify-content-center">
+          <div class="col-10 mt-3 p-3" style="background-color:white; border-radius:8px;">
+            <a href="./job.html?{{job.id}}"><h2> {{job.title}} </h2></a>
+            <p class="pl-2" style="border-left: 3px solid #BDBDBD;"> {{job.description}} </p>
+            <h5> Payment: {{job.payment}}</h5>
+          </div>
+        </div>
+      </div>
+      <div ng-show="!jobs.length">
+        <h1> BLOCKCHAIN EMPTY </h1>
+      </div>
+    </div>
+
+
+
+  </body>
+</html>
+>>>>>>> bcb6786e64b7ff9d030070e4fcb29c709588c6e2

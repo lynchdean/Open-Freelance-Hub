@@ -12,9 +12,10 @@ contract('JobPost', function(accounts){
     }).then(function(jobTrans){
       return deployedJob.getJobs.call(0);
     }).then(function(retrievedJob){
-      assert.equal(retrievedJob[0], title, "Title returned incorrect");
-      assert.equal(retrievedJob[1], description, "Description returned incorrect");
-      assert.equal(retrievedJob[2].toNumber(), payment, "Payment returned incorrect");
+      assert.equal(retrievedJob[0], 0, "Id returned incorrect");
+      assert.equal(retrievedJob[1], title, "Title returned incorrect");
+      assert.equal(retrievedJob[2], description, "Description returned incorrect");
+      assert.equal(retrievedJob[3].toNumber(), payment, "Payment returned incorrect");
     })
   })
 

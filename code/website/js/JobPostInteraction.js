@@ -8,9 +8,11 @@ if (typeof web3 !== 'undefined') {
 var jobs = [];
 
 // address & abi of JobPost.sol contract
-var contractAddr = '0xc227b59b3c940d632d84c6af6ec318af130ed9da'
+var contractAddr = '0x7ddd0914f033d604d0f9acf060648132181fc370'
 var contractAbi =
-[{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"posterAccounts","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getJobCount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"i","type":"uint256"}],"name":"getJobs","outputs":[{"name":"","type":"string"},{"name":"","type":"string"},{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"title","type":"string"},{"name":"desc","type":"string"},{"name":"pay","type":"uint256"}],"name":"addJob","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}]
+
+[{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"posterAccounts","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getJobCount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"i","type":"uint256"}],"name":"getJobs","outputs":[{"name":"","type":"uint256"},{"name":"","type":"string"},{"name":"","type":"string"},{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"title","type":"string"},{"name":"desc","type":"string"},{"name":"pay","type":"uint256"}],"name":"addJob","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}]
+
 
 // getting an intance of hosted contract
 var contractInstance = web3.eth.contract(contractAbi).at(contractAddr);
@@ -18,15 +20,6 @@ var contractInstance = web3.eth.contract(contractAbi).at(contractAddr);
 web3.eth.getAccounts(function(err, accounts) {
   contractInstance.getJobCount(function(err, result){console.log(result)});
 })
-
-// outputs first 7 jobs of the JobPost contract
-function outputToConsole(){
-  for (var i=0; i<7; i++){
-    var a = contractInstance.getJobs.call(i,function(err,result){
-      console.log(result);
-    });
-  };
-}
 
 // adds a job to the JobPost contract
 function addJob(title, desc, pay){
@@ -68,6 +61,5 @@ window.onload = function(){
         });
       })
     }
-    console.log(title, description, payment);
   })
 }

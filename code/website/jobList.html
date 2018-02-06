@@ -81,10 +81,19 @@
         </div>
     </nav>
 
-    <div id="page-content-wrapper">
-        <div class="container-fluid">
-            <h3 id="postTest"> {{job}} </h3>
+    <div class="container">
+      <div ng-repeat="job in jobs">
+        <div class="row justify-content-center">
+          <div class="col-10 mt-3 p-3" style="background-color:white; border-radius:8px;">
+            <a href="./job.html?{{job.id}}"><h2> {{job.title}} </h2></a>
+            <p class="pl-2" style="border-left: 3px solid #BDBDBD;"> {{job.description}} </p>
+            <h5> Payment: {{job.payment}}</h5>
+          </div>
         </div>
+      </div>
+      <div ng-show="!jobs.length">
+        <h1> BLOCKCHAIN EMPTY </h1>
+      </div>
     </div>
 
 </body>
