@@ -6,7 +6,7 @@ code/package.json
 
 
 #Web dependancies
-website/bootstrap
+website/bootstrap/*
 website/js/angular.min.js
 website/js/jquery-3.2.1.slim.min.js
 website/js/popper.min.js
