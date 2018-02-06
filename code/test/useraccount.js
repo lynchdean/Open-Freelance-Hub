@@ -29,4 +29,18 @@ contract('UserAccount', function(accounts){
       assert.equal(me[2], 1, "Job ID returned incorrectly");
     })
   })
+
+  it("Should not return a registered account", function(){
+    return UserAccount.deployed().then(function(instance){
+      return instance.getAccount(accounts[7])
+    }).then(function(account){
+      var failureCase = ['0x00000000000000000000000000000000', '0x00000000000000000000000000000000' ]
+
+      assert.equal(account[0], failureCase[0], "Firstname does not = null");
+      assert.equal(account[1], failureCase[1], "Surename does not = null");
+      assert.equal(account[2].length, 0, "employerJobs does not = null");
+      assert.equal(account[3].length, 0, "workerJobs does not = null");
+    })
+  })
+
 })
