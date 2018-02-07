@@ -6,6 +6,7 @@ contract JobPost{
     string title;
     string description;
     uint payment;
+    address owner;
   }
 
   uint totalJobs = 0;
@@ -19,15 +20,16 @@ contract JobPost{
     job.title = title;
     job.description = desc;
     job.payment = pay;
+    job.owner = msg.sender;
 
     totalJobs += 1;
 
     posterAccounts.push(msg.sender);
   }
 
-  function getJobs(uint i) constant returns(uint,string,string, uint) {
+  function getJob(uint i) constant returns(uint,string,string, uint, address) {
 
-    return (allJobs[i].id, allJobs[i].title, allJobs[i].description, allJobs[i].payment);
+    return (allJobs[i].id, allJobs[i].title, allJobs[i].description, allJobs[i].payment, allJobs[i].owner);
   }
 
   function getJobCount() constant returns (uint){

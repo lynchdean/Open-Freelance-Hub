@@ -17,6 +17,8 @@ contract Accounts is Owned {
   struct Account {
     bytes16 firstName;
     bytes16 lastName;
+    uint[] employerJobs;
+    uint[] workerJobs;
   }
 
   mapping (address => Account) accounts;
@@ -32,20 +34,35 @@ contract Accounts is Owned {
 
     account.firstName = _firstName;
     account.lastName = _lastName;
+    account.employerJobs;
+    account.workerJobs;
 
     allAccounts.push(_address);
     accountInfo(_firstName, _lastName);
   }
 
-  function getAccounts() view public returns(address[]) {
+  function getAccounts() constant returns(address[]) {
     return allAccounts;
   }
 
-  function getAccount(address _address) view public returns (bytes16, bytes16) {
-    return (accounts[_address].firstName, accounts[_address].lastName);
+  function getAccount(address _address) constant returns (bytes16, bytes16, uint[], uint[]) {
+    return (accounts[_address].firstName, accounts[_address].lastName, accounts[_address].employerJobs, accounts[_address]. workerJobs);
   }
 
-  function countAccounts() view public returns (uint) {
+  function addEmployerJob(address _address, uint id) public {
+    accounts[_address].employerJobs.push(id);
+  }
+
+  function addWorkerJob(address _address, uint id) public {
+    accounts[_address].workerJobs.push(id);
+  }
+
+  function isRegisteredAccount(address _address) constant returns (bytes16, bytes16, uint[], uint[]){
+    var account = accounts[_address];
+    return (account.firstName, account.lastName, account.employerJobs, account.workerJobs);
+  }
+
+  function countAccounts() constant returns (uint) {
     return allAccounts.length;
   }
 
