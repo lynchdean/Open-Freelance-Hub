@@ -20,17 +20,17 @@ function addJob(title, desc, pay){
   web3.eth.getAccounts(function(err, accounts){
     console.log(accounts);
     userInstance.getAccount(accounts[0], function(err, accountInfo){
-      console.log(accountInfo);
-      if(accountInfo[0] != '0x00000000000000000000000000000000'){
-        jobPostInstance.addJob(title, desc, pay, {from: accounts[0]}, function(err, result){
-          if(err)
-            console.log(err);
-          else
-            alert("Job posted successfully");
-        });
-      } else {
-        alert("This account is not registered");
-      }
+        console.log(accountInfo);
+        if(accountInfo[0] != '0x00000000000000000000000000000000'){
+            jobPostInstance.addJob(title, desc, pay, {from: accounts[0]}, function(err, result){
+                if(err)
+                    console.log(err);
+                else
+                    alert("Job posted successfully");
+            });
+        } else {
+            alert("This account is not registered");
+        }
     })
   })
 }
