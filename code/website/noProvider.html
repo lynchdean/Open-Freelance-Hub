@@ -1,9 +1,7 @@
 <!doctype html>
 <html lang="en">
-
-
 <head>
-    <title>JobHub</title>
+    <title>JobHub - Home</title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -25,8 +23,6 @@
     <!-- Scripts & Contracts -->
     <script src="js/contractInfo.js"></script>
     <script src="js/navbar.js"></script>
-    <script src="js/checkUser.js"></script>
-    <script src="js/UserAccountInteraction.js"></script>
 
 </head>
 
@@ -85,32 +81,13 @@
         </div>
     </nav>
 
-    <div class="page-content-wrapper">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-6">
-            <h2> Register an Account </h2>
-          </div>
+    <div id="page-content-wrapper">
+        <div class="container text-center">
+            <h3>No web3 provider detected, please download MetaMask.</h3>
+            <a href="https://metamask.io"><img id="metamask" src="images/download-metamask.png"/></a>
         </div>
-        <form>
-          <div class="form-group row justify-content-center">
-            <div class="col-6">
-              <label for="firstnameInput">Firstname</label>
-              <input type="title" class="form-control" id="firstnameInput" aria-describedby="emailHelp" placeholder="firstname...">
-            </div>
-          </div>
-          <div class="form-group row justify-content-center">
-            <div class="col-6">
-              <label for="surnameInput">Surname</label>
-              <input type="title" class="form-control" id="surnameInput" aria-describedby="emailHelp" placeholder="surname...">
-            </div>
-          </div>
-          <div class="row justify-content-center">
-            <button type="postButton" class="btn btn-primary" id="registerButton">Register</button>
-          </div>
-        </form>
-      </div>
     </div>
+
 </body>
 
 </html>

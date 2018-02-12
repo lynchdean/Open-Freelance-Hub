@@ -21,7 +21,7 @@ function addJob(title, desc, pay){
     console.log(accounts);
     userInstance.getAccount(accounts[0], function(err, accountInfo){
       console.log(accountInfo);
-      if(accountInfo[0] != '0x00000000000000000000000000000000'){
+        if(accountInfo[0] != '0x00000000000000000000000000000000'){
         jobPostInstance.addJob(title, desc, pay, {from: accounts[0]}, function(err, result){
           if(err)
             console.log(err);

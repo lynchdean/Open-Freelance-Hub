@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="displayPage">
+<html lang="en">
 <head>
     <title>JobHub - Home</title>
 
@@ -18,15 +18,15 @@
 
     <!-- web3.js, AngularJS -->
     <script src="js/web3.min.js"></script>
-     <script src="js/angular.min.js"></script>
-
-     <script src="js/contractInfo.js"></script>
+    <script src="js/angular.min.js"></script>
 
     <!-- Scripts & Contracts -->
+    <script src="js/contractInfo.js"></script>
+    <script src="js/navbar.js"></script>
     <script src="js/displayJobs.js"></script>
 
 </head>
-  <body style="background-color:#f0f0f0;">
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-3">
         <a class="navbar-brand" href="#">JobHub</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -36,8 +36,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left side -->
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -64,16 +66,15 @@
             <!-- Right side -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <span id="welcome"></span>
+                  <a id="welcome" class="nav-link" href="account.html">Not signed in.</a>
                 </li>
-                <li class="nav-item dropdown active">
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Account
-                        <span class="sr-only">(current)</span>
+                        Settings
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="account.html">My Account</a>
-                        <a class="dropdown-item" href="#">Possibly more account stuff</a>
+                      <p class="dropdown-item" id="network">Network: Not detected</p>
+                      <a class="dropdown-item" href="account.html">My Account</a>
                     </div>
                 </li>
             </ul>
