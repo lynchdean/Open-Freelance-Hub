@@ -13,12 +13,14 @@ function addAccount(firstname, surname){
   web3.eth.getAccounts(function(err, accounts){
     console.log(accounts);
     userInstance.getAccount.call(accounts[0], function(err, accountInfo){
-      console.log(accountInfo);
+      console.log("__________________")
+      console.log(accounts[0]);
       if (accountInfo[0] == '0x00000000000000000000000000000000'){
         userInstance.setAccount(accounts[0], firstname, surname, function(err, result){
           if(err){
             console.log(err);
           } else {
+            console.log(result);
             alert("Thank you for registering")
           }
         });

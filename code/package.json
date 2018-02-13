@@ -1,7 +1,6 @@
 {
   "name": "freelance-hub",
   "version": "1.0.0",
-  "description": "",
   "main": "truffle.js",
   "directories": {
     "test": "test"
@@ -11,11 +10,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "",
+  "license": "ISC",
   "devDependencies": {
     "lite-server": "^2.3.0"
   },
   "dependencies": {
     "web3": "github:ethereum/web3.js"
-  }
+  },
+  "description": ""
 }

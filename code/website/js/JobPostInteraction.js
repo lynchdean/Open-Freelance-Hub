@@ -25,8 +25,10 @@ function addJob(title, desc, pay){
         jobPostInstance.addJob(title, desc, pay, {from: accounts[0]}, function(err, result){
           if(err)
             console.log(err);
-          else
+          else{
+          console.log(result)
             alert("Job posted successfully");
+          }
         });
       } else {
         alert("This account is not registered");

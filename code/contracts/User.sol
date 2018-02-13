@@ -13,7 +13,7 @@ contract Owned {
   }
 }
 
-contract Accounts is Owned {
+contract Accounts {
   struct Account {
     bytes16 firstName;
     bytes16 lastName;
@@ -24,12 +24,13 @@ contract Accounts is Owned {
   mapping (address => Account) accounts;
   address[] public allAccounts;
 
+/*
   event accountInfo(
     bytes16 firstName,
     bytes16 lastName
     );
-
-  function setAccount(address _address, bytes16 _firstName, bytes16 _lastName) onlyOwner public {
+*/
+  function setAccount(address _address, bytes16 _firstName, bytes16 _lastName) {
     var account = accounts[_address];
 
     account.firstName = _firstName;
@@ -38,7 +39,7 @@ contract Accounts is Owned {
     account.workerJobs;
 
     allAccounts.push(_address);
-    accountInfo(_firstName, _lastName);
+    //accountInfo(_firstName, _lastName);
   }
 
   function getAccounts() constant returns(address[]) {
@@ -55,11 +56,6 @@ contract Accounts is Owned {
 
   function addWorkerJob(address _address, uint id) public {
     accounts[_address].workerJobs.push(id);
-  }
-
-  function isRegisteredAccount(address _address) constant returns (bytes16, bytes16, uint[], uint[]){
-    var account = accounts[_address];
-    return (account.firstName, account.lastName, account.employerJobs, account.workerJobs);
   }
 
   function countAccounts() constant returns (uint) {
