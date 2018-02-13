@@ -21,6 +21,7 @@ function addJob(title, desc, pay){
     console.log(accounts);
     userInstance.getAccount(accounts[0], function(err, accountInfo){
       console.log(accountInfo);
+      // check if the account is registered
       if(accountInfo[0] != '0x00000000000000000000000000000000'){
         jobPostInstance.addJob(title, desc, pay, {from: accounts[0]}, function(err, result){
           if(err)
@@ -37,37 +38,71 @@ function addJob(title, desc, pay){
   })
 }
 
-// listening for post button click
-window.onload = function(){
-  document.getElementById('postButton').addEventListener('click', function(event){
-    event.preventDefault();
-    var title = document.getElementById('titleInput').value;
-    var description = document.getElementById('descriptionInput').value;
-    try{
-      var payment = parseInt(document.getElementById('paymentInput').value);
-    } catch (err){
-      alert("The payment must be a number")
-    }
-
-
-    if (typeof(title) != "string"){
-      alert("The title must be a string");
-    } else if (typeof(description) != "string"){
-      alert("The description must be a string");
-    } else if (typeof(payment) != "number"){
-      alert("The payment must be a number")
-    } else if (payment < 0){
-      alert("The payment must be a positive number")
-    } else {
-      addJob(title, description, payment);
-      /*
-      web3.eth.getAccounts(function(err, accounts){
-        jobPostInstance.addJob(title, description, payment, {gas: 1000000, from: accounts[0]}, function(err, result){
-          if(err)
-            console.log(err);
-        });
-      })
-      */
-    }
+// applies a worker to a job
+function applyToJob(){
+  web3.eth.getAccounts(function(err,accounts){
+    userInstance.getAccount(accounts[0], function(err, accountInfo){
+      // check if the account is registered
+      if(accountInfo[0] != '0x00000000000000000000000000000000'){
+        var url = (window.location.href).split("?");
+        var jobId = parseInt(url[1]);
+        jobPostInstance.getJob(jobId, function(err, job){
+          console.log(job[4])
+          if(job[4] != accounts[0]){
+            jobPostInstance.applyToJob(jobId, function(err, result){
+              if(err)
+                console.log(err);
+              else{
+              console.log(result)
+                alert("Success!");
+              }
+            })
+          } else {
+            alert("You cannot apply to your own job");
+          }
+        })
+      } else {
+        alert("This account is not registered");
+      }
+    })
   })
+}
+
+window.onload = function(){
+  var url = (window.location.href).split("/");
+  // listening for post button click when on postJob.html
+  // validates that the inputs are of the correct type
+  if(url[3] == "postJob.html"){
+    document.getElementById('postButton').addEventListener('click', function(event){
+      event.preventDefault();
+      var title = document.getElementById('titleInput').value;
+      var description = document.getElementById('descriptionInput').value;
+      try{
+        var payment = parseInt(document.getElementById('paymentInput').value);
+      } catch (err){
+        alert("The payment must be a number")
+      }
+
+
+      if (typeof(title) != "string"){
+        alert("The title must be a string");
+      } else if (typeof(description) != "string"){
+        alert("The description must be a string");
+      } else if (typeof(payment) != "number"){
+        alert("The payment must be a number")
+      } else if (payment < 0){
+        alert("The payment must be a positive number")
+      } else {
+        addJob(title, description, payment);
+      }
+    })
+  }
+
+  // listening for apply button click when on a job page
+  if (url[3].split("?")[0] == "job.html"){
+    document.getElementById('applyButton').addEventListener('click', function(event){
+      event.preventDefault();
+      applyToJob();
+    })
+  }
 }

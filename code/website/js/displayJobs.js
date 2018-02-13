@@ -56,3 +56,29 @@ app.controller('showJob', function($scope){
     })
   })
 })
+
+app.controller('showApplicants', function($scope){
+  $scope.applicants;
+  var url = (window.location.href).split("?");
+  var jobId = parseInt(url[1]);
+
+  jobPostInstance.getApplicants.call(jobId, function(err, applicants){
+    $scope.$apply(function(){
+      $scope.applicants = applicants;
+    })
+  })
+})
+
+app.controller('checkOwner', function($scope){
+  $scope.isOwner = false;
+  var url = (window.location.href).split("?");
+  var jobId = parseInt(url[1]);
+
+  web3.eth.getAccounts(function(err, accounts){
+    jobPostInstance.getJob.call(jobId, function(err, job){
+      $scope.$apply(function(){
+        $scope.isOwner = (job[4] == accounts[0])
+      })
+    })
+  })
+})
