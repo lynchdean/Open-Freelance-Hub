@@ -1,19 +1,6 @@
 pragma solidity ^0.4.4;
 
-contract Owned {
-  address owner;
-
-  function Owned() public {
-    owner = msg.sender;
-  }
-
-  modifier onlyOwner {
-    require(msg.sender == owner);
-    _;
-  }
-}
-
-contract Accounts {
+contract Accounts{
   struct Account {
     bytes16 firstName;
     bytes16 lastName;
@@ -30,7 +17,8 @@ contract Accounts {
     bytes16 lastName
     );
 */
-  function setAccount(address _address, bytes16 _firstName, bytes16 _lastName) {
+
+  function setAccount(address _address, bytes16 _firstName, bytes16 _lastName) public {
     var account = accounts[_address];
 
     account.firstName = _firstName;
