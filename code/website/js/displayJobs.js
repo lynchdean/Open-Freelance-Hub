@@ -86,3 +86,19 @@ app.controller('checkOwner', function($scope){
     })
   })
 })
+
+app.controller('acceptedApplicant', function($scope){
+  $scope.applicantAccepted = false;
+  var url = (window.location.href).split("?");
+  var jobId = parseInt(url[1]);
+
+  jobPostInstance.getWorker(jobId, function(err, worker){
+    console.log(worker);
+    if(worker != '0x0000000000000000000000000000000000000000'){
+      console.log("here")
+      $scope.$apply(function(){
+        $scope.applicantAccepted = true;
+      })
+    }
+  })
+})

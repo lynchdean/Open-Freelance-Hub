@@ -15,13 +15,14 @@ contract JobPost{
   mapping (uint => Job) allJobs;
   address[] public posterAccounts;
 
-  function addJob(string title, string desc, uint pay) public{
+  function addJob(string title, string desc, uint pay) payable{
     var job = allJobs[totalJobs];
+    require(pay == msg.value);
 
     job.id = totalJobs;
     job.title = title;
     job.description = desc;
-    job.payment = pay;
+    job.payment = msg.value;
     job.owner = msg.sender;
     job.applicants;
     job.worker;
@@ -57,6 +58,11 @@ contract JobPost{
   function getWorker(uint jobId) constant returns (address) {
     var job = allJobs[jobId];
     return job.worker;
+  }
+
+  function completeJob(uint jobId) public {
+    var job = allJobs[jobId];
+    (job.worker).transfer(job.payment);
   }
 
 }

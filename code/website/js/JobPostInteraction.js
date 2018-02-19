@@ -23,7 +23,7 @@ function addJob(title, desc, pay){
       console.log(accountInfo);
       // check if the account is registered
       if(accountInfo[0] != '0x00000000000000000000000000000000'){
-        jobPostInstance.addJob(title, desc, pay, {from: accounts[0]}, function(err, result){
+        jobPostInstance.addJob(title, desc, pay, {from: accounts[0], value: pay}, function(err, result){
           if(err)
             console.log(err);
           else{
@@ -95,6 +95,17 @@ function acceptApplicant(index){
   })
 }
 
+function completeJob(){
+  var url = (window.location.href).split("?");
+  var jobId = parseInt(url[1]);
+
+  console.log(jobId);
+
+  jobPostInstance.completeJob(jobId, function(err, result){
+    console.log(result);
+  })
+}
+
 window.onload = function(){
   var url = (window.location.href).split("/");
   // listening for post button click when on postJob.html
@@ -130,6 +141,11 @@ window.onload = function(){
     document.getElementById('applyButton').addEventListener('click', function(event){
       event.preventDefault();
       applyToJob();
+    })
+
+    document.getElementById('completeJobButton').addEventListener('click', function(event){
+      event.preventDefault();
+      completeJob();
     })
   }
 }
