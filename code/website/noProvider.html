@@ -1,7 +1,7 @@
 <!doctype html>
-<html lang="en" ng-app="displayPage">
+<html lang="en">
 <head>
-    <title>JobHub - List of Jobs</title>
+    <title>JobHub - No Provider</title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -18,12 +18,11 @@
 
     <!-- web3.js, AngularJS -->
     <script src="js/web3.min.js"></script>
-    <script src="js/angular.min.js"></script>
+    <!-- <script src="js/angular.min.js"></script> -->
 
     <!-- Scripts & Contracts -->
     <script src="js/contractInfo.js"></script>
     <script src="js/navbar.js"></script>
-    <script src="js/displayJobs.js"></script>
 
 </head>
 
@@ -74,19 +73,13 @@
         </div>
     </nav>
 
-    <div class="container" ng-controller="showPages">
-      <div ng-repeat="job in jobs">
-        <div class="row justify-content-center">
-          <div class="col-10 mt-3 p-3" style="background-color:white; border-radius:8px;">
-            <a href="./job.html?{{job.id}}"><h2> {{job.title}} </h2></a>
-            <p class="pl-2" style="border-left: 3px solid #BDBDBD;"> {{job.description}} </p>
-            <h5> Payment: {{job.payment}}</h5>
-          </div>
+    <div id="page-content-wrapper">
+        <div class="container text-center">
+            <h3>No web3 provider detected, please download MetaMask.</h3>
+            <a href="https://metamask.io"><img id="metamask" src="images/download-metamask.png"/></a>
         </div>
-      </div>
-      <div ng-show="!jobs.length" class="text-center">
-        <h2> There are no jobs curently available </h2>
-      </div>
     </div>
 
 </body>
+
+</html>
