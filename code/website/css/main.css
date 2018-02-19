@@ -19,9 +19,35 @@ body {
     width: 100%;
     padding: 20px;
     margin: 0;
-  }
+}
+
+.reg-form {
+    background-color: #FFF;
+    max-width: 400px;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.reg-form h2 {
+    margin-bottom: 20px;
+}
+
+.reg-form input {
+    margin-bottom: 15px;
+}
+
+.post-job {
+    background: #FFF;
+    max-width: 600px;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.post-job input {
+    margin-bottom: 15px;
+}
 
 #metamask {
-  max-width: 200px;
-  margin: 20px;
+    max-width: 200px;
+    margin: 20px;
 }
