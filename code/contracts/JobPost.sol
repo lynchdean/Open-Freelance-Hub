@@ -8,6 +8,7 @@ contract JobPost{
     uint payment;
     address owner;
     address[] applicants;
+    address worker;
   }
 
   uint totalJobs = 0;
@@ -23,6 +24,7 @@ contract JobPost{
     job.payment = pay;
     job.owner = msg.sender;
     job.applicants;
+    job.worker;
 
     totalJobs += 1;
 
@@ -45,6 +47,16 @@ contract JobPost{
 
   function getApplicants(uint i) constant returns(address[]){
     return allJobs[i].applicants;
+  }
+
+  function setWorker(uint jobId, address candidate) {
+    var job = allJobs[jobId];
+    job.worker = candidate;
+  }
+
+  function getWorker(uint jobId) constant returns (address) {
+    var job = allJobs[jobId];
+    return job.worker;
   }
 
 }

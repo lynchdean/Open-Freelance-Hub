@@ -67,6 +67,10 @@ app.controller('showApplicants', function($scope){
       $scope.applicants = applicants;
     })
   })
+
+  $scope.acceptApplicant = function(index) {
+    acceptApplicant(index);
+  }
 })
 
 app.controller('checkOwner', function($scope){

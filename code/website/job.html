@@ -101,12 +101,15 @@
         <div ng-repeat="applicant in applicants track by $index">
           <div class="row col-7 ml-3 mb-2" style="background-color:white; border-radius:8px;">
             <div class="p-2">
-              <a class="btn-sm btn-success" href="#"> Accept </a>
+              <a class="btn-sm btn-success" href="#" ng-click="acceptApplicant($index)"> Accept </a>
             </div>
             <div class="p-2">
               <h5><a href="#">{{applicant}}</a></h5>
             </div>
           </div>
+        </div>
+        <div ng-show="!applicants.length">
+          <h1> No applicants </h1>
         </div>
       </div>
     </div>

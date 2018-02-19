@@ -47,14 +47,24 @@ function applyToJob(){
         var url = (window.location.href).split("?");
         var jobId = parseInt(url[1]);
         jobPostInstance.getJob(jobId, function(err, job){
-          console.log(job[4])
           if(job[4] != accounts[0]){
-            jobPostInstance.applyToJob(jobId, function(err, result){
-              if(err)
-                console.log(err);
-              else{
-              console.log(result)
-                alert("Success!");
+            jobPostInstance.getApplicants(jobId, function(err, applicants){
+              var isUnique = true;
+              for (var i=0; i<applicants.length; i++){
+                if (applicants[i] == accounts[0]){
+                  alert("You can only apply to a job once");
+                  isUnique = false;
+                }
+              }
+              if(isUnique){
+                jobPostInstance.applyToJob(jobId, function(err, result){
+                  if(err)
+                    console.log(err);
+                  else{
+                  console.log(result)
+                    alert("Success!");
+                  }
+                })
               }
             })
           } else {
@@ -64,6 +74,23 @@ function applyToJob(){
       } else {
         alert("This account is not registered");
       }
+    })
+  })
+}
+
+// assigns a candidate to the job
+function acceptApplicant(index){
+  var url = (window.location.href).split("?");
+  var jobId = parseInt(url[1]);
+
+  jobPostInstance.getApplicants(jobId, function(err, applicants){
+    jobPostInstance.setWorker(jobId, applicants[index], function(err, result){
+      if(err){
+        console.log(err);
+      }
+      jobPostInstance.getWorker(jobId, function(err, result){
+        console.log(result);
+      })
     })
   })
 }
