@@ -23,7 +23,8 @@ function addJob(title, desc, pay){
       console.log(accountInfo);
       // check if the account is registered
       if(accountInfo[0] != '0x00000000000000000000000000000000'){
-        jobPostInstance.addJob(title, desc, pay, {from: accounts[0], value: pay}, function(err, result){
+        var amount = parseInt(web3.toWei(pay, 'ether'));
+        jobPostInstance.addJob(title, desc, amount, {from: accounts[0], value: amount}, function(err, result){
           if(err)
             console.log(err);
           else{

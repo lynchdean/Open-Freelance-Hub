@@ -30,7 +30,7 @@ app.controller('showPages', function($scope){
             id: result[0],
             title: result[1],
             description: result[2],
-            payment: result[3].toNumber()
+            payment: web3.fromWei(result[3].toNumber())
           }
           $scope.jobs.push(jobObj);
         })
@@ -51,7 +51,7 @@ app.controller('showJob', function($scope){
         id: result[0],
         title: result[1],
         description: result[2],
-        payment: result[3].toNumber()
+        payment: web3.fromWei(result[3].toNumber())
       };
     })
   })
