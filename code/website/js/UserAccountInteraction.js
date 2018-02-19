@@ -19,7 +19,8 @@ function addAccount(firstname, surname){
           if(err){
             console.log(err);
           } else {
-            alert("Thank you for registering")
+            alert("Thank you for registering");
+            document.getElementById("welcome").innerHTML = "Welcome, " + firstname + "!";
           }
         });
       } else {

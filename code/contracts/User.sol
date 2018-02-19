@@ -1,6 +1,6 @@
 pragma solidity ^0.4.4;
 
-contract Accounts{
+contract Accounts {
   struct Account {
     bytes16 firstName;
     bytes16 lastName;

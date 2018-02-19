@@ -19,6 +19,7 @@
 
     <!-- web3.js, AngularJS -->
     <script src="js/web3.min.js"></script>
+    <!-- <script src="js/angular.min.js"></script> -->
 
     <!-- Scripts & Contracts -->
     <script src="js/contractInfo.js"></script>
@@ -74,16 +75,47 @@
             </ul>
         </div>
     </nav>
-    
-    <div class="reg-form">
-        <form>
-            <h2 class="form-signin-heading text-center">Please Register</h2>
-            <input type="text" class="form-control" id="firstnameInput" placeholder="First name" aria-describedby="firstName" required="" autofocus="" />
-            <input type="test" class="form-control" id="surnameInput" placeholder="Last name" aria-describedby="lastName" onkeyup="myFunction()" required="" />
-            <textarea type="description" class="form-control" id="descriptionInput" placeholder="Biography" maxlength="200" onkeyup="charCount(this)"></textarea>
-            <small id="char-count" class="form-text text-muted float-right">Max 200 characters</small>
-            <button class="btn btn-lg btn-primary btn-block" id="registerButton" type="submit">Register</button>
-        </form>
+
+    <div class="page-content-wrapper">
+        <div class="container">
+            <h3 class="text-primary">Mainnet:</h3>
+            <p>
+                The main Ethereum network.
+            </p>
+        </div>
+    </div>
+    <div class="page-content-wrapper">
+        <div class="container">
+            <h3 class="text-primary">Ropsten test network:</h3>
+            <p>
+                Launched in 2016 to replace the Morden test network. It was attacked in February 2016 and taken down, and with great effort was revived in March 2017.
+            </p>
+        </div>
+    </div>
+    <div class="page-content-wrapper">
+        <div class="container">
+            <h3 class="text-primary">Kovan test network:</h3>
+            <p>
+                A proof-of-authority (PoA) testnet issued by Ethcore, Melonport, and Digix after the Ropsten attacks.
+            </p>
+        </div>
+    </div>
+    <div class="page-content-wrapper">
+        <div class="container">
+            <h3 class="text-primary">Rinkeby test network:</h3>
+            <p>
+                Another proof-of-authority (PoA) testnet.
+            </p>
+        </div>
+    </div>
+
+    <div class="page-content-wrapper">
+        <div class="container">
+            <h3 class="text-primary">Unknown/test network:</h3>
+            <p>
+                This is usually a testing network run through localhost.
+            </p>
+        </div>
     </div>
 </body>
 

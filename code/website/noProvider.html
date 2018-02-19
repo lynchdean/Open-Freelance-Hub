@@ -1,8 +1,7 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-    <title>JobHub - My Account</title>
+    <title>JobHub - No Provider</title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -19,12 +18,11 @@
 
     <!-- web3.js, AngularJS -->
     <script src="js/web3.min.js"></script>
+    <!-- <script src="js/angular.min.js"></script> -->
 
     <!-- Scripts & Contracts -->
     <script src="js/contractInfo.js"></script>
     <script src="js/navbar.js"></script>
-    <script src="js/checkUser.js"></script>
-    <script src="js/UserAccountInteraction.js"></script>
 
 </head>
 
@@ -74,17 +72,14 @@
             </ul>
         </div>
     </nav>
-    
-    <div class="reg-form">
-        <form>
-            <h2 class="form-signin-heading text-center">Please Register</h2>
-            <input type="text" class="form-control" id="firstnameInput" placeholder="First name" aria-describedby="firstName" required="" autofocus="" />
-            <input type="test" class="form-control" id="surnameInput" placeholder="Last name" aria-describedby="lastName" onkeyup="myFunction()" required="" />
-            <textarea type="description" class="form-control" id="descriptionInput" placeholder="Biography" maxlength="200" onkeyup="charCount(this)"></textarea>
-            <small id="char-count" class="form-text text-muted float-right">Max 200 characters</small>
-            <button class="btn btn-lg btn-primary btn-block" id="registerButton" type="submit">Register</button>
-        </form>
+
+    <div id="page-content-wrapper">
+        <div class="container text-center">
+            <h3>No web3 provider detected, please download MetaMask.</h3>
+            <a href="https://metamask.io"><img id="metamask" src="images/download-metamask.png"/></a>
+        </div>
     </div>
+
 </body>
 
 </html>
