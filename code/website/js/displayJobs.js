@@ -46,13 +46,19 @@ app.controller('showJob', function($scope){
   var jobId = parseInt(url[1]);
 
   jobPostInstance.getJob.call(jobId, function(err, result){
-    $scope.$apply(function(){
-      $scope.job = {
-        id: result[0],
-        title: result[1],
-        description: result[2],
-        payment: web3.fromWei(result[3].toNumber())
-      };
+    jobPostInstance.isComplete.call(jobId, function(err, isCompleted){
+      $scope.$apply(function(){
+        $scope.job = {
+          id: result[0],
+          title: result[1],
+          description: result[2],
+          payment: web3.fromWei(result[3].toNumber())
+        };
+      })
+      if(isCompleted){
+        var btn = document.getElementById('completeJobButton');
+        btn.className += " disabled";
+      }
     })
   })
 })
@@ -100,5 +106,8 @@ app.controller('acceptedApplicant', function($scope){
         $scope.applicantAccepted = true;
       })
     }
+    $scope.$apply(function(){
+      $scope.worker = worker;
+    })
   })
 })

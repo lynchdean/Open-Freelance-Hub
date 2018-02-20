@@ -102,8 +102,17 @@ function completeJob(){
 
   console.log(jobId);
 
-  jobPostInstance.completeJob(jobId, function(err, result){
-    console.log(result);
+  jobPostInstance.isComplete.call(jobId, function(err, isCompleted){
+    console.log(isCompleted);
+    if(isCompleted){
+      alert("Job is already complete");
+    } else {
+      jobPostInstance.completeJob(jobId, function(err, result){
+        console.log(result);
+        var btn = document.getElementById('completeJobButton');
+        btn.className += " disabled";
+      })
+    }
   })
 }
 

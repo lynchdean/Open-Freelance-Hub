@@ -9,6 +9,7 @@ contract JobPost{
     address owner;
     address[] applicants;
     address worker;
+    bool isCompleted;
   }
 
   uint totalJobs = 0;
@@ -26,6 +27,7 @@ contract JobPost{
     job.owner = msg.sender;
     job.applicants;
     job.worker;
+    job.isCompleted = false;
 
     totalJobs += 1;
 
@@ -63,6 +65,12 @@ contract JobPost{
   function completeJob(uint jobId) public {
     var job = allJobs[jobId];
     (job.worker).transfer(job.payment);
+    job.isCompleted = true;
+  }
+
+  function isComplete(uint jobId) constant returns (bool){
+    var job = allJobs[jobId];
+    return job.isCompleted;
   }
 
 }
