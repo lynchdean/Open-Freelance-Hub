@@ -53,4 +53,12 @@ contract Accounts {
     return allAccounts.length;
   }
 
+  function getWorkerJobs(address _address) public constant returns (uint[]) {
+    return workerJobs;
+  }
+
+  function getEmployerJobs(address _address) public constant returns (uint[]) {
+    return employerJobs;
+  }
+
 }
