@@ -74,10 +74,10 @@
         </div>
     </nav>
 
-    <div class="container" ng-controller="showPages">
-      <div ng-repeat="job in jobs">
+    <div ng-controller="showPages">
+      <div ng-repeat="job in jobs track by $index">
         <div class="row justify-content-center">
-          <div class="col-10 mt-3 p-3" style="background-color:white; border-radius:8px;">
+          <div id="jobCard{{job.id}}" class="col-8 mt-3 p-3" style="background-color:white; border-radius:8px;">
             <a href="./job.html?{{job.id}}"><h2> {{job.title}} </h2></a>
             <p class="pl-2" style="border-left: 3px solid #BDBDBD;"> {{job.description}} </p>
             <h5> Payment: {{job.payment}}</h5>

@@ -13,7 +13,7 @@ function addAccount(firstname, surname){
   web3.eth.getAccounts(function(err, accounts){
     console.log(accounts);
     userInstance.getAccount.call(accounts[0], function(err, accountInfo){
-      console.log(accountInfo);
+      console.log(accounts[0]);
       if (accountInfo[0] == '0x00000000000000000000000000000000'){
         userInstance.setAccount(accounts[0], firstname, surname, function(err, result){
           if(err){
