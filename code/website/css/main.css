@@ -51,3 +51,15 @@ body {
     max-width: 200px;
     margin: 20px;
 }
+
+.openJob {
+  border-right: 20px solid #5cb85c;
+}
+
+.inProgressJob {
+  border-right: 20px solid orange;
+}
+
+.closedJob {
+  border-right: 20px solid #d9534f;
+}

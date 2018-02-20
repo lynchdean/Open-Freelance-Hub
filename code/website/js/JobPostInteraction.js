@@ -100,8 +100,6 @@ function completeJob(){
   var url = (window.location.href).split("?");
   var jobId = parseInt(url[1]);
 
-  console.log(jobId);
-
   jobPostInstance.isComplete.call(jobId, function(err, isCompleted){
     console.log(isCompleted);
     if(isCompleted){
@@ -109,12 +107,22 @@ function completeJob(){
     } else {
       jobPostInstance.completeJob(jobId, function(err, result){
         console.log(result);
-        var btn = document.getElementById('completeJobButton');
-        btn.className += " disabled";
+        var completeBtn = document.getElementById('completeJobButton');
+        completeBtn.className += " disabled";
+        var cancelBtn = document.getElementById('cancelJobButton');
+        cancelBtn.className += " disabled";
       })
     }
   })
 }
+
+function cancelJob(){
+  var url = (window.location.href).split("?");
+  var jobId = parseInt(url[1]);
+
+  alert("TODO GET THIS TO CANCEL JOB");
+}
+
 
 window.onload = function(){
   var url = (window.location.href).split("/");
@@ -157,5 +165,11 @@ window.onload = function(){
       event.preventDefault();
       completeJob();
     })
+
+    document.getElementById('cancelJobButton').addEventListener('click', function(event){
+      event.preventDefault();
+      cancelJob();
+    })
+
   }
 }

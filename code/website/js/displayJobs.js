@@ -34,6 +34,19 @@ app.controller('showPages', function($scope){
           }
           $scope.jobs.push(jobObj);
         })
+        jobPostInstance.getWorker.call(result[0], function(err, worker){
+          jobPostInstance.isComplete.call(result[0], function(err, isCompleted){
+            var defaultAcc = '0x0000000000000000000000000000000000000000';
+            var jobCard = document.getElementById('jobCard'+result[0])
+            if (worker == defaultAcc && !isCompleted){
+              jobCard.className += " openJob";
+            } else if (worker != defaultAcc && !isCompleted) {
+              jobCard.className += " inProgressJob";
+            } else {
+              jobCard.className += " closedJob";
+            }
+          })
+        })
       });
     }
   })
@@ -56,8 +69,10 @@ app.controller('showJob', function($scope){
         };
       })
       if(isCompleted){
-        var btn = document.getElementById('completeJobButton');
-        btn.className += " disabled";
+        var completeBtn = document.getElementById('completeJobButton');
+        completeBtn.className += " disabled";
+        var cancelBtn = document.getElementById('cancelJobButton');
+        cancelBtn.className += " disabled";
       }
     })
   })
