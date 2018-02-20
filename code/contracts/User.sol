@@ -28,11 +28,11 @@ contract Accounts {
     accountInfo(_firstName, _lastName);
   }
 
-  function getAccounts() constant returns(address[]) {
+  function getAccounts() public constant returns(address[]) {
     return allAccounts;
   }
 
-  function getAccount(address _address) constant returns (bytes16, bytes16, uint[], uint[]) {
+  function getAccount(address _address) public constant returns (bytes16, bytes16, uint[], uint[]) {
     return (accounts[_address].firstName, accounts[_address].lastName, accounts[_address].employerJobs, accounts[_address]. workerJobs);
   }
 
@@ -44,12 +44,12 @@ contract Accounts {
     accounts[_address].workerJobs.push(id);
   }
 
-  function isRegisteredAccount(address _address) constant returns (bytes16, bytes16, uint[], uint[]){
+  function isRegisteredAccount(address _address) public constant returns (bytes16, bytes16, uint[], uint[]){
     var account = accounts[_address];
     return (account.firstName, account.lastName, account.employerJobs, account.workerJobs);
   }
 
-  function countAccounts() constant returns (uint) {
+  function countAccounts() public constant returns (uint) {
     return allAccounts.length;
   }
 
