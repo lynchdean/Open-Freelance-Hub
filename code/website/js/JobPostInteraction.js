@@ -23,7 +23,7 @@ function addJob(title, desc, pay){
       console.log(accountInfo);
       // check if the account is registered
       if(accountInfo[0] != '0x00000000000000000000000000000000'){
-        var amount = parseInt(web3.toWei(pay, 'ether'));
+        var amount = parseFloat(web3.toWei(pay, 'ether'));
         jobPostInstance.addJob(title, desc, amount, {from: accounts[0], value: amount}, function(err, result){
           if(err)
             console.log(err);
@@ -117,7 +117,7 @@ window.onload = function(){
       var title = document.getElementById('titleInput').value;
       var description = document.getElementById('descriptionInput').value;
       try{
-        var payment = parseInt(document.getElementById('paymentInput').value);
+        var payment = parseFloat(document.getElementById('paymentInput').value);
       } catch (err){
         alert("The payment must be a number")
       }
