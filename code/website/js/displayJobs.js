@@ -19,32 +19,47 @@ var app = angular.module('displayPage', []);
 
 // controller to show all jobs uploaded to the blockchain for homepage
 app.controller('showPages', function($scope){
+  var defaultAcc = '0x0000000000000000000000000000000000000000';
   $scope.jobs = [];
+  $scope.statuses = []
 
   jobPostInstance.getJobCount.call(function(err, count){
     for (var i=0; i<count; i++){
       jobPostInstance.getJob.call(i,function(err,result){
+        jobPostInstance.getWorker.call(result[0], function(err, worker){
+          jobPostInstance.isComplete.call(result[0], function(err, isCompleted){
         console.log(result);
         $scope.$apply(function(){
+          if (worker == defaultAcc && !isCompleted){
+            status = "Open";
+          } else if (worker != defaultAcc && !isCompleted) {
+            console.log(worker)
+            status = "In Progress";
+          } else {
+            status = "Closed";
+          }
           var jobObj = {
             id: result[0],
             title: result[1],
             description: result[2],
-            payment: web3.fromWei(result[3].toNumber())
+            payment: web3.fromWei(result[3].toNumber()),
+            status: status,
           }
           $scope.jobs.push(jobObj);
         })
-        jobPostInstance.getWorker.call(result[0], function(err, worker){
-          jobPostInstance.isComplete.call(result[0], function(err, isCompleted){
-            var defaultAcc = '0x0000000000000000000000000000000000000000';
+
+
             var jobCard = document.getElementById('jobCard'+result[0])
-            if (worker == defaultAcc && !isCompleted){
-              jobCard.className += " openJob";
-            } else if (worker != defaultAcc && !isCompleted) {
-              jobCard.className += " inProgressJob";
-            } else {
-              jobCard.className += " closedJob";
-            }
+            var status;
+            $scope.$apply(function(){
+              if (worker == defaultAcc && !isCompleted){
+                jobCard.className += " openJob";
+              } else if (worker != defaultAcc && !isCompleted) {
+                jobCard.className += " inProgressJob";
+              } else {
+                jobCard.className += " closedJob";
+              }
+            })
           })
         })
       });
@@ -64,15 +79,23 @@ app.controller('showOpenJobs', function($scope){
             if(worker == defaultAcc && !isCompleted){
               console.log(result);
               $scope.$apply(function(){
+                if (worker == defaultAcc && !isCompleted){
+                  status = "Open";
+                } else if (worker != defaultAcc && !isCompleted) {
+                  console.log(worker)
+                  status = "In Progress";
+                } else {
+                  status = "Closed";
+                }
                 var jobObj = {
                   id: result[0],
                   title: result[1],
                   description: result[2],
-                  payment: web3.fromWei(result[3].toNumber())
+                  payment: web3.fromWei(result[3].toNumber()),
+                  status: status,
                 }
                 $scope.jobs.push(jobObj);
               })
-
                 var jobCard = document.getElementById('jobCard'+result[0])
                 if (worker == defaultAcc && !isCompleted){
                   jobCard.className += " openJob";
@@ -81,6 +104,7 @@ app.controller('showOpenJobs', function($scope){
                 } else {
                   jobCard.className += " closedJob";
                 }
+
               }
             });
           })
