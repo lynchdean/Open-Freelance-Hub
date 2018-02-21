@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="displayPage">
 <head>
     <title>JobHub - Job</title>
 
@@ -24,6 +24,7 @@
     <script src="js/contractInfo.js"></script>
     <script src="js/navbar.js"></script>
     <script src="js/displayJobs.js"></script>
+    <script src="js/JobPostInteraction.js"></script>
 
 </head>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-3">
@@ -45,6 +46,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="jobList.html">Job List</a>
+                        <a class="dropdown-item" href="openJobs.html"> Open Jobs </a>
                         <a class="dropdown-item" href="postJob.html">Post a Job</a>
                     </div>
                 </li>
@@ -72,24 +74,50 @@
         </div>
     </nav>
 
-    <div class="container" ng-controller="showJob">
-      <div class="row justify-content-center">
-        <div class="col-8 mt-3 p-3" style="background-color:white; border-radius:8px;">
-          <h2> {{job.title}} </h2>
-          <p> {{job.description}} </p>
-          <h5> Payment: {{job.payment}} </h5>
-          <div class="row justify-content-center">
-            <a class="btn-lg btn-primary" href="#"> Contact </a>
+    <div class="container" ng-controller="checkOwner">
+      <div ng-controller="acceptedApplicant">
+        <div class="row justify-content-center" ng-controller="showJob">
+          <div class="col-8 mt-3 p-3" style="background-color:white; border-radius:8px;">
+            <h2> {{job.title}} </h2>
+            <p> {{job.description}} </p>
+            <h5> Payment: {{job.payment}} </h5>
+            <div class="row justify-content-center" ng-show="!applicantAccepted">
+              <a class="btn-lg btn-primary" id="applyButton" href="#"> Apply </a>
+            </div>
+            <div ng-show="applicantAccepted">
+              <h5>Accepted Worker: {{worker}} </h5>
+            </div>
+            <div class="row justify-content-center p-3">
+              <div ng-show="applicantAccepted && isOwner">
+                <a class="btn btn-success" id="completeJobButton" href="#"> Complete Job </a>
+              </div>
+              <div ng-show="isOwner">
+                <a class="btn btn-danger" id="cancelJobButton" href="#"> Cancel Job </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-3 mt-3 ml-3 p-3" style="background-color:white; border-radius:8px;">
+            <h4> Employer </h4>
+            <p> THIS WILL BE POPULATED WITH INFORMATION FROM THE ACCOUNT CLASS DEAN IS WORKING ON TEST TEST TEST </p>
           </div>
         </div>
-        <div class="col-3 mt-3 ml-3 p-3" style="background-color:white; border-radius:8px;">
-          <h4> Employer </h4>
-          <p> THIS WILL BE POPULATED WITH INFORMATION FROM THE ACCOUNT CLASS DEAN IS WORKING ON TEST TEST TEST </p>
+        <div class="container" ng-controller="showApplicants" ng-show="!applicantAccepted && isOwner">
+          <h2> Applicants </h2>
+          <div ng-repeat="applicant in applicants track by $index">
+            <div class="row col-8 ml-3 mb-2" style="background-color:white; border-radius:8px;">
+              <div class="p-2">
+                <a class="btn-sm btn-success" href="#" ng-click="acceptApplicant($index)"> Accept </a>
+              </div>
+              <div class="p-2">
+                <h5><a href="#">{{applicant}}</a></h5>
+              </div>
+            </div>
+          </div>
+          <div ng-show="!applicants.length">
+            <h1> No applicants </h1>
+          </div>
         </div>
       </div>
     </div>
-
-
-
   </body>
 </html>

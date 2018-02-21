@@ -30,10 +30,60 @@ app.controller('showPages', function($scope){
             id: result[0],
             title: result[1],
             description: result[2],
-            payment: result[3].toNumber()
+            payment: web3.fromWei(result[3].toNumber())
           }
           $scope.jobs.push(jobObj);
         })
+        jobPostInstance.getWorker.call(result[0], function(err, worker){
+          jobPostInstance.isComplete.call(result[0], function(err, isCompleted){
+            var defaultAcc = '0x0000000000000000000000000000000000000000';
+            var jobCard = document.getElementById('jobCard'+result[0])
+            if (worker == defaultAcc && !isCompleted){
+              jobCard.className += " openJob";
+            } else if (worker != defaultAcc && !isCompleted) {
+              jobCard.className += " inProgressJob";
+            } else {
+              jobCard.className += " closedJob";
+            }
+          })
+        })
+      });
+    }
+  })
+})
+
+app.controller('showOpenJobs', function($scope){
+  $scope.jobs = [];
+  var defaultAcc = '0x0000000000000000000000000000000000000000';
+
+  jobPostInstance.getJobCount.call(function(err, count){
+    for (var i=0; i<count; i++){
+      jobPostInstance.getJob.call(i,function(err,result){
+        jobPostInstance.isComplete.call(result[0], function(err, isCompleted){
+          jobPostInstance.getWorker.call(result[0], function(err, worker){
+            if(worker == defaultAcc && !isCompleted){
+              console.log(result);
+              $scope.$apply(function(){
+                var jobObj = {
+                  id: result[0],
+                  title: result[1],
+                  description: result[2],
+                  payment: web3.fromWei(result[3].toNumber())
+                }
+                $scope.jobs.push(jobObj);
+              })
+
+                var jobCard = document.getElementById('jobCard'+result[0])
+                if (worker == defaultAcc && !isCompleted){
+                  jobCard.className += " openJob";
+                } else if (worker != defaultAcc && !isCompleted) {
+                  jobCard.className += " inProgressJob";
+                } else {
+                  jobCard.className += " closedJob";
+                }
+              }
+            });
+          })
       });
     }
   })
@@ -46,13 +96,70 @@ app.controller('showJob', function($scope){
   var jobId = parseInt(url[1]);
 
   jobPostInstance.getJob.call(jobId, function(err, result){
+    jobPostInstance.isComplete.call(jobId, function(err, isCompleted){
+      $scope.$apply(function(){
+        $scope.job = {
+          id: result[0],
+          title: result[1],
+          description: result[2],
+          payment: web3.fromWei(result[3].toNumber())
+        };
+      })
+      if(isCompleted){
+        var completeBtn = document.getElementById('completeJobButton');
+        completeBtn.className += " disabled";
+        var cancelBtn = document.getElementById('cancelJobButton');
+        cancelBtn.className += " disabled";
+      }
+    })
+  })
+})
+
+app.controller('showApplicants', function($scope){
+  $scope.applicants;
+  var url = (window.location.href).split("?");
+  var jobId = parseInt(url[1]);
+
+  jobPostInstance.getApplicants.call(jobId, function(err, applicants){
     $scope.$apply(function(){
-      $scope.job = {
-        id: result[0],
-        title: result[1],
-        description: result[2],
-        payment: result[3].toNumber()
-      };
+      $scope.applicants = applicants;
+    })
+  })
+
+  $scope.acceptApplicant = function(index) {
+    acceptApplicant(index);
+  }
+})
+
+app.controller('checkOwner', function($scope){
+  $scope.isOwner = false;
+  var url = (window.location.href).split("?");
+  var jobId = parseInt(url[1]);
+
+  web3.eth.getAccounts(function(err, accounts){
+    jobPostInstance.getJob.call(jobId, function(err, job){
+      $scope.$apply(function(){
+        $scope.isOwner = (job[4] == accounts[0])
+      })
+    })
+  })
+})
+
+app.controller('acceptedApplicant', function($scope){
+  $scope.applicantAccepted = false;
+  var url = (window.location.href).split("?");
+  var jobId = parseInt(url[1]);
+
+  jobPostInstance.getWorker(jobId, function(err, worker){
+    console.log(worker);
+    if(worker != '0x0000000000000000000000000000000000000000'){
+      console.log("here")
+      $scope.$apply(function(){
+        $scope.applicantAccepted = true;
+      })
+    }
+    $scope.$apply(function(){
+      $scope.worker = worker;
     })
   })
 })

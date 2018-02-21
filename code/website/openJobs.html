@@ -1,8 +1,7 @@
 <!doctype html>
 <html lang="en" ng-app="displayPage">
-
 <head>
-    <title>JobHub - My Account</title>
+    <title>JobHub - List of Jobs</title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -19,12 +18,13 @@
 
     <!-- web3.js, AngularJS -->
     <script src="js/web3.min.js"></script>
+    <script src="js/angular.min.js"></script>
 
     <!-- Scripts & Contracts -->
     <script src="js/contractInfo.js"></script>
     <script src="js/navbar.js"></script>
-    <script src="js/checkUser.js"></script>
-    <script src="js/account.js"></script>
+    <script src="js/displayJobs.js"></script>
+
 </head>
 
 <body>
@@ -75,40 +75,19 @@
         </div>
     </nav>
 
-    <div class="container">
-        <h3>My Account:</h3>
-        <hr />
-        <div class="row">
-            <div class="col-sm-3">
-                <p><b>First name:</b></p>
-                <p><b>Last name:</b></p>
-                <p><b>Biography:</b></p>
-
-            </div>
-            <div class="col-sm-3">
-                <p><span id="firstName"></span></p>
-                <p><span id="lastName"></span></p>
-                <p><span id="bio"></span></p>
-            </div>
+    <div ng-controller="showOpenJobs">
+      <div ng-repeat="job in jobs track by $index">
+        <div class="row justify-content-center">
+          <div id="jobCard{{job.id}}" class="col-8 mt-3 p-3" style="background-color:white; border-radius:8px;">
+            <a href="./job.html?{{job.id}}"><h2> {{job.title}} </h2></a>
+            <p class="pl-2" style="border-left: 3px solid #BDBDBD;"> {{job.description}} </p>
+            <h5> Payment: {{job.payment}}</h5>
+          </div>
         </div>
+      </div>
+      <div ng-show="!jobs.length" class="text-center">
+        <h2> There are no jobs curently available </h2>
+      </div>
     </div>
-
-    <div class="container" ng-controller="showPages">
-        <h3>Jobs:</h3>
-        <div ng-repeat="job in jobs">
-            <div class="row justify-content-center">
-                <div class="col-10 mt-3 p-3" style="background-color:white; border-radius:8px;">
-                    <h2>{{job.firstName}}</h2>
-                    <h2>{{job.lastName}}</h2>
-                </div>
-            </div>
-        </div>
-        <div ng-show="!accounts.length" class="text-center">
-            <h2>There are no freelancers available</h2>
-        </div>
-    </div>
-
 
 </body>
-
-</html>
