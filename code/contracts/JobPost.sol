@@ -73,4 +73,10 @@ contract JobPost{
     return job.isCompleted;
   }
 
+  function cancelJob(uint jobId) public {
+    var job = allJobs[jobId];
+    (job.owner).transfer(job.payment);
+    job.isCompleted = true;
+  }
+
 }

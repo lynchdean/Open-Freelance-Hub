@@ -85,14 +85,17 @@ function acceptApplicant(index){
   var jobId = parseInt(url[1]);
 
   jobPostInstance.getApplicants(jobId, function(err, applicants){
-    jobPostInstance.setWorker(jobId, applicants[index], function(err, result){
-      if(err){
-        console.log(err);
-      }
-      jobPostInstance.getWorker(jobId, function(err, result){
-        console.log(result);
+    if(confirm("Are you sure you want to accept this Applicant?")){
+      jobPostInstance.setWorker(jobId, applicants[index], function(err, result){
+        if(err){
+          console.log(err);
+        }
+        jobPostInstance.getWorker(jobId, function(err, result){
+          console.log(result);
+        })
       })
-    })
+    }
+
   })
 }
 
@@ -105,13 +108,16 @@ function completeJob(){
     if(isCompleted){
       alert("Job is already complete");
     } else {
-      jobPostInstance.completeJob(jobId, function(err, result){
-        console.log(result);
-        var completeBtn = document.getElementById('completeJobButton');
-        completeBtn.className += " disabled";
-        var cancelBtn = document.getElementById('cancelJobButton');
-        cancelBtn.className += " disabled";
-      })
+      if(confirm("Are you sure you want to complete this job?")){
+        jobPostInstance.completeJob(jobId, function(err, result){
+          //console.log(result);
+          var completeBtn = document.getElementById('completeJobButton');
+          completeBtn.className += " disabled";
+          var cancelBtn = document.getElementById('cancelJobButton');
+          cancelBtn.className += " disabled";
+        })
+      }
+
     }
   })
 }
@@ -119,8 +125,21 @@ function completeJob(){
 function cancelJob(){
   var url = (window.location.href).split("?");
   var jobId = parseInt(url[1]);
+  jobPostInstance.isComplete(jobId, function(err, isCompleted){
+    if(isCompleted){
+      alert("Job is already completed");
+    } else {
+      if(confirm("Are you sure you want to cancel this job?")){
+        jobPostInstance.cancelJob(jobId, function(err, result){
+          var completeBtn = document.getElementById('completeJobButton');
+          completeBtn.className += " disabled";
+          var cancelBtn = document.getElementById('cancelJobButton');
+          cancelBtn.className += " disabled";
+        })
+      }
+    }
 
-  alert("TODO GET THIS TO CANCEL JOB");
+  })
 }
 
 
