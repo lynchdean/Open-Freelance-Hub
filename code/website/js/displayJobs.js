@@ -52,6 +52,43 @@ app.controller('showPages', function($scope){
   })
 })
 
+app.controller('showOpenJobs', function($scope){
+  $scope.jobs = [];
+  var defaultAcc = '0x0000000000000000000000000000000000000000';
+
+  jobPostInstance.getJobCount.call(function(err, count){
+    for (var i=0; i<count; i++){
+      jobPostInstance.getJob.call(i,function(err,result){
+        jobPostInstance.isComplete.call(result[0], function(err, isCompleted){
+          jobPostInstance.getWorker.call(result[0], function(err, worker){
+            if(worker == defaultAcc && !isCompleted){
+              console.log(result);
+              $scope.$apply(function(){
+                var jobObj = {
+                  id: result[0],
+                  title: result[1],
+                  description: result[2],
+                  payment: web3.fromWei(result[3].toNumber())
+                }
+                $scope.jobs.push(jobObj);
+              })
+
+                var jobCard = document.getElementById('jobCard'+result[0])
+                if (worker == defaultAcc && !isCompleted){
+                  jobCard.className += " openJob";
+                } else if (worker != defaultAcc && !isCompleted) {
+                  jobCard.className += " inProgressJob";
+                } else {
+                  jobCard.className += " closedJob";
+                }
+              }
+            });
+          })
+      });
+    }
+  })
+})
+
 // controller to show details of one job in an individual job page
 app.controller('showJob', function($scope){
   $scope.job;
