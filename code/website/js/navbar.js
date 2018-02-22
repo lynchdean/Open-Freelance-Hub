@@ -15,7 +15,7 @@ var userInstance = web3.eth.contract(UserAbi).at(UserAddr);
 userInstance.getAccount(web3.eth.defaultAccount, (err, res) => {
     if (res[0] != "0x00000000000000000000000000000000") {
         document.getElementById("welcome").innerHTML = "Welcome, " + (web3.toAscii(res[0]).replace(/\u0000/g, '')) + "!";
-        document.getElementById('welcome') =  setAttribute('href', 'account.html');
+        document.getElementById('welcome').setAttribute('href', 'account.html');
     }
 })
 
