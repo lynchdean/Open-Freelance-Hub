@@ -19,12 +19,14 @@
 
     <!-- web3.js, AngularJS -->
     <script src="js/web3.min.js"></script>
+    <script src="js/angular.min.js"></script>
 
     <!-- Scripts & Contracts -->
     <script src="js/contractInfo.js"></script>
     <script src="js/navbar.js"></script>
     <script src="js/checkUser.js"></script>
-    <script src="js/account.js"></script>
+    <script src="js/displayAccounts.js"></script>
+    
 </head>
 
 <body>
@@ -76,14 +78,13 @@
     </nav>
 
     <div class="container">
-        <h3>My Account:</h3>
+        <h3>Account details:</h3>
         <hr />
         <div class="row">
             <div class="col-sm-3">
                 <p><b>First name:</b></p>
                 <p><b>Last name:</b></p>
                 <p><b>Biography:</b></p>
-
             </div>
             <div class="col-sm-3">
                 <p><span id="firstName"></span></p>
@@ -93,21 +94,37 @@
         </div>
     </div>
 
-    <div class="container" ng-controller="showPages">
-        <h3>Jobs:</h3>
-        <div ng-repeat="job in jobs">
+    <div class="container" ng-controller="showAccountJobs">
+        <h4>Jobs created:</h4>
+        <div ng-repeat="employerJob in employerJobs">
             <div class="row justify-content-center">
                 <div class="col-10 mt-3 p-3" style="background-color:white; border-radius:8px;">
-                    <h2>{{job.firstName}}</h2>
-                    <h2>{{job.lastName}}</h2>
+                    <h2>{{employerJob.id}}</h2>
+                    <h2>{{employerJob.title}}</h2>
+                    <h2>{{employerJob.description}}</h2>
+                    <h2>{{employerJob.payment}}</h2>
                 </div>
             </div>
         </div>
-        <div ng-show="!accounts.length" class="text-center">
-            <h2>There are no freelancers available</h2>
+        <div ng-show="!employerJobs.length" class="text-center">
+            <p>User has not created any jobs</p>
+        </div>
+
+        <h4>Jobs assigned:</h4>
+        <div ng-repeat="workerJob in workerJobs">
+            <div class="row justify-content-center">
+                <div class="col-10 mt-3 p-3" style="background-color:white; border-radius:8px;">
+                    <h2>{{workerJob.id}}</h2>
+                    <h2>{{workerJob.title}}</h2>
+                    <h2>{{workerJob.description}}</h2>
+                    <h2>{{workerJob.payment}}</h2>
+                </div>
+            </div>
+        </div>
+        <div ng-show="!workerJobs.length" class="text-center">
+            <p>User has not previously been assigned any jobs.</p>
         </div>
     </div>
-
 
 </body>
 

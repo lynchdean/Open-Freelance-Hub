@@ -16,7 +16,7 @@ contract JobPost{
   mapping (uint => Job) allJobs;
   address[] public posterAccounts;
 
-  function addJob(string title, string desc, uint pay) payable{
+  function addJob(string title, string desc, uint pay) public payable {
     var job = allJobs[totalJobs];
     require(pay == msg.value);
 
@@ -34,12 +34,12 @@ contract JobPost{
     posterAccounts.push(msg.sender);
   }
 
-  function getJob(uint i) constant returns(uint,string,string, uint, address) {
+  function getJob(uint i) public constant returns(uint,string,string, uint, address) {
 
     return (allJobs[i].id, allJobs[i].title, allJobs[i].description, allJobs[i].payment, allJobs[i].owner);
   }
 
-  function getJobCount() constant returns (uint){
+  function getJobCount() public constant returns (uint){
     return totalJobs;
   }
 
@@ -48,16 +48,16 @@ contract JobPost{
     job.applicants.push(msg.sender);
   }
 
-  function getApplicants(uint i) constant returns(address[]){
+  function getApplicants(uint i) public constant returns(address[]){
     return allJobs[i].applicants;
   }
 
-  function setWorker(uint jobId, address candidate) {
+  function setWorker(uint jobId, address candidate) public {
     var job = allJobs[jobId];
     job.worker = candidate;
   }
 
-  function getWorker(uint jobId) constant returns (address) {
+  function getWorker(uint jobId) public constant returns (address) {
     var job = allJobs[jobId];
     return job.worker;
   }
@@ -68,15 +68,9 @@ contract JobPost{
     job.isCompleted = true;
   }
 
-  function isComplete(uint jobId) constant returns (bool){
+  function isComplete(uint jobId) public constant returns (bool){
     var job = allJobs[jobId];
     return job.isCompleted;
-  }
-
-  function cancelJob(uint jobId) public {
-    var job = allJobs[jobId];
-    (job.owner).transfer(job.payment);
-    job.isCompleted = true;
   }
 
 }
