@@ -111,7 +111,7 @@ function acceptApplicant(index) {
                     jobPostInstance.getJobCount.call(function(error, jobCount) {
                         if (!error) {
                             console.log(jobCount);
-                            userInstance.addWorkerJob(accounts[0], jobCount - 1, (err, result) => {
+                            userInstance.addWorkerJob(applicants[index], jobCount - 1, (err, result) => {
                                 if (!err)
                                     console.log("Added to workerJobs")
                                 else {
