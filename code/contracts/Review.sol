@@ -1,6 +1,6 @@
 pragma solidity ^0.4.4;
 
-contract Review {
+contract Reviews {
     struct Review {
         address reviewee;
         uint jobID;
