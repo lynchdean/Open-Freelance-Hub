@@ -359,7 +359,82 @@ It was brought up during our proposal presentation that we will need some way to
 &nbsp;
 &nbsp;
 
-### 5.2 Context Diagram
+### 5.2 Use Case Description
+
+
+### Posting a Job
+|Titles| Information |
+| ------------- |:-------------|
+| Goal      | A user with a registered account wishes to post a job to the site |
+|Pre-conditions| The user has registered their ethereum account with the site |
+|Successful Outcome | The user's job post is accepted & displayed on the site |
+|Failure Outcome| The users job post is not accepted |
+|Failure Conditions| The transaction to post the job to the site is rejected |
+|Primary Actor| User |
+|Secondary Actor| N/A |
+|Scenario| 1) User chooses to post a new job <br/> 2) The system prompts the user to enter a job title, description & payment amount <br/> 3) The user enters job details & selects "Post Job" <br/> 4) The user approves the job using their ethereum client <br/> 5) The system displays the job as part of the list of all jobs|
+|Alternative| 4a) The transaction is rejected by ethereum miners <br/> 4a 1) The customer must retry the job post |
+|Variation| N/A |
+
+### Applying to a Job
+|Titles| Information |
+| ------------- |:-------------|
+| Goal      | A registered user wishes to apply to an open job |
+|Pre-conditions| The user has registered their ethereum account with the site |
+|Successful Outcome | The user applies to the job |
+|Failure Outcome| The users job application is not accepted |
+|Failure Conditions| The transaction to post the job to the site is rejected |
+|Primary Actor| User |
+|Secondary Actor| N/A |
+|Scenario| 1) The user selects the job they wish to apply for <br/> 2) The user chooses apply on the job page <br/> 3) The user approves the job using their ethereum client|
+|Alternative| 3a) The transaction is rejected by ethereum miners <br/> 3a 1) The customer must retry the job post |
+|Variation| N/A |
+
+### Accepting a Candidate for a Job
+|Titles| Information |
+| ------------- |:-------------|
+| Goal      | An employer wishes to accept a worker's offer on a job post |
+|Pre-conditions| The user has registered their ethereum account with the site <br/> The job has been posted successfully to the site |
+|Successful Outcome | The candidate is accepted for a job |
+|Failure Outcome| The candidate is not accepted for a job |
+|Failure Conditions| The transaction to post the job to the site is rejected |
+|Primary Actor| Employer User |
+|Secondary Actor| Candidate User |
+|Scenario| 1) Candidate user enters the job page & chooses apply <br/> 2) Employer user evaluates the list of all candidates <br/> 3) Employer chooses "Accept" on a candidate <br/> 4) The user approves the job using their ethereum client|
+|Alternative| 4a) The transaction is rejected by ethereum miners <br/> 4a 1) The customer must retry the job post |
+|Variation| N/A |
+
+### Reviewing Another Party
+|Titles| Information |
+| ------------- |:-------------|
+| Goal      | The two users involved in a job transaction must review each other |
+|Pre-conditions| The users have registered their ethereum accounts with the site |
+|Successful Outcome | Both parties successfully review each other |
+|Failure Outcome| Either one or both parties do not complete the review, preventing them from completing more work or posting new jobs |
+|Failure Conditions| The transaction to post the review to the site is rejected <br/> OR <br/> One party chooses not to complete the review |
+|Primary Actor| Employer User |
+|Secondary Actor| Worker User |
+|Scenario| 1) The employer accepts a worker <br/> 2) The worker completes the job <br/> 3) Employer marks the job as complete <br/> 4) The system initiates payment, employer approves this payment <br/> 5) Each party completes a review of the other |
+|Alternative| 4a) The transaction is rejected by ethereum miners <br/> 4a 1) The customer must retry the job completion |
+|Variation| The employer cancels a job after accepting a candidate, the candidate can still complete a review of the employer  vice versa. |
+
+### Registering an ethereum account
+|Titles| Information |
+| ------------- |:-------------|
+| Goal      | A user with an un-registered account wishes to register with the site |
+|Pre-conditions| The ethereum account is not already registered |
+|Successful Outcome | The ethereum account is registered with the site |
+|Failure Outcome| The account is not registered |
+|Failure Conditions| The transaction to register the account to the site is rejected |
+|Primary Actor| Unregistered User |
+|Secondary Actor| N/A |
+|Scenario| 1) Unregistered user enters the site <br/> 2) This user chooses register account <br/> 3) The user enters their details & selects register <br/> 4) The user approves the job using their ethereum client |
+|Alternative| 4a) The transaction is rejected by ethereum miners <br/> 4a 1) The customer must retry the job completion |
+|Variation| If the unregistered user attempts to post a job or apply to a job they will be prompted to register an account, which will take them to the account registratio page |
+
+
+
+### 5.3 Context Diagram
 
 ![Context Diagram](context_diagram.png)
 
