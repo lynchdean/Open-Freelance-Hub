@@ -134,6 +134,8 @@ app.controller('showJob', function($scope){
         completeBtn.className += " disabled";
         var cancelBtn = document.getElementById('cancelJobButton');
         cancelBtn.className += " disabled";
+        var applyBtn = document.getElementById('applyButton');
+        applyBtn.className += " disabled";
       }
     })
   })
