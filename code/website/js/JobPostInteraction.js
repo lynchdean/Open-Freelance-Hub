@@ -37,6 +37,7 @@ function addJob(title, desc, pay) {
                         // Add job to owners emplyerJobs list
                         jobPostInstance.getJobCount.call(function(error, jobCount) {
                             if (!error) {
+
                                 userInstance.addEmployerJob(accounts[0], jobCount - 1, (err, result) => {
                                     if (!err)
                                         console.log("Added to EmployerJobs")
@@ -111,7 +112,7 @@ function acceptApplicant(index) {
                     jobPostInstance.getJobCount.call(function(error, jobCount) {
                         if (!error) {
                             console.log(jobCount);
-                            userInstance.addWorkerJob(applicants[index], jobCount - 1, (err, result) => {
+                            userInstance.addWorkerJob(applicants[index], jobId, (err, result) => {
                                 if (!err)
                                     console.log("Added to workerJobs")
                                 else {

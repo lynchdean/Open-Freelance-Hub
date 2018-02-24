@@ -62,8 +62,9 @@ app.controller('showAccountJobs', function($scope){
 
     // Get a list of all the jobs a user has created
     accountInstance.getEmployerJobs.call(accountAddr, function(err, res){
-        for (var i = 0; i < res.length; i++) {
-            jobPostInstance.getJob.call(res[i], function(err, result){
+        //console.log(res);
+        for (jobId in res) {
+            jobPostInstance.getJob.call(jobId, function(err, result){
                 $scope.$apply(function() {
                     var jobObj = {
                         id: result[0],
@@ -80,7 +81,6 @@ app.controller('showAccountJobs', function($scope){
 
     // Get a list of all the jobs a user has been assigned to
     accountInstance.getWorkerJobs.call(accountAddr, function(err, res){
-      console.log(res);
         for (var i = 0; i < res.length; i++) {
             jobPostInstance.getJob.call(res[i], function(err, result){
                 console.log(result);
@@ -96,6 +96,5 @@ app.controller('showAccountJobs', function($scope){
             });
 
         }
-        console.log($scope.workerJobs);
     })
 })
