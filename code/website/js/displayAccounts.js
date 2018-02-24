@@ -61,9 +61,9 @@ app.controller('showAccountJobs', function($scope){
     $scope.workerJobs = [];
 
     // Get a list of all the jobs a user has created
-    accountInstance.getEmployerJobs.call(accountAddr, function(err, res){
-        //console.log(res);
-        for (jobId in res) {
+    accountInstance.getEmployerJobs.call(accountAddr, function(err, employerJobs){
+        for (i in employerJobs) {
+          var jobId = employerJobs[i]
             jobPostInstance.getJob.call(jobId, function(err, result){
                 $scope.$apply(function() {
                     var jobObj = {
@@ -72,6 +72,7 @@ app.controller('showAccountJobs', function($scope){
                         description: result[2],
                         payment:  web3.fromWei(result[3].toNumber())
                     }
+                    console.log(jobObj);
                     $scope.employerJobs.push(jobObj);
                 })
             });

@@ -20,7 +20,6 @@ function addJob(title, desc, pay) {
     web3.eth.getAccounts(function(err, accounts) {
         console.log(accounts);
         userInstance.getAccount(accounts[0], function(err, accountInfo) {
-            console.log(accountInfo);
             // Check if the account is registered
             if (accountInfo[0] != '0x00000000000000000000000000000000') {
                 var amount = parseFloat(web3.toWei(pay, 'ether'));
@@ -37,8 +36,11 @@ function addJob(title, desc, pay) {
                         // Add job to owners emplyerJobs list
                         jobPostInstance.getJobCount.call(function(error, jobCount) {
                             if (!error) {
+                                jobPostInstance.getJob.call(jobCount-1, function(err, result){
+                                  console.log(result);
+                                })
 
-                                userInstance.addEmployerJob(accounts[0], jobCount - 1, (err, result) => {
+                                userInstance.addEmployerJob(accounts[0], jobCount-1, (err, result) => {
                                     if (!err)
                                         console.log("Added to EmployerJobs")
                                     else {
@@ -111,7 +113,6 @@ function acceptApplicant(index) {
                     // Add job to creators workerJobs list
                     jobPostInstance.getJobCount.call(function(error, jobCount) {
                         if (!error) {
-                            console.log(jobCount);
                             userInstance.addWorkerJob(applicants[index], jobId, (err, result) => {
                                 if (!err)
                                     console.log("Added to workerJobs")
@@ -223,3 +224,9 @@ window.onload = function() {
 
     }
 }
+
+web3.eth.getAccounts(function(err, accounts){
+  userInstance.getEmployerJobs(accounts[0], function(err, result){
+    console.log(result);
+  })
+})
