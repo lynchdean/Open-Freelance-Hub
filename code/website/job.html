@@ -74,7 +74,7 @@
         <div class="row justify-content-center" ng-controller="showJob">
           <div class="col-8 mt-3 p-3" style="background-color:white; border-radius:8px;">
             <h2> {{job.title}} </h2>
-            <p> {{job.description}} </p>
+            <p class="pl-2" style="border-left: 3px solid #BDBDBD;"> {{job.description}} </p>
             <h5> Payment: {{job.payment}} </h5>
             <div class="row justify-content-center" ng-show="!applicantAccepted">
               <a class="btn-lg btn-primary" id="applyButton" href="#"> Apply </a>
