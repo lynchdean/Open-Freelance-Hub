@@ -25,6 +25,7 @@
     <script src="js/navbar.js"></script>
     <script src="js/displayJobs.js"></script>
     <script src="js/JobPostInteraction.js"></script>
+    <script src="js/reviewInteraction.js"></script>
 
 </head>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-3">
@@ -84,7 +85,45 @@
             </div>
             <div class="row justify-content-center p-3">
               <div ng-show="applicantAccepted && isOwner">
-                <a class="btn btn-success" id="completeJobButton" href="#"> Complete Job </a>
+                <!-- <a class="btn btn-success" id="completeJobButton" href="#"> Complete Job </a> -->
+
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
+                    Complete Job
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Please leave a review!</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                            </div>
+                            <form>
+                                <div class="modal-body">
+                                    <textarea type="reviewText" class="form-control" id="reviewTextInput" placeholder="Write review here" maxlength="200" onkeyup="charCount(this)"></textarea>
+                                    <small id="char-count" class="form-text text-muted float-right">Max 200 characters</small>
+                                    <br />
+                                    <div class="rating text-center">
+                                        <span><input type="radio" name="rating" id="star1" value="1" onclick="starRating(1)"><label for="star1"></label></span>
+                                        <span><input type="radio" name="rating" id="star2" value="2" onclick="starRating(2)"><label for="star2"></label></span>
+                                        <span><input type="radio" name="rating" id="star3" value="3" onclick="starRating(3)"><label for="star3"></label></span>
+                                        <span><input type="radio" name="rating" id="star4" value="4" onclick="starRating(4)"><label for="star4"></label></span>
+                                        <span><input type="radio" name="rating" id="star5" value="5" onclick="starRating(5)"><label for="star5"></label></span>
+                                    </div>
+                                    <div id="starRating">0</div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <a class="btn btn-success" id="completeJobButton" href="#"> Submit & Complete </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
               </div>
               <div ng-show="isOwner">
                 <a class="btn btn-danger" id="cancelJobButton" href="#"> Cancel Job </a>

@@ -20,7 +20,6 @@ function addJob(title, desc, pay) {
     web3.eth.getAccounts(function(err, accounts) {
         console.log(accounts);
         userInstance.getAccount(accounts[0], function(err, accountInfo) {
-            console.log(accountInfo);
             // Check if the account is registered
             if (accountInfo[0] != '0x00000000000000000000000000000000') {
                 var amount = parseFloat(web3.toWei(pay, 'ether'));
@@ -37,7 +36,11 @@ function addJob(title, desc, pay) {
                         // Add job to owners emplyerJobs list
                         jobPostInstance.getJobCount.call(function(error, jobCount) {
                             if (!error) {
-                                userInstance.addEmployerJob(accounts[0], jobCount - 1, (err, result) => {
+                                jobPostInstance.getJob.call(jobCount-1, function(err, result){
+                                  console.log(result);
+                                })
+
+                                userInstance.addEmployerJob(accounts[0], jobCount-1, (err, result) => {
                                     if (!err)
                                         console.log("Added to EmployerJobs")
                                     else {
@@ -110,8 +113,7 @@ function acceptApplicant(index) {
                     // Add job to creators workerJobs list
                     jobPostInstance.getJobCount.call(function(error, jobCount) {
                         if (!error) {
-                            console.log(jobCount);
-                            userInstance.addWorkerJob(applicants[index], jobCount - 1, (err, result) => {
+                            userInstance.addWorkerJob(applicants[index], jobId, (err, result) => {
                                 if (!err)
                                     console.log("Added to workerJobs")
                                 else {
@@ -138,6 +140,7 @@ function completeJob() {
         if (isCompleted) {
             alert("Job is already complete");
         } else {
+            postReview(jobID);
             if (confirm("Are you sure you want to complete this job?")) {
                 jobPostInstance.completeJob(jobId, function(err, result) {
                     var completeBtn = document.getElementById('completeJobButton');
@@ -222,3 +225,9 @@ window.onload = function() {
 
     }
 }
+
+web3.eth.getAccounts(function(err, accounts){
+  userInstance.getEmployerJobs(accounts[0], function(err, result){
+    console.log(result);
+  })
+})

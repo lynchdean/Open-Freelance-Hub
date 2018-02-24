@@ -26,7 +26,10 @@ contract('UserAccount', function(accounts){
     }).then(function(accs){
       return deployedUsers.getAccount.call(accs[0]);
     }).then(function(me){
-      assert.equal(me[2], 1, "Job ID returned incorrectly");
+      assert.equal(me[2], 1, "Job ID returned incorrectly by getAccount");
+      return deployedUsers.getEmployerJobs.call(accounts[0]);
+    }).then(function(employerJobs){
+      assert.equal(employerJobs, 1, "jobId returned incorrectly by getEmployerJobs")
     })
   })
 
