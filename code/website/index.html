@@ -17,6 +17,14 @@
     <script src="js/popper.min.js"></script>
     <script src="bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
+    <!-- web3.js, AngularJS -->
+    <script src="js/web3.min.js"></script>
+
+    <!-- Scripts & Contracts -->
+    <script src="js/contractInfo.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/bundledSearch.js"></script>
+
 </head>
 
 <body>
@@ -44,6 +52,18 @@
 
             </ul>
 
+            <input class="col-4 form-control mr-sm-2" type="text" placeholder="Search" id="searchInput"/>
+            <div class="dropdown">
+              <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Search
+              </button>
+
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#" id="searchJobsButton">Search Jobs</a>
+                <a class="dropdown-item" href="#" id="searchUsersButton">Search Users</a>
+              </div>
+            </div>
+
             <!-- Right side -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -63,9 +83,7 @@
     </nav>
 
     <div class="row justify-content-center">
-      <div class="col-6" style="background-color:white; border-radius:8px;">
-        <h1> Homepage </h1>
-      </div>
+      <h1> Homepage </h1>
     </div>
 
     <div class="row justify-content-center">
