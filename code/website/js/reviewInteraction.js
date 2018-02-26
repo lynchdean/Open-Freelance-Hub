@@ -13,26 +13,23 @@ function starRating(n) {
     document.getElementById("starRating").innerHTML = n;
 }
 
-function postReview(jobId) {
+function postReviewTest(reviewee, jobId) {
     var url = (window.location.href).split("?");
     var jobId = parseInt(url[1]);
+    var reviewText = document.getElementById('reviewTextInput').value;
+    var stars = document.getElementById('starRating').innerHTML;
+    stars = parseInt(stars);
 
-    jobPostInstance.getWorker.call(jobId, (err, res) => {
-        if (!err){
-            var reviewee = res;
-        } else {
-            console.log("Could not retrieve reviewee");
-        }
-    });
-
-    var reviewText = document.getElementById('reviewTextInput');
-    var stars = document.getElementById('starRating');
+    console.log(reviewee);
+    console.log(jobId);
+    console.log(reviewText);
+    console.log(stars);
 
     reviewInstance.postReview(reviewee, jobId, reviewText, stars, (err, res) => {
         if (!err) {
-            console.log("Review successfully posted.");
+            console.log("Success");
         } else {
-            console.log("Review post failed.");
+            console.log("Failure");
         }
     });
 }
