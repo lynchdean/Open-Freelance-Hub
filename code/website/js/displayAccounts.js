@@ -20,16 +20,6 @@ if (url.length > 1) {
     accountAddr = url[1];
 }
 
-// Update account details page.
-accountInstance.getAccount(accountAddr, (err, res) => {
-    if (!err) {
-        $("#firstName").html(web3.toAscii(res[0]));
-        $("#lastName").html(web3.toAscii(res[1]));
-    } else {
-        console.log("No account");
-    }
-});
-
 // ANGULAR
 
 // angularjs to display all accounts

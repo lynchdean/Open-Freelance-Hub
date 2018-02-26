@@ -189,3 +189,32 @@ app.controller('acceptedApplicant', function($scope){
     })
   })
 })
+
+// Controller to show all reviews linked with a job.
+app.controller('showJobReviews', function($scope) {
+    $scope.reviews = [];
+    var url = (window.location.href).split("?");
+    var jobId = parseInt(url[1]);
+
+    reviewInstance.getJobReviews.call(jobId, function(err, reviews) {
+        for (i in reviews) {
+            reviewInstance.getReview.call(reviews[i], (err, review) => {
+                if (!err) {
+                    $scope.$apply(function() {
+                        var reviewObj = {
+                            reviewee: review[0],
+                            jobID: review[1],
+                            reviewText: review[2],
+                            stars: review[3],
+                            reviewID: review[4],
+                            reviewer: review[5]
+                        }
+                        $scope.reviews.push(reviewObj);
+                    });
+                } else {
+                    console.log("No reviews");
+                }
+            });
+        }
+    });
+});
