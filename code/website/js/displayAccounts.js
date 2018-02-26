@@ -14,6 +14,7 @@ var jobPostInstance = web3.eth.contract(JobPostAbi).at(JobPostAddr);
 
 var url = (window.location.href).split("?");
 var accountAddr = web3.eth.defaultAccount;
+var defaultAcc = '0x0000000000000000000000000000000000000000';
 
 if (url.length > 1) {
     accountAddr = url[1];
@@ -65,16 +66,37 @@ app.controller('showAccountJobs', function($scope){
         for (i in employerJobs) {
           var jobId = employerJobs[i]
             jobPostInstance.getJob.call(jobId, function(err, result){
-                $scope.$apply(function() {
-                    var jobObj = {
-                        id: result[0],
-                        title: result[1],
-                        description: result[2],
-                        payment:  web3.fromWei(result[3].toNumber())
+              jobPostInstance.getWorker.call(result[0], function(err, worker){
+                jobPostInstance.isComplete.call(result[0], function(err, isCompleted){
+                  $scope.$apply(function() {
+                    if (worker == defaultAcc && !isCompleted){
+                      status = "Open";
+                    } else if (worker != defaultAcc && !isCompleted) {
+                      console.log(worker)
+                      status = "In Progress";
+                    } else {
+                      status = "Closed";
                     }
-                    console.log(jobObj);
-                    $scope.employerJobs.push(jobObj);
+                      var jobObj = {
+                          id: result[0],
+                          title: result[1],
+                          description: result[2],
+                          payment:  web3.fromWei(result[3].toNumber()),
+                          status: status,
+                      }
+                      console.log(jobObj);
+                      $scope.employerJobs.push(jobObj);
+                  })
+                  var jobCard = document.getElementById('employerJobCard'+result[0])
+                  if (worker == defaultAcc && !isCompleted){
+                    jobCard.className += " openJob";
+                  } else if (worker != defaultAcc && !isCompleted) {
+                    jobCard.className += " inProgressJob";
+                  } else {
+                    jobCard.className += " closedJob";
+                  }
                 })
+              })
             });
 
         }
@@ -84,18 +106,54 @@ app.controller('showAccountJobs', function($scope){
     accountInstance.getWorkerJobs.call(accountAddr, function(err, res){
         for (var i = 0; i < res.length; i++) {
             jobPostInstance.getJob.call(res[i], function(err, result){
-                console.log(result);
-                $scope.$apply(function() {
-                    var jobObj = {
-                        id: result[0],
-                        title: result[1],
-                        description: result[2],
-                        payment:  web3.fromWei(result[3].toNumber())
+              jobPostInstance.getWorker.call(result[0], function(err, worker){
+                jobPostInstance.isComplete.call(result[0], function(err, isCompleted){
+                  $scope.$apply(function() {
+                    if (worker == accountAddr && !isCompleted){
+                      status = "Open";
+                    } else if (worker != accountAddr && !isCompleted) {
+                      console.log(worker)
+                      status = "In Progress";
+                    } else {
+                      status = "Closed";
                     }
-                    $scope.workerJobs.push(jobObj);
+                      var jobObj = {
+                          id: result[0],
+                          title: result[1],
+                          description: result[2],
+                          payment:  web3.fromWei(result[3].toNumber()),
+                          status: status,
+                      }
+                      console.log(jobObj);
+                      $scope.workerJobs.push(jobObj);
+                  })
+                  var jobCard = document.getElementById('workerJobCard'+result[0])
+                  if (worker == defaultAcc && !isCompleted){
+                    jobCard.className += " openJob";
+                  } else if (worker != defaultAcc && !isCompleted) {
+                    jobCard.className += " inProgressJob";
+                  } else {
+                    jobCard.className += " closedJob";
+                  }
                 })
+              })
             });
 
         }
     })
+})
+
+app.controller('showAccount', function($scope){
+  $scope.account;
+  accountInstance.getAccount.call(accountAddr, function(err, accountDetails){
+    $scope.$apply(function(){
+      var accountObj = {
+        addr: accountDetails[4],
+        firstName: web3.toAscii(accountDetails[0]).replace(/\u0000/g, ''),
+        lastName: web3.toAscii(accountDetails[1]).replace(/\u0000/g, '')
+      }
+
+      $scope.account = accountObj;
+    })
+  })
 })

@@ -44,5 +44,5 @@ web3.version.getNetwork((err, netId) => {
 
 function charCount(n) {
     var total = n.value.length;
-    document.getElementById("char-count").innerHTML = total + "/200";
+    document.getElementById("char-count").innerHTML = total + "/500";
 }
