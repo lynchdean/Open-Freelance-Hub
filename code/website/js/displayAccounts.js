@@ -69,9 +69,9 @@ app.controller('showAccountJobs', function($scope){
               jobPostInstance.getWorker.call(result[0], function(err, worker){
                 jobPostInstance.isComplete.call(result[0], function(err, isCompleted){
                   $scope.$apply(function() {
-                    if (worker == accountAddr && !isCompleted){
+                    if (worker == defaultAcc && !isCompleted){
                       status = "Open";
-                    } else if (worker != accountAddr && !isCompleted) {
+                    } else if (worker != defaultAcc && !isCompleted) {
                       console.log(worker)
                       status = "In Progress";
                     } else {
