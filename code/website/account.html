@@ -72,53 +72,54 @@
         </div>
     </nav>
 
-    <div class="container">
-        <h3>Account details:</h3>
-        <hr />
-        <div class="row">
-            <div class="col-sm-3">
-                <p><b>First name:</b></p>
-                <p><b>Last name:</b></p>
-                <p><b>Biography:</b></p>
-            </div>
-            <div class="col-sm-3">
-                <p><span id="firstName"></span></p>
-                <p><span id="lastName"></span></p>
-                <p><span id="bio"></span></p>
-            </div>
+    <div class="container" ng-controller="showAccount">
+        <h2>Account details:</h2>
+        <div class="row justify-content-center">
+          <div class="col-8 mt-3 p-3" style="background-color:white; border-radius:8px;">
+            <h4><b>First name:</b> {{account.firstName}}</h4>
+            <h4><b>Last name:</b> {{account.lastName}}</h4>
+            <h4><b>Biography:</b></h4>
+          </div>
         </div>
     </div>
 
-    <div class="container" ng-controller="showAccountJobs">
-        <h4>Jobs created:</h4>
-        <div ng-repeat="employerJob in employerJobs">
-            <div class="row justify-content-center">
-                <div class="col-10 mt-3 p-3" style="background-color:white; border-radius:8px;">
-                    <!--<h2>{{employerJob.id}}</h2>-->
-                    <h3>{{employerJob.title}}</h3>
-                    <p>{{employerJob.description}}</p>
-                    <h5>{{employerJob.payment}}</h5>
-                </div>
-            </div>
+    <div class="container mt-3" ng-controller="showAccountJobs">
+      <div class="row">
+        <div class="col-6">
+          <h4>Jobs created:</h4>
+          <div ng-repeat="employerJob in employerJobs track by $index">
+              <div class="row justify-content-center">
+                  <div id="employerJobCard{{employerJob.id}}" class="col-10 mt-3 p-3" style="background-color:white; border-radius:8px;">
+                      <!--<h2>{{employerJob.id}}</h2>-->
+                      <a href="./job.html?{{employerJob.id}}"><h3> {{employerJob.title}} </h3></a>
+                      <p class="pl-2" style="border-left: 3px solid #BDBDBD;">{{employerJob.description}}</p>
+                      <h5>{{employerJob.payment}}</h5>
+                      <p class="m-0 float-right">{{employerJob.status}} </p>
+                  </div>
+              </div>
+          </div>
+          <div ng-show="!employerJobs.length" class="text-center">
+              <p>User has not created any jobs</p>
+          </div>
         </div>
-        <div ng-show="!employerJobs.length" class="text-center">
-            <p>User has not created any jobs</p>
+        <div class="col-6">
+          <h4>Jobs assigned:</h4>
+          <div ng-repeat="workerJob in workerJobs track by $index">
+              <div class="row justify-content-center">
+                  <div id="workerJobCard{{workerJob.id}}" class="col-10 mt-3 p-3" style="background-color:white; border-radius:8px;">
+                    <!--<h2>{{workerJob.id}}</h2>-->
+                    <a href="./job.html?{{workerJob.id}}"><h3> {{workerJob.title}} </h3></a>
+                    <p class="pl-2" style="border-left: 3px solid #BDBDBD;">{{workerJob.description}}</p>
+                    <h5>{{workerJob.payment}}</h5>
+                    <p class="m-0 float-right">{{workerJob.status}} </p>
+                  </div>
+              </div>
+          </div>
+          <div ng-show="!workerJobs.length" class="text-center">
+              <p>User has not previously been assigned any jobs.</p>
+          </div>
         </div>
-
-        <h4>Jobs assigned:</h4>
-        <div ng-repeat="workerJob in workerJobs">
-            <div class="row justify-content-center">
-                <div class="col-10 mt-3 p-3" style="background-color:white; border-radius:8px;">
-                  <!--<h2>{{workerJob.id}}</h2>-->
-                  <h3>{{workerJob.title}}</h3>
-                  <p>{{workerJob.description}}</p>
-                  <h5>{{workerJob.payment}}</h5>
-                </div>
-            </div>
-        </div>
-        <div ng-show="!workerJobs.length" class="text-center">
-            <p>User has not previously been assigned any jobs.</p>
-        </div>
+      </div>
     </div>
 
 </body>

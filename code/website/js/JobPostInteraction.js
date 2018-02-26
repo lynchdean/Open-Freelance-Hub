@@ -147,6 +147,8 @@ function completeJob() {
                     completeBtn.className += " disabled";
                     var cancelBtn = document.getElementById('cancelJobButton');
                     cancelBtn.className += " disabled";
+                    var applyBtn = document.getElementById('applyButton');
+                    applyBtn.className += " disabled";
                 })
             }
 
@@ -168,6 +170,8 @@ function cancelJob() {
                     completeBtn.className += " disabled";
                     var cancelBtn = document.getElementById('cancelJobButton');
                     cancelBtn.className += " disabled";
+                    var applyBtn = document.getElementById('applyButton');
+                    applyBtn.className += " disabled";
                 })
             }
         }
@@ -225,9 +229,3 @@ window.onload = function() {
 
     }
 }
-
-web3.eth.getAccounts(function(err, accounts){
-  userInstance.getEmployerJobs(accounts[0], function(err, result){
-    console.log(result);
-  })
-})

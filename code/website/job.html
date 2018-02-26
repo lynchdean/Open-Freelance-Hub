@@ -75,10 +75,10 @@
         <div class="row justify-content-center" ng-controller="showJob">
           <div class="col-8 mt-3 p-3" style="background-color:white; border-radius:8px;">
             <h2> {{job.title}} </h2>
-            <p> {{job.description}} </p>
+            <p class="pl-2" style="border-left: 3px solid #BDBDBD;"> {{job.description}} </p>
             <h5> Payment: {{job.payment}} </h5>
             <div class="row justify-content-center" ng-show="!applicantAccepted">
-              <a class="btn-lg btn-primary" id="applyButton" href="#"> Apply </a>
+              <a class="btn btn-lg btn-primary" id="applyButton" href="#"> Apply </a>
             </div>
             <div ng-show="applicantAccepted">
               <h5>Accepted Worker: {{worker}} </h5>
@@ -87,7 +87,7 @@
               <div ng-show="applicantAccepted && isOwner">
                 <!-- <a class="btn btn-success" id="completeJobButton" href="#"> Complete Job </a> -->
 
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalLong">
+                <button type="button" class="btn btn-success m-1" data-toggle="modal" data-target="#exampleModalLong">
                     Complete Job
                 </button>
 
@@ -122,11 +122,9 @@
                             </form>
                         </div>
                     </div>
-                </div>
-
-              </div>
+                </div> 
               <div ng-show="isOwner">
-                <a class="btn btn-danger" id="cancelJobButton" href="#"> Cancel Job </a>
+                <a class="btn btn-danger m-1" id="cancelJobButton" href="#"> Cancel Job </a>
               </div>
             </div>
           </div>
@@ -135,7 +133,7 @@
             <p> THIS WILL BE POPULATED WITH INFORMATION FROM THE ACCOUNT CLASS DEAN IS WORKING ON TEST TEST TEST </p>
           </div>
         </div>
-        <div class="container" ng-controller="showApplicants" ng-show="!applicantAccepted && isOwner">
+        <div class="container mt-3" ng-controller="showApplicants" ng-show="!applicantAccepted && isOwner">
           <h2> Applicants </h2>
           <div ng-repeat="applicant in applicants track by $index">
             <div class="row col-8 ml-3 mb-2" style="background-color:white; border-radius:8px;">

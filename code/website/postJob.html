@@ -72,12 +72,12 @@
         </div>
     </nav>
 
-    <div class="post-job">
+    <div class="post-job" style="background-color:white; border-radius:8px;">
         <form>
             <h2 class="form-signin-heading text-center"> Post a Job </h2>
-            <input type="title" class="form-control" id="titleInput" aria-describedby="emailHelp" placeholder="Title">
-            <textarea type="description" class="form-control" id="descriptionInput" placeholder="Description" maxlength="200" onkeyup="charCount(this)"></textarea>
-            <small id="char-count" class="form-text text-muted float-right">Max 200 characters</small>
+            <input type="title" class="form-control" id="titleInput" aria-describedby="emailHelp" placeholder="Title" maxlength="50">
+            <textarea type="description" class="form-control" id="descriptionInput" placeholder="Description" maxlength="500" onkeyup="charCount(this)"></textarea>
+            <small id="char-count" class="form-text text-muted float-right">Max 500 characters</small>
             <input type="number" class="form-control" id="paymentInput" placeholder="Payment amount">
         </form>
         <div class="text-center">
