@@ -1,10 +1,10 @@
-pragma solidity ^0.4.4;
+pragma solidity ^0.4.19;
 
-contract Review {
+contract Reviews {
     struct Review {
         address reviewee;
         uint jobID;
-        bytes32 reviewText;
+        string reviewText;
         uint stars;
         uint reviewID;
         address reviewer;
@@ -17,7 +17,7 @@ contract Review {
     mapping (address => uint[]) reviewsReceived;
     uint[] public allReviews;
 
-    function postReview(address _reviewee, uint _jobID, bytes32 _reviewText, uint _stars) public {
+    function postReview(address _reviewee, uint _jobID, string _reviewText, uint _stars) public {
         var review = reviews[reviewCounter];
 
         review.reviewee = _reviewee;
@@ -35,7 +35,7 @@ contract Review {
         reviewCounter += 1;
     }
 
-    function getReview(uint reviewID) public constant returns (address, uint, bytes32, uint, uint, address) {
+    function getReview(uint reviewID) public constant returns (address, uint, string, uint, uint, address) {
         return (reviews[reviewID].reviewee, reviews[reviewID].jobID, reviews[reviewID].reviewText, reviews[reviewID].stars, reviews[reviewID].reviewID, reviews[reviewID].reviewer);
     }
 
@@ -49,5 +49,9 @@ contract Review {
 
     function getJobReviews(uint jobID) public constant returns (uint[]) {
         return jobReviews[jobID];
+    }
+
+    function getReviewCount() public constant returns (uint) {
+        return reviewCounter;
     }
 }

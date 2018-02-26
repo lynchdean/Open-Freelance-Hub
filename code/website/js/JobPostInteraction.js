@@ -136,22 +136,27 @@ function completeJob() {
     var jobId = parseInt(url[1]);
 
     jobPostInstance.isComplete.call(jobId, function(err, isCompleted) {
-        console.log(isCompleted);
-        if (isCompleted) {
-            alert("Job is already complete");
-        } else {
-            if (confirm("Are you sure you want to complete this job?")) {
-                jobPostInstance.completeJob(jobId, function(err, result) {
-                    var completeBtn = document.getElementById('completeJobButton');
-                    completeBtn.className += " disabled";
-                    var cancelBtn = document.getElementById('cancelJobButton');
-                    cancelBtn.className += " disabled";
-                    var applyBtn = document.getElementById('applyButton');
-                    applyBtn.className += " disabled";
-                })
+        jobPostInstance.getWorker.call(jobId, function(err, reviewee) {
+            if (!err) {
+                if (isCompleted) {
+                    alert("Job is already complete");
+                } else {
+                    console.log("reviewee: " + reviewee);
+                    console.log("reviewee: " + jobId);
+                    postReviewTest(reviewee, jobId);
+                    if (confirm("Are you sure you want to complete this job?")) {
+                        jobPostInstance.completeJob(jobId, function(err, result) {
+                            var completeBtn = document.getElementById('completeJobButton');
+                            completeBtn.className += " disabled";
+                            var cancelBtn = document.getElementById('cancelJobButton');
+                            cancelBtn.className += " disabled";
+                        });
+                    }
+                }
+            } else {
+                console.log("Couldn't get reviewee");
             }
-
-        }
+        });
     })
 }
 
@@ -228,3 +233,9 @@ window.onload = function() {
 
     }
 }
+
+web3.eth.getAccounts(function(err, accounts){
+  userInstance.getEmployerJobs(accounts[0], function(err, result){
+    console.log(result);
+  })
+})
