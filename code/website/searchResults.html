@@ -1,7 +1,8 @@
 <!doctype html>
-<html lang="en" ng-app="displayPage">
+<html lang="en" ng-app="displaySearch">
+
 <head>
-    <title>JobHub - List of Jobs</title>
+    <title>JobHub - Home</title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -20,10 +21,11 @@
     <script src="js/web3.min.js"></script>
     <script src="js/angular.min.js"></script>
 
+
     <!-- Scripts & Contracts -->
     <script src="js/contractInfo.js"></script>
     <script src="js/navbar.js"></script>
-    <script src="js/displayJobs.js"></script>
+    <script src="js/displaySearch.js"></script>
     <script src="js/bundledSearch.js"></script>
 
 </head>
@@ -64,7 +66,7 @@
                 <a class="dropdown-item" href="#" id="searchUsersButton">Search Users</a>
               </div>
             </div>
-
+            
             <!-- Right side -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -83,7 +85,11 @@
         </div>
     </nav>
 
-    <div ng-controller="showOpenJobs">
+    <div class="row justify-content-center">
+      <h1> Search Results </h1>
+    </div>
+
+    <div ng-controller="showResults">
       <div ng-repeat="job in jobs track by $index">
         <div class="row justify-content-center">
           <div id="jobCard{{job.id}}" class="col-8 mt-3 p-3" style="background-color:white; border-radius:8px;">
@@ -94,9 +100,25 @@
           </div>
         </div>
       </div>
-      <div ng-show="!jobs.length" class="text-center">
-        <h2> There are no jobs curently available </h2>
+      <div ng-repeat="account in accounts track by $index">
+        <div class="row justify-content-center">
+            <div class="col-10 mt-3 p-3" style="background-color:white; border-radius:8px;">
+                <a href="./account.html?{{account.addr}}">
+                    <h2>{{account.firstName}} {{account.lastName}}</h2>
+                </a>
+                <p>
+                    {{account.addr}}
+                </p>
+            </div>
+        </div>
+      </div>
+      <div ng-show="!jobs.length && !accounts.length" class="text-center">
+        <h2> There are no results available </h2>
       </div>
     </div>
 
+
+
 </body>
+
+</html>

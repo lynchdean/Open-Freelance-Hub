@@ -230,7 +230,6 @@ window.onload = function() {
             event.preventDefault();
             cancelJob();
         })
-
     }
 }
 
