@@ -22,10 +22,14 @@ app.controller('showResults', function($scope) {
   var splitUrl = url[1].split('&');
   splitUrl.shift();
   var firstItem = splitUrl[0];
-  if (firstItem.substring(0, 2) == "0x") {
-    showUsers(splitUrl);
+  if (firstItem == null){
+    return;
   } else {
-    showJobs(splitUrl);
+    if (firstItem.substring(0, 2) == "0x") {
+      showUsers(splitUrl);
+    } else {
+      showJobs(splitUrl);
+    }
   }
 
   function showJobs(jobIds) {
