@@ -87,12 +87,16 @@
     </nav>
 
     <div class="container" ng-controller="showAccount">
-        <h2>Account details:</h2>
+      <div class="row justify-content-center">
+        <h1> Account Details </h1>
+      </div>
         <div class="row justify-content-center">
           <div class="col-8 mt-3 p-3" style="background-color:white; border-radius:8px;">
-            <h4><b>First name:</b> {{account.firstName}}</h4>
-            <h4><b>Last name:</b> {{account.lastName}}</h4>
-            <h4><b>Biography:</b></h4>
+            <h5><b>First name:</b> {{account.firstName}}</h5>
+            <h5><b>Last name:</b> {{account.lastName}}</h5>
+            <h5><b> EMAIL:</b> {{account.email}} </h5>
+            <h5><b>Biography:</b></h5>
+            <p class="pl-2" style="border-left: 3px solid #BDBDBD;">{{account.biography}}</p>
           </div>
         </div>
     </div>

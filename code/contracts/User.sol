@@ -4,6 +4,8 @@ contract Accounts {
     struct Account {
         bytes16 firstName;
         bytes16 lastName;
+        string biography;
+        bytes16 email;
         uint[] employerJobs; // All jobs a user has created
         uint[] workerJobs;  // All jobs a user has been assigned to
         address addr;
@@ -13,11 +15,13 @@ contract Accounts {
     address[] public allAccounts;
 
     // Create an account
-    function setAccount(address _addr, bytes16 _firstName, bytes16 _lastName) public {
+    function setAccount(address _addr, bytes16 _firstName, bytes16 _lastName, string _biography, bytes16 _email) public {
         var account = accounts[_addr];
 
         account.firstName = _firstName;
         account.lastName = _lastName;
+        account.biography = _biography;
+        account.email = _email;
         account.employerJobs;
         account.workerJobs;
         account.addr = _addr;
@@ -31,8 +35,8 @@ contract Accounts {
     }
 
     // Get a single account
-    function getAccount(address _addr) public constant returns (bytes16, bytes16, uint[], uint[], address   ) {
-        return (accounts[_addr].firstName, accounts[_addr].lastName, accounts[_addr].employerJobs, accounts[_addr].workerJobs, accounts[_addr].addr);
+    function getAccount(address _addr) public constant returns (bytes16, bytes16, uint[], uint[], address,string,bytes16) {
+        return (accounts[_addr].firstName, accounts[_addr].lastName, accounts[_addr].employerJobs, accounts[_addr].workerJobs, accounts[_addr].addr, accounts[_addr].biography, accounts[_addr].email);
     }
 
     // Add a job to an accounts employerJobs list

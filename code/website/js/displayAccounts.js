@@ -41,12 +41,13 @@ app.controller('showAllAccounts', function($scope){
 
     accountInstance.getAccounts.call(function(err, allAccounts){
         for (var i = 0; i < allAccounts.length; i++){
-            accountInstance.getAccount.call(allAccounts[i], function(err,result){
+            accountInstance.getAccount.call(allAccounts[i], function(err,accountDetails){
                 $scope.$apply(function(){
                     var accountObj = {
-                        addr: result[4],
-                        firstName: web3.toAscii(result[0]).replace(/\u0000/g, ''),
-                        lastName: web3.toAscii(result[1]).replace(/\u0000/g, '')
+                        addr: accountDetails[4],
+                        firstName: web3.toAscii(accountDetails[0]).replace(/\u0000/g, ''),
+                        lastName: web3.toAscii(accountDetails[1]).replace(/\u0000/g, ''),
+                        biography: accountDetails[5],
                     }
                     $scope.accounts.push(accountObj);
                 })
@@ -149,9 +150,11 @@ app.controller('showAccount', function($scope){
       var accountObj = {
         addr: accountDetails[4],
         firstName: web3.toAscii(accountDetails[0]).replace(/\u0000/g, ''),
-        lastName: web3.toAscii(accountDetails[1]).replace(/\u0000/g, '')
+        lastName: web3.toAscii(accountDetails[1]).replace(/\u0000/g, ''),
+        biography: accountDetails[5],
+        email: web3.toAscii(accountDetails[6]).replace(/\u0000/g, ''),
       }
-
+      console.log(accountObj);
       $scope.account = accountObj;
     })
   })

@@ -83,6 +83,10 @@
         </div>
     </nav>
 
+    <div class="row justify-content-center">
+      <h1> All Jobs </h1>
+    </div>
+
     <div ng-controller="showPages">
       <div ng-repeat="job in jobs track by $index">
         <div class="row justify-content-center">
@@ -93,6 +97,10 @@
             <p class="m-0 float-right">{{job.status}} </p>
           </div>
         </div>
+      </div>
+      <div class="row justify-content-center" ng-show="jobs.length">
+        <a class="btn btn-lg btn-outline-primary m-5" href="/jobList.html?{{pageId - 1}}"> Previous Page </a>
+        <a class="btn btn-lg btn-outline-primary m-5" href="/jobList.html?{{pageId + 1}}"> Next Page </a>
       </div>
       <div ng-show="!jobs.length" class="text-center">
         <h2> There are no jobs curently available </h2>

@@ -23,8 +23,22 @@ app.controller('showPages', function($scope){
   $scope.jobs = [];
   $scope.statuses = []
 
+  var url = (window.location.href).split("?");
+  $scope.pageId = url[1];
+  if ($scope.pageId == null || $scope.pageId < 1) {
+    $scope.pageId = 1;
+  } else {
+    $scope.pageId = parseInt($scope.pageId);
+  }
+
+  var pageDisplayNum = $scope.pageId * 10
+  var pageDisplayStart = pageDisplayNum - 10;
+
   jobPostInstance.getJobCount.call(function(err, count){
-    for (var i=0; i<count; i++){
+    if (pageDisplayNum >= count) {
+      pageDisplayNum = count;
+    }
+    for (var i=pageDisplayStart; i<pageDisplayNum; i++){
       jobPostInstance.getJob.call(i,function(err,result){
         jobPostInstance.getWorker.call(result[0], function(err, worker){
           jobPostInstance.isComplete.call(result[0], function(err, isCompleted){
@@ -71,8 +85,22 @@ app.controller('showOpenJobs', function($scope){
   $scope.jobs = [];
   var defaultAcc = '0x0000000000000000000000000000000000000000';
 
+  var url = (window.location.href).split("?");
+  $scope.pageId = url[1];
+  if ($scope.pageId == null || $scope.pageId < 1) {
+    $scope.pageId = 1;
+  } else {
+    $scope.pageId = parseInt($scope.pageId);
+  }
+
+  var pageDisplayNum = $scope.pageId * 10
+  var pageDisplayStart = pageDisplayNum - 10;
+
   jobPostInstance.getJobCount.call(function(err, count){
-    for (var i=0; i<count; i++){
+    if (pageDisplayNum >= count) {
+      pageDisplayNum = count;
+    }
+    for (var i=pageDisplayStart; i<pageDisplayNum; i++){
       jobPostInstance.getJob.call(i,function(err,result){
         jobPostInstance.isComplete.call(result[0], function(err, isCompleted){
           jobPostInstance.getWorker.call(result[0], function(err, worker){
