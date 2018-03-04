@@ -143,8 +143,10 @@ app.controller('showOpenJobs', function($scope){
 
               }
             });
-        }
-    })
+        })
+      })
+    }
+  })
 })
 
 // controller to show details of one job in an individual job page
