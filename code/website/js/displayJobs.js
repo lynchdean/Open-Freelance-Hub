@@ -22,11 +22,14 @@ app.controller('showPages', function($scope){
   var defaultAcc = '0x0000000000000000000000000000000000000000';
   $scope.jobs = [];
   $scope.statuses = []
+  $scope.isStart = false;
+  $scope.isLast = false;
 
   var url = (window.location.href).split("?");
   $scope.pageId = url[1];
-  if ($scope.pageId == null || $scope.pageId < 1) {
+  if ($scope.pageId == null || $scope.pageId <= 1) {
     $scope.pageId = 1;
+    $scope.isStart = true;
   } else {
     $scope.pageId = parseInt($scope.pageId);
   }
@@ -37,6 +40,7 @@ app.controller('showPages', function($scope){
   jobPostInstance.getJobCount.call(function(err, count){
     if (pageDisplayNum >= count) {
       pageDisplayNum = count;
+      $scope.isLast = true;
     }
     for (var i=pageDisplayStart; i<pageDisplayNum; i++){
       jobPostInstance.getJob.call(i,function(err,result){
@@ -82,13 +86,16 @@ app.controller('showPages', function($scope){
 })
 
 app.controller('showOpenJobs', function($scope){
-  $scope.jobs = [];
   var defaultAcc = '0x0000000000000000000000000000000000000000';
+  $scope.jobs = [];
+  $scope.isStart = false;
+  $scope.isLast = false;
 
   var url = (window.location.href).split("?");
   $scope.pageId = url[1];
-  if ($scope.pageId == null || $scope.pageId < 1) {
+  if ($scope.pageId == null || $scope.pageId <= 1) {
     $scope.pageId = 1;
+    $scope.isStart = true;
   } else {
     $scope.pageId = parseInt($scope.pageId);
   }
@@ -99,6 +106,7 @@ app.controller('showOpenJobs', function($scope){
   jobPostInstance.getJobCount.call(function(err, count){
     if (pageDisplayNum >= count) {
       pageDisplayNum = count;
+      $scope.isLast = true;
     }
     for (var i=pageDisplayStart; i<pageDisplayNum; i++){
       jobPostInstance.getJob.call(i,function(err,result){

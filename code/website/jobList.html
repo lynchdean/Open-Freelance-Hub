@@ -99,8 +99,12 @@
         </div>
       </div>
       <div class="row justify-content-center" ng-show="jobs.length">
-        <a class="btn btn-lg btn-outline-primary m-5" href="/jobList.html?{{pageId - 1}}"> Previous Page </a>
-        <a class="btn btn-lg btn-outline-primary m-5" href="/jobList.html?{{pageId + 1}}"> Next Page </a>
+        <div ng-hide="isStart">
+          <a class="btn btn-lg btn-outline-primary m-5" href="/jobList.html?{{pageId - 1}}"> Previous Page </a>
+        </div>
+        <div ng-hide="isLast">
+          <a class="btn btn-lg btn-outline-primary m-5" href="/jobList.html?{{pageId + 1}}"> Next Page </a>
+        </div>
       </div>
       <div ng-show="!jobs.length" class="text-center">
         <h2> There are no jobs curently available </h2>
