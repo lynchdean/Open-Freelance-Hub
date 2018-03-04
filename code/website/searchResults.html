@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="displaySearch">
 
 <head>
-    <title>JobHub - My Account</title>
+    <title>JobHub - Home</title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -19,14 +19,14 @@
 
     <!-- web3.js, AngularJS -->
     <script src="js/web3.min.js"></script>
-    <!-- <script src="js/angular.min.js"></script> -->
+    <script src="js/angular.min.js"></script>
+
 
     <!-- Scripts & Contracts -->
     <script src="js/contractInfo.js"></script>
     <script src="js/navbar.js"></script>
+    <script src="js/displaySearch.js"></script>
     <script src="js/bundledSearch.js"></script>
-    <script src="js/checkUser.js"></script>
-    <script src="js/UserAccountInteraction.js"></script>
 
 </head>
 
@@ -66,7 +66,7 @@
                 <a class="dropdown-item" href="#" id="searchUsersButton">Search Users</a>
               </div>
             </div>
-
+            
             <!-- Right side -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -85,47 +85,40 @@
         </div>
     </nav>
 
-    <div class="page-content-wrapper">
-        <div class="container">
-            <h3 class="text-primary">Mainnet:</h3>
-            <p>
-                The main Ethereum network.
-            </p>
-        </div>
-    </div>
-    <div class="page-content-wrapper">
-        <div class="container">
-            <h3 class="text-primary">Ropsten test network:</h3>
-            <p>
-                Launched in 2016 to replace the Morden test network. It was attacked in February 2016 and taken down, and with great effort was revived in March 2017.
-            </p>
-        </div>
-    </div>
-    <div class="page-content-wrapper">
-        <div class="container">
-            <h3 class="text-primary">Kovan test network:</h3>
-            <p>
-                A proof-of-authority (PoA) testnet issued by Ethcore, Melonport, and Digix after the Ropsten attacks.
-            </p>
-        </div>
-    </div>
-    <div class="page-content-wrapper">
-        <div class="container">
-            <h3 class="text-primary">Rinkeby test network:</h3>
-            <p>
-                Another proof-of-authority (PoA) testnet.
-            </p>
-        </div>
+    <div class="row justify-content-center">
+      <h1> Search Results </h1>
     </div>
 
-    <div class="page-content-wrapper">
-        <div class="container">
-            <h3 class="text-primary">Unknown/test network:</h3>
-            <p>
-                This is usually a testing network run through localhost.
-            </p>
+    <div ng-controller="showResults">
+      <div ng-repeat="job in jobs track by $index">
+        <div class="row justify-content-center">
+          <div id="jobCard{{job.id}}" class="col-8 mt-3 p-3" style="background-color:white; border-radius:8px;">
+            <a href="./job.html?{{job.id}}"><h2> {{job.title}} </h2></a>
+            <p class="pl-2" style="border-left: 3px solid #BDBDBD;"> {{job.description}} </p>
+            <h5> Payment: {{job.payment}}</h5>
+            <p class="m-0 float-right">{{job.status}} </p>
+          </div>
         </div>
+      </div>
+      <div ng-repeat="account in accounts track by $index">
+        <div class="row justify-content-center">
+            <div class="col-10 mt-3 p-3" style="background-color:white; border-radius:8px;">
+                <a href="./account.html?{{account.addr}}">
+                    <h2>{{account.firstName}} {{account.lastName}}</h2>
+                </a>
+                <p>
+                    {{account.addr}}
+                </p>
+            </div>
+        </div>
+      </div>
+      <div ng-show="!jobs.length && !accounts.length" class="text-center">
+        <h2> There are no results available </h2>
+      </div>
     </div>
+
+
+
 </body>
 
 </html>

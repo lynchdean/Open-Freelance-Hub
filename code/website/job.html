@@ -25,6 +25,7 @@
     <script src="js/contractInfo.js"></script>
     <script src="js/navbar.js"></script>
     <script src="js/displayJobs.js"></script>
+    <script src="js/bundledSearch.js"></script>
     <script src="js/JobPostInteraction.js"></script>
     <script src="js/reviewInteraction.js"></script>
 
@@ -55,6 +56,18 @@
 
             </ul>
 
+            <input class="col-4 form-control mr-sm-2" type="text" placeholder="Search" id="searchInput"/>
+            <div class="dropdown">
+                <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Search
+                </button>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#" id="searchJobsButton">Search Jobs</a>
+                    <a class="dropdown-item" href="#" id="searchUsersButton">Search Users</a>
+                </div>
+            </div>
+
             <!-- Right side -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -79,7 +92,7 @@
                 <div class="col-8 mt-3 p-3" style="background-color:white; border-radius:8px;">
                     <h2> {{job.title}} </h2>
                     <p class="pl-2" style="border-left: 3px solid #BDBDBD;"> {{job.description}} </p>
-                    <h5> Payment: {{job.payment}} </h5>
+                    <h5> Payment: Ξ {{job.payment}} (ETH)</h5>
                     <div class="row justify-content-center" ng-show="!applicantAccepted">
                         <a class="btn btn-lg btn-primary" id="applyButton" href="#"> Apply </a>
                     </div>
@@ -104,9 +117,10 @@
                 </div>
             </div>
 
+
             <!--Show reviews related to a job -->
             <div class="container mt-3" ng-controller="showJobReviews">
-                <h2> Reviews </h2>
+                <h2> Reviews: </h2>
                 <div ng-repeat="review in reviews">
                     <p>{{review.reviewee}}<p>{{review.reviewID}}</p>
                     <p>{{review.jobID}}</p>
@@ -115,13 +129,14 @@
                     <p>{{review.reviewer}}</p>
                 </div>
                 <div ng-show="!reviews.length">
-                    <h1> No reviews </h1>
+                    <h4> No reviews </h4>
                 </div>
             </div>
 
+
             <!--Show applications for a specififc job -->
             <div class="container mt-3" ng-controller="showApplicants" ng-show="!applicantAccepted && isOwner">
-                <h2> Applicants </h2>
+                <h2> Applicants: </h2>
                 <div ng-repeat="applicant in applicants track by $index">
                     <div class="row col-8 ml-3 mb-2" style="background-color:white; border-radius:8px;">
                         <div class="p-2">
@@ -133,7 +148,7 @@
                     </div>
                 </div>
                 <div ng-show="!applicants.length">
-                    <h1> No applicants </h1>
+                    <h4> No applicants </h4>
                 </div>
             </div>
         </div>
