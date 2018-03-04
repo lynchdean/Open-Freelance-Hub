@@ -82,6 +82,10 @@
         </div>
     </nav>
 
+    <div class="row justify-content-center">
+      <h1> Account List </h1>
+    </div>
+
     <div ng-controller="showAllAccounts">
         <div ng-repeat="account in accounts">
             <div class="row justify-content-center">
@@ -89,9 +93,8 @@
                     <a href="./account.html?{{account.addr}}">
                         <h2>{{account.firstName}} {{account.lastName}}</h2>
                     </a>
-                    <p>
-                        {{account.addr}}
-                    </p>
+                    <p class="pl-2" style="border-left: 3px solid #BDBDBD;"> {{account.biography}} </p>
+                    <small class="m-0 float-right">{{account.addr}}</small>
                 </div>
             </div>
         </div>
