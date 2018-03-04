@@ -30,16 +30,20 @@
     <script src="js/reviewInteraction.js"></script>
 
 </head>
+
+<body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-3">
     <a class="navbar-brand" href="index.html">JobHub</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <!-- Left side -->
         <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
                     Jobs
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -72,7 +76,8 @@
                 <a id="welcome" class="nav-link" href="register.html">Not Registered</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
                     Settings
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
@@ -99,53 +104,26 @@
                 </div>
                 <div class="row justify-content-center p-3">
                     <div ng-show="applicantAccepted && isOwner">
-                        <!-- <a class="btn btn-success" id="completeJobButton" href="#"> Complete Job </a> -->
-
-                        <button type="button" class="btn btn-success m-1" data-toggle="modal" data-target="#exampleModalLong">
-                    Complete Job
-                </button>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">Please leave a review!</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <form>
-                                        <div class="modal-body">
-                                            <textarea type="reviewText" class="form-control" id="reviewTextInput" placeholder="Write review here" maxlength="200" onkeyup="charCount(this)" required></textarea>
-                                            <small id="char-count" class="form-text text-muted float-right">Max 200 characters</small>
-                                            <br />
-                                            <div class="rating text-center">
-                                                <span><input type="radio" name="rating" id="star1" value="1" onclick="starRating(1)" required><label for="star1"></label></span>
-                                                <span><input type="radio" name="rating" id="star2" value="2" onclick="starRating(2)" required><label for="star2"></label></span>
-                                                <span><input type="radio" name="rating" id="star3" value="3" onclick="starRating(3)" required><label for="star3"></label></span>
-                                                <span><input type="radio" name="rating" id="star4" value="4" onclick="starRating(4)" required><label for="star4"></label></span>
-                                                <span><input type="radio" name="rating" id="star5" value="5" onclick="starRating(5)" required><label for="star5"></label></span>
-                                            </div>
-                                            <span id="starRating">0</span>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <a class="btn btn-success" id="completeJobButton" href="#"> Submit & Complete </a>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div ng-show="isOwner">
-                            <a class="btn btn-danger m-1" id="cancelJobButton" href="#"> Cancel Job </a>
-                        </div>
+                        <button type="button" id="completeModalButton" class="btn btn-success m-1" data-toggle="modal"
+                                data-target="#completeJobModal">
+                            Complete Job
+                        </button>
+                    </div>
+                    <div ng-show="isOwner">
+                        <a class="btn btn-danger m-1" id="cancelJobButton" href="#"> Cancel Job </a>
+                    </div>
+                    <div ng-show="isWorker">
+                        <button type="button" id="confirmWorkButton" class="btn btn-success m-1" data-toggle="modal"
+                                data-target="#completeWorkModal">
+                            Confirm work completed
+                        </button>
                     </div>
                 </div>
             </div>
             <div class="col-3 mt-3 ml-3 p-3" style="background-color:white; border-radius:8px;">
                 <h4> Employer </h4>
-                <p> THIS WILL BE POPULATED WITH INFORMATION FROM THE ACCOUNT CLASS DEAN IS WORKING ON TEST TEST TEST </p>
+                <p> THIS WILL BE POPULATED WITH INFORMATION FROM THE ACCOUNT CLASS DEAN IS WORKING ON TEST TEST
+                    TEST </p>
             </div>
         </div>
         <div class="container mt-3" ng-controller="showApplicants" ng-show="!applicantAccepted && isOwner">
@@ -166,6 +144,89 @@
         </div>
     </div>
 </div>
+
+<!-- Complete Job Modal -->
+<div class="modal fade" id="completeJobModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Please leave a review!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <textarea type="ReviewText" class="form-control" id="completeReviewTextInput"
+                              placeholder="Write review here" maxlength="200" onkeyup="charCount(this)"
+                              required></textarea>
+                    <small id="char-count" class="form-text text-muted float-right">Max 200 characters</small>
+                    <br/>
+                    <div class="rating text-center">
+                        <span><input type="radio" name="rating" id="star1" value="1" onclick="completeRating(1)"
+                                     required><label for="star1"></label></span>
+                        <span><input type="radio" name="rating" id="star2" value="2" onclick="completeRating(2)"
+                                     required><label for="star2"></label></span>
+                        <span><input type="radio" name="rating" id="star3" value="3" onclick="completeRating(3)"
+                                     required><label for="star3"></label></span>
+                        <span><input type="radio" name="rating" id="star4" value="4" onclick="completeRating(4)"
+                                     required><label for="star4"></label></span>
+                        <span><input type="radio" name="rating" id="star5" value="5" onclick="completeRating(5)"
+                                     required><label for="star5"></label></span>
+                    </div>
+                    <span id="completeStarRating">0</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <a class="btn btn-success" id="completeJobButton" href="#"> Submit & Complete </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Complete Work Modal -->
+<div class="modal fade" id="completeWorkModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Please leave a review!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <textarea type="reviewText" class="form-control" id="workReviewTextInput"
+                              placeholder="Write review here" maxlength="200" onkeyup="charCount(this)"
+                              required></textarea>
+                    <small id="char-count" class="form-text text-muted float-right">Max 200 characters</small>
+                    <br/>
+                    <div class="rating text-center">
+                        <span><input type="radio" name="rating" id="star1" value="1" onclick="workRating(1)"
+                                     required><label for="star1"></label></span>
+                        <span><input type="radio" name="rating" id="star2" value="2" onclick="workRating(2)"
+                                     required><label for="star2"></label></span>
+                        <span><input type="radio" name="rating" id="star3" value="3" onclick="workRating(3)"
+                                     required><label for="star3"></label></span>
+                        <span><input type="radio" name="rating" id="star4" value="4" onclick="workRating(4)"
+                                     required><label for="star4"></label></span>
+                        <span><input type="radio" name="rating" id="star5" value="5" onclick="workRating(5)"
+                                     required><label for="star5"></label></span>
+                    </div>
+                    <span id="workStarRating">0</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <a class="btn btn-success" id="completeWorkButton" href="#"> Submit & Complete </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 </body>
 
 </html>

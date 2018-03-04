@@ -9,15 +9,18 @@ if (typeof web3 !== 'undefined') {
 var reviewInstance = web3.eth.contract(ReviewAbi).at(ReviewAddr);
 var jobPostInstance = web3.eth.contract(JobPostAbi).at(JobPostAddr);
 
-function starRating(n) {
-    document.getElementById("starRating").innerHTML = n;
+function completeRating(n) {
+    document.getElementById("completeStarRating").innerHTML = n;
 }
 
-function postReviewTest(reviewee, jobId) {
+function workRating(n) {
+    document.getElementById("workStarRating").innerHTML = n;
+}
+
+
+function postReview(reviewee, jobId, reviewText, stars) {
     var url = (window.location.href).split("?");
     var jobId = parseInt(url[1]);
-    var reviewText = document.getElementById('reviewTextInput').value;
-    var stars = document.getElementById('starRating').innerHTML;
     stars = parseInt(stars);
 
     console.log(reviewee);
@@ -27,9 +30,17 @@ function postReviewTest(reviewee, jobId) {
 
     reviewInstance.postReview(reviewee, jobId, reviewText, stars, (err, res) => {
         if (!err) {
-            console.log("Success");
+            console.log("Review post success");
         } else {
-            console.log("Failure");
+            console.log("Review post failure");
         }
     });
 }
+
+// Check most recent review
+reviewInstance.getReviewCount(function(err, count) {
+    console.log("count: " + count);
+    reviewInstance.getReview(count - 1, function(err, res) {
+        console.log("Review: " + res);
+    });
+});
