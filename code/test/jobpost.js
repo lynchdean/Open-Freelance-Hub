@@ -18,7 +18,7 @@ contract('JobPost', function(accounts){
       assert.equal(retrievedJob[2], description, "Description returned incorrect");
       assert.equal(web3.fromWei(retrievedJob[3]), payment, "Payment returned incorrect");
     })
-  })
+  });
 
   it("Should return the correct count of posted Jobs", function(){
     return JobPost.deployed().then(function(instance){
@@ -33,7 +33,7 @@ contract('JobPost', function(accounts){
     }).then(function(jobCount){
       assert.equal(jobCount, 2, "Incorrect job count after new job added");
     })
-  })
+  });
 
   it("Should allocate a worker correctly", function(){
     return JobPost.deployed().then(function(instance){
@@ -44,7 +44,7 @@ contract('JobPost', function(accounts){
     }).then(function(worker){
       assert.equal(worker, accounts[1], "Incorrect worker address");
     })
-  })
+  });
 
   it("Should apply users to a job", function(){
     return JobPost.deployed().then(function(instance){
@@ -58,7 +58,7 @@ contract('JobPost', function(accounts){
       assert.equal(applicants[0], accounts[1], "Wrong first applicant");
       assert.equal(applicants[1], accounts[2], "Wrong second applicant");
     })
-  })
+  });
 
   var beforeJobBalance;
   it("Should complete a job & pay a worker", function(){
@@ -79,7 +79,7 @@ contract('JobPost', function(accounts){
     }).then(function(workerBalance){
       assert.equal(workerBalance.toNumber(), (parseInt(beforeJobBalance) + parseInt(web3.toWei(payment))), "worker balance has not been increased correctly after isComplete");
     })
-  })
+  });
 
   it("Should cancel a job and return payment funds to the owner", function(){
     return JobPost.deployed().then(function(instance){
@@ -94,4 +94,4 @@ contract('JobPost', function(accounts){
       assert(workerBalance.toNumber() > (parseInt(beforeJobBalance)));
     })
   })
-})
+});

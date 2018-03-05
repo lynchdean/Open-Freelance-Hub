@@ -192,8 +192,8 @@ function completeWork() {
                 jobPostInstance.completeWork(jobId, function(err, success) {
                     if (success) {
                         jobPostInstance.getOwner.call(jobId, function(err, reviewee) {
-                            var reviewText = document.getElementById('completeReviewTextInput').value;
-                            var stars = document.getElementById('completeStarRating').innerHTML;
+                            var reviewText = document.getElementById('workReviewTextInput').value;
+                            var stars = document.getElementById('workStarRating').innerHTML;
                             postReview(reviewee, jobId, reviewText, stars);
 
                             //Disable buttons

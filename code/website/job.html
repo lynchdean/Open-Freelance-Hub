@@ -92,15 +92,15 @@
 <div class="container" ng-controller="checkOwner">
     <div ng-controller="acceptedApplicant">
         <div class="row justify-content-center" ng-controller="showJob">
-            <div class="col-8 mt-3 p-3" style="background-color:white; border-radius:8px;">
+            <div id="jobCard" class="col-8 mt-3 p-3" style="background-color:white; border-radius:8px; word-wrap: break-word;">
                 <h2> {{job.title}} </h2>
-                <p class="pl-2" style="border-left: 3px solid #BDBDBD;"> {{job.description}} </p>
+                <p class="pl-2" style="border-left: 3px solid #BDBDBD;"> <b>Description: </b> {{job.description}} </p>
                 <h5> Payment: Ξ {{job.payment}} (ETH)</h5>
-                <div class="row justify-content-center" ng-show="!applicantAccepted">
-                    <a class="btn btn-lg btn-primary" id="applyButton" href="#"> Apply </a>
-                </div>
                 <div ng-show="applicantAccepted">
-                    <h5>Accepted Worker: {{worker}} </h5>
+                    <h5>Accepted Worker: <a href="./account.html?{{worker}}">{{worker}}</a> </h5>
+                </div>
+                <div class="row justify-content-center" ng-show="!applicantAccepted">
+                    <a class="btn btn-primary" id="applyButton" href="#"> Apply for this job </a>
                 </div>
                 <div class="row justify-content-center p-3">
                     <div ng-show="applicantAccepted && isOwner">
@@ -119,44 +119,83 @@
                         </button>
                     </div>
                 </div>
+                <p class="m-0 float-right">{{job.status}} </p>
             </div>
-            <div class="col-3 mt-3 ml-3 p-3" style="background-color:white; border-radius:8px;">
-                <h4> Employer </h4>
-                <p> THIS WILL BE POPULATED WITH INFORMATION FROM THE ACCOUNT CLASS DEAN IS WORKING ON TEST TEST
-                    TEST </p>
+            <div class="col-3 mt-3 ml-3 p-3" style="background-color:white; border-radius:8px; word-wrap: break-word;">
+                <h4> Employer: </h4>
+                <p>{{employerInfo.bio}}</p>
+                <a href="./account.html?{{employerInfo.addr}}">Go to employers page</a>
             </div>
-        </div>
 
-        <!-- Display Reviews -->
-        <div class="container mt-3" ng-controller="showJobReviews">
-            <h2> Reviews: </h2>
-            <div ng-repeat="review in reviews">
-                <p>{{review.reviewee}}<p>{{review.reviewID}}</p>
-                <p>{{review.jobID}}</p>
-                <p>{{review.reviewText}}</p>
-                <p> Rating: {{review.stars}}/5</p>
-                <p>{{review.reviewer}}</p>
-            </div>
-            <div ng-show="!reviews.length">
-                <h4> No reviews </h4>
-            </div>
-        </div>
-
-        <!-- Display Applicants -->
-        <div class="container mt-3" ng-controller="showApplicants" ng-show="!applicantAccepted && isOwner">
-            <h2> Applicants </h2>
-            <div ng-repeat="applicant in applicants track by $index">
-                <div class="row col-8 ml-3 mb-2" style="background-color:white; border-radius:8px;">
-                    <div class="p-2">
-                        <a class="btn-sm btn-success" href="#" ng-click="acceptApplicant($index)"> Accept </a>
+            <div class="col-8 mt-3">
+                <div class="row">
+                    <!-- Display Review of Work -->
+                    <div class="col-sm-6 m-0 p-0 pr-2" ng-controller="showJobReviews" ng-show="isCompleted">
+                        <div class="container p-3 m-0" style="background-color:white; border-radius:8px; word-wrap: break-word;">
+                            <h4> Review of Employer: </h4>
+                            <div ng-repeat="wReview in workerReview">
+                                <p> <b>Comment: </b>{{wReview.reviewText}}</p>
+                                <p> <b>Rating: </b>{{wReview.stars}}/5</p>
+                                <p> <b>From: </b><a href="./account.html?{{wReview.reviewer}}">{{wReview.reviewer}}</a></p>
+                            </div>
+                            <div ng-show="!workerReview.length">
+                                <h4 class="text-muted"> No  review yet </h4>
+                            </div>
+                        </div>
                     </div>
-                    <div class="p-2">
-                        <h5><a href="#">{{applicant}}</a></h5>
+                    <!-- Display Review of Employer -->
+                    <div class="col-sm-6 m-0 p-0 pl-2" ng-controller="showJobReviews" ng-show="isCompleted">
+
+                        <div class="container p-3 m-0" style="background-color:white; border-radius:8px; word-wrap: break-word;">
+                            <h4> Review of Worker: </h4>
+                            <div ng-repeat="eReview in employerReview">
+                                <p> <b>Comment: </b>{{eReview.reviewText}}</p>
+                                <p> <b>Rating: </b>{{eReview.stars}}/5</p>
+                                <p> <b>From: </b><a href="./account.html?{{eReview.reviewer}}"> {{eReview.reviewer}}</a></p>
+                            </div>
+                            <div ng-show="!employerReview.length">
+                                <h4 class="text-muted"> No review yet </h4>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+
+                <!-- Display Applicants -->
+                <div class="row" ng-controller="showApplicants" ng-show="!applicantAccepted && isOwner">
+                    <div class="col-sm-12 m-0 p-0" ng-controller="showJobReviews">
+                        <div class="container p-3 m-0" style="background-color:white; border-radius:8px;">
+                            <h4> Applicants: </h4>
+                            <div class="row p-3 m-3 border border-primary rounded" ng-repeat="applicant in applicants track by $index" style="overflow-wrap:break-word;">
+                                <div class="col-sm-10">
+                                    <h5><a href="./account.html?{{applicant}}">{{applicant}}</a></h5>
+                                </div>
+                                <div class="col-sm-2">
+                                    <a class="btn btn-success" href="#" ng-click="acceptApplicant($index)"> Accept </a>
+                                </div>
+                            </div>
+                            <div ng-show="!applicants.length">
+                                <h3 class="text-muted"> No applicants </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div ng-show="!applicants.length">
-                <h1> No applicants </h1>
+
+            <!-- Display Employers previous reviews -->
+            <div class="col-3 mt-3 ml-3 p-3" ng-controller="showReceivedReviews" style="background-color:white; border-radius:8px; word-wrap: break-word;">
+                <h4> Reviews of Employer: </h4>
+                <div ng-repeat="receivedReview in receivedReviews">
+                    <div class="container m-0 p-0 border-bottom">
+                        <p> <b>Comment: </b>{{receivedReview.reviewText}}</p>
+                        <p> <b>Rating: </b>{{receivedReview.stars}}/5</p>
+                        <p> <b>From: </b><a href="./account.html?{{receivedReview.reviewer}}"> {{receivedReview.reviewer}}</a></p>
+                    </div>
+                </div>
+                <div ng-show="!receivedReviews.length">
+                    <h4 class="text-muted"> No reviews yet</h4>
+                </div>
             </div>
         </div>
     </div>
