@@ -122,39 +122,44 @@ function completeJob() {
     var url = (window.location.href).split("?");
     var jobId = parseInt(url[1]);
 
-    // Check if Job is already completed.
-    jobPostInstance.isComplete.call(jobId, function(err, isCompleted) {
-        // Check if the worker has marked the work as complete.
-        jobPostInstance.isWorkComplete.call(jobId, function(err, isWorkComplete) {
-            jobPostInstance.getWorker.call(jobId, function(err, reviewee) {
-                if (!err) {
-                    if (isCompleted) {
-                        alert('Job is already complete');
-                    } else if (!isWorkComplete) {
-                        alert('Worker has not marked the work as complete');
-                    } else {
-                        if (confirm('Are you sure you want to complete this job?')) {
-                            jobPostInstance.completeJob(jobId, function(err, result) {
-                                var reviewText = document.getElementById('completeReviewTextInput').value;
-                                var stars = document.getElementById('completeStarRating').innerHTML;
-                                postReview(reviewee, jobId, reviewText, stars);
+    var reviewText = document.getElementById('completeReviewTextInput').value;
+    var stars = document.getElementById('completeStarRating').innerHTML;
+    
+    if (profanityFilter(reviewText) === true) {
+        alert("Your review contains profanities, please try again.")
+    } else {
+        // Check if Job is already completed.
+        jobPostInstance.isComplete.call(jobId, function (err, isCompleted) {
+            // Check if the worker has marked the work as complete.
+            jobPostInstance.isWorkComplete.call(jobId, function (err, isWorkComplete) {
+                jobPostInstance.getWorker.call(jobId, function (err, reviewee) {
+                    if (!err) {
+                        if (isCompleted) {
+                            alert('Job is already complete');
+                        } else if (!isWorkComplete) {
+                            alert('Worker has not marked the work as complete');
+                        } else {
+                            if (confirm('Are you sure you want to complete this job?')) {
+                                jobPostInstance.completeJob(jobId, function (err, result) {
+                                    postReview(reviewee, jobId, reviewText, stars);
 
-                                // Disable buttons.
-                                document.getElementById('completeModalButton').disabled = true;
-                                document.getElementById('completeJobButton').disabled = true;
-                                document.getElementById('cancelJobButton').disabled = true;
-                                // Close modal.
-                                $("#completeJobModal").modal("hide");
+                                    // Disable buttons.
+                                    document.getElementById('completeModalButton').disabled = true;
+                                    document.getElementById('completeJobButton').disabled = true;
+                                    document.getElementById('cancelJobButton').disabled = true;
+                                    // Close modal.
+                                    $("#completeJobModal").modal("hide");
 
-                            });
+                                });
+                            }
                         }
+                    } else {
+                        console.log('Couldn\'t get reviewee!');
                     }
-                } else {
-                    console.log('Couldn\'t get reviewee!');
-                }
+                });
             });
         });
-    })
+    }
 }
 
 // Marks a job as complete and returns payment to the owner.
@@ -185,33 +190,38 @@ function completeWork() {
     var url = (window.location.href).split("?");
     var jobId = parseInt(url[1]);
 
-    // Check if the work has already been marked as completed.
-    jobPostInstance.isWorkComplete.call(jobId, function(err, isWorkComplete) {
-        if (!isWorkComplete) {
-            if (confirm("Are you sure you want to confirm your work is complete?")) {
-                jobPostInstance.completeWork(jobId, function(err, success) {
-                    if (success) {
-                        jobPostInstance.getOwner.call(jobId, function(err, reviewee) {
-                            var reviewText = document.getElementById('completeReviewTextInput').value;
-                            var stars = document.getElementById('completeStarRating').innerHTML;
-                            postReview(reviewee, jobId, reviewText, stars);
+    var reviewText = document.getElementById('workReviewTextInput').value;
+    var stars = document.getElementById('workStarRating').innerHTML;
 
-                            //Disable buttons
-                            document.getElementById("completeWorkButton").disabled = true;
-                            document.getElementById("confirmWorkButton").disabled = true;
-                            // Close modal.
-                            $("#completeWorkModal").modal("hide");
+    if (profanityFilter(reviewText) === true) {
+        alert("Your review contains profanities, please try again.")
+    } else {
+        // Check if the work has already been marked as completed.
+        jobPostInstance.isWorkComplete.call(jobId, function(err, isWorkComplete) {
+            if (!isWorkComplete) {
+                if (confirm("Are you sure you want to confirm your work is complete?")) {
+                    jobPostInstance.completeWork(jobId, function(err, success) {
+                        if (success) {
+                            jobPostInstance.getOwner.call(jobId, function(err, reviewee) {
+                                postReview(reviewee, jobId, reviewText, stars);
 
-                        });
-                    } else {
-                        console.log("Failed to post job completion");
-                    }
-                });
+                                //Disable buttons
+                                document.getElementById("completeWorkButton").disabled = true;
+                                document.getElementById("confirmWorkButton").disabled = true;
+                                // Close modal.
+                                $("#completeWorkModal").modal("hide");
+
+                            });
+                        } else {
+                            console.log("Failed to post job completion");
+                        }
+                    });
+                }
+            } else {
+                alert("Work is already completed");
             }
-        } else {
-            alert("Work is already completed");
-        }
-    });
+        });
+    }
 }
 
 window.onload = function() {
