@@ -12,9 +12,9 @@
     * [3.2 Architectural Overview Diagram](#32-architectural-overview-diagram)
     * [3.3 Component Diagram](#33-component-diagram)
     * [3.4 State Diagram](#34-state-diagram)
-* [4. Problems & Resolutions](#4-problems-&-resolutions)
+* [4. Problems and Resolutions](#4-problems-and-resolutions)
 * [5. Installation Guide](#5-installation-guide)
-* [6. Future Work](#3-future-work)
+* [6. Future Work](#6-future-work)
 
 ### 1. Introduction
 
@@ -74,7 +74,7 @@ The component diagram can be viewed as a more specific version of the architectu
 
 This state diagram displays the different possible states for a job as it is completed by users on the application.
 
-### 4. Problems & Resolutions
+### 4. Problems and Resolutions
 
 ##### Dynamically creating unique webpages
 
