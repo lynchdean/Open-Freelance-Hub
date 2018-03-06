@@ -161,7 +161,7 @@ These steps will function as a walkthrough for deplying the smart contracts to t
 - Now run _migrate_ in the truffle terminal to deploy the contracts to the ropsten network.
 - To run the front end simply run _npm run dev_ in a terminal as specified in the local installation steps above.
 
-### Future work
+### 6. Future work
 
 - Ability to add to the profanity filter based on a report system.
 - Whisper chat functionality between an employer and an applicant.
