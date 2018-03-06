@@ -6,20 +6,33 @@ if (typeof web3 !== 'undefined') {
   web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 }
 
+// Listening for Selected Account Changes
+// From https://github.com/MetaMask/faq/blob/master/DEVELOPERS.md
+/*
+var account = web3.eth.accounts[0];
+var accountInterval = setInterval(function() {
+    if (web3.eth.accounts[0] !== account) {
+        account = web3.eth.accounts[0];
+        updateInterface();
+    }
+}, 100);
+*/
+
 web3.eth.defaultAccount = web3.eth.accounts[0];
 
 // getting an intance of hosted contract
 var userInstance = web3.eth.contract(UserAbi).at(UserAddr);
 
 // Display first name if signed in.
-userInstance.getAccount(web3.eth.defaultAccount, (err, res) => {
-    if (res[0] != "0x00000000000000000000000000000000") {
+userInstance.getAccount(web3.eth.defaultAccount, function(err, res) {
+    if (res[0] !== "0x00000000000000000000000000000000") {
         document.getElementById("welcome").innerHTML = "Welcome, " + (web3.toAscii(res[0]).replace(/\u0000/g, '')) + "!";
         document.getElementById('welcome').setAttribute('href', 'account.html');
     }
-})
+});
 
 // Display current Ethereum network.
+// From https://github.com/MetaMask/faq/blob/master/DEVELOPERS.md
 web3.version.getNetwork((err, netId) => {
   switch (netId) {
     case "1":

@@ -47,5 +47,8 @@ contract('UserAccount', function(accounts){
       assert.equal(account[3].length, 0, "workerJobs does not = null");
     })
   })
+<<<<<<< HEAD
 
+=======
+>>>>>>> 509acc87862e074f29463d49b5c51d007e2be2d8
 });
