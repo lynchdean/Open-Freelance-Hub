@@ -11,7 +11,7 @@ web3.eth.defaultAccount = web3.eth.accounts[0];
 
 // Get intances of hosted contracts
 var jobPostInstance = web3.eth.contract(JobPostAbi).at(JobPostAddr);
-var accountInstance = web3.eth.contract(UserAbi).at(UserAddr);
+var accountInstance = web3.eth.contract(AccountAbi).at(AccountAddr);
 
 // Parse url for jobId or accountId
 var url = (window.location.href).split("?");
@@ -124,15 +124,15 @@ function completeJob() {
 
     var reviewText = document.getElementById('completeReviewTextInput').value;
     var stars = document.getElementById('completeStarRating').innerHTML;
-    
+
     if (profanityFilter(reviewText) === true) {
         alert("Your review contains profanities, please try again.")
     } else {
         // Check if Job is already completed.
-        jobPostInstance.isComplete.call(jobId, function (err, isCompleted) {
+        jobPostInstance.isComplete.call(jobId, function(err, isCompleted) {
             // Check if the worker has marked the work as complete.
-            jobPostInstance.isWorkComplete.call(jobId, function (err, isWorkComplete) {
-                jobPostInstance.getWorker.call(jobId, function (err, reviewee) {
+            jobPostInstance.isWorkComplete.call(jobId, function(err, isWorkComplete) {
+                jobPostInstance.getWorker.call(jobId, function(err, reviewee) {
                     if (!err) {
                         if (isCompleted) {
                             alert('Job is already complete');
@@ -140,7 +140,7 @@ function completeJob() {
                             alert('Worker has not marked the work as complete');
                         } else {
                             if (confirm('Are you sure you want to complete this job?')) {
-                                jobPostInstance.completeJob(jobId, function (err, result) {
+                                jobPostInstance.completeJob(jobId, function(err, result) {
                                     postReview(reviewee, jobId, reviewText, stars);
 
                                     // Disable buttons.
@@ -190,9 +190,6 @@ function completeWork() {
     var url = (window.location.href).split("?");
     var jobId = parseInt(url[1]);
 
-    var reviewText = document.getElementById('workReviewTextInput').value;
-    var stars = document.getElementById('workStarRating').innerHTML;
-
     if (profanityFilter(reviewText) === true) {
         alert("Your review contains profanities, please try again.")
     } else {
@@ -203,6 +200,8 @@ function completeWork() {
                     jobPostInstance.completeWork(jobId, function(err, success) {
                         if (success) {
                             jobPostInstance.getOwner.call(jobId, function(err, reviewee) {
+                                var reviewText = document.getElementById('workReviewTextInput').value;
+                                var stars = document.getElementById('workStarRating').innerHTML;
                                 postReview(reviewee, jobId, reviewText, stars);
 
                                 //Disable buttons

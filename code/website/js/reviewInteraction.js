@@ -7,7 +7,7 @@ if (typeof web3 !== 'undefined') {
 }
 
 var reviewInstance = web3.eth.contract(ReviewAbi).at(ReviewAddr);
-var jobPostInstance = web3.eth.contract(JobPostAbi).at(JobPostAddr);
+
 
 function completeRating(n) {
     document.getElementById("completeStarRating").innerHTML = n;
@@ -20,7 +20,6 @@ function workRating(n) {
 
 function postReview(reviewee, jobId, reviewText, stars) {
     var url = (window.location.href).split("?");
-    var jobId = parseInt(url[1]);
     stars = parseInt(stars);
 
     console.log(reviewee);
@@ -28,7 +27,7 @@ function postReview(reviewee, jobId, reviewText, stars) {
     console.log(reviewText);
     console.log(stars);
 
-    reviewInstance.postReview(reviewee, jobId, reviewText, stars, (err, res) => {
+    reviewInstance.postReview(reviewee, jobId, reviewText, stars, function(err, res) {
         if (!err) {
             console.log("Review post success");
         } else {

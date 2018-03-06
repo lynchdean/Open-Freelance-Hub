@@ -21,10 +21,10 @@ var accountInterval = setInterval(function() {
 web3.eth.defaultAccount = web3.eth.accounts[0];
 
 // getting an intance of hosted contract
-var userInstance = web3.eth.contract(UserAbi).at(UserAddr);
+var accountInstance = web3.eth.contract(AccountAbi).at(AccountAddr);
 
 // Display first name if signed in.
-userInstance.getAccount(web3.eth.defaultAccount, function(err, res) {
+accountInstance.getAccount(web3.eth.defaultAccount, function(err, res) {
     if (res[0] !== "0x00000000000000000000000000000000") {
         document.getElementById("welcome").innerHTML = "Welcome, " + (web3.toAscii(res[0]).replace(/\u0000/g, '')) + "!";
         document.getElementById('welcome').setAttribute('href', 'account.html');

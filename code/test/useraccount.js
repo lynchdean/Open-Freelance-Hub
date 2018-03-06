@@ -3,22 +3,24 @@ var UserAccount = artifacts.require("./Accounts.sol");
 contract('UserAccount', function(accounts){
   it("Should set up an account", function(){
     return UserAccount.deployed().then(function(instance){
-      deployedUsers = instance
-      return deployedUsers.setAccount(accounts[0], "Dave", "Weir")
+      deployedUsers = instance;
+      return deployedUsers.setAccount(accounts[0], "Dave", "Weir", "Biography", "email@email.com");
     }).then(function(userTrans){
       return deployedUsers.getAccounts.call()
     }).then(function(accs){
       return deployedUsers.getAccount.call(accs[0]);
     }).then(function(me){
-      assert.equal(web3.toAscii(me[0]).replace(/\u0000/g, ''), "Dave", "Firstname returned incorrectly")
+      assert.equal(web3.toAscii(me[0]).replace(/\u0000/g, ''), "Dave", "Firstname returned incorrectly");
       assert.equal(web3.toAscii(me[1]).replace(/\u0000/g, ''), "Weir", "Secondname returned incorrectly");
+      assert.equal(me[5], "Biography", "Biography returned incorrectly");
+      assert.equal(web3.toAscii(me[6]).replace(/\u0000/g, ''), "email@email.com", "Email returned incorrectly");
     })
   });
 
   it("Should add a job as employer", function(){
     return UserAccount.deployed().then(function(instance){
       deployedUsers = instance;
-      return deployedUsers.setAccount(accounts[0], "Dave", "Weir")
+      return deployedUsers.setAccount(accounts[0], "Dave", "Weir", "email@email.com", "Biography")
     }).then(function(userTrans){
       return deployedUsers.addEmployerJob(accounts[0], 1);
     }).then(function(tx){
@@ -45,4 +47,5 @@ contract('UserAccount', function(accounts){
       assert.equal(account[3].length, 0, "workerJobs does not = null");
     })
   })
+
 });
