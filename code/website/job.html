@@ -256,24 +256,36 @@
             </div>
             <form>
                 <div class="modal-body">
+                    <p><b>Comment:</b></p>
                     <textarea type="reviewText" class="form-control" id="workReviewTextInput"
                               placeholder="Write review here" maxlength="200" onkeyup="charCount(this)"
                               required></textarea>
                     <small id="char-count" class="form-text text-muted float-right">Max 200 characters</small>
                     <br/>
                     <div class="rating text-center">
-                        <span><input type="radio" name="rating" id="star1Work" value="1" onclick="workRating(1)"
-                                     required><label for="star1Work"></label></span>
-                        <span><input type="radio" name="rating" id="star2Work" value="2" onclick="workRating(2)"
-                                     required><label for="star2Work"></label></span>
-                        <span><input type="radio" name="rating" id="star3Work" value="3" onclick="workRating(3)"
-                                     required><label for="star3Work"></label></span>
-                        <span><input type="radio" name="rating" id="star4Work" value="4" onclick="workRating(4)"
-                                     required><label for="star4Work"></label></span>
-                        <span><input type="radio" name="rating" id="star5Work" value="5" onclick="workRating(5)"
-                                     required><label for="star5Work"></label></span>
+                        <p><b>Rating:</b></p>
+                        <span class="text-center d-inline-block">
+                            <input type="radio" name="rating" id="star1Work" value="1" onclick="workRating(1)" required>
+                            <label for="star1Work" class="d-block">1</label>
+                        </span>
+                        <span class="text-center d-inline-block">
+                            <input type="radio" name="rating" id="star2Work" value="2" onclick="workRating(2)" required>
+                            <label for="star2Work" class="d-block">2</label>
+                        </span>
+                        <span class="text-center d-inline-block">
+                            <input type="radio" name="rating" id="star3Work" value="3" onclick="workRating(3)" required>
+                            <label for="star3Work" class="d-block">3</label>
+                        </span>
+                        <span class="text-center d-inline-block">
+                            <input type="radio" name="rating" id="star4Work" value="4" onclick="workRating(4)" required>
+                            <label for="star4Work" class="d-block">4</label>
+                        </span>
+                        <span class="text-center d-inline-block">
+                            <input type="radio" name="rating" id="star5Work" value="5" onclick="workRating(5)" required>
+                            <label for="star5Work" class="d-block">5</label>
+                        </span>
                     </div>
-                    <span id="workStarRating">0</span>
+                    <span id="workStarRating" ng-hide="true">1</span>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
