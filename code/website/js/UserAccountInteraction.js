@@ -7,15 +7,15 @@ if (typeof web3 !== 'undefined') {
 }
 
 // getting an intance of hosted contract
-var userInstance = web3.eth.contract(UserAbi).at(UserAddr);
+var accountInstance = web3.eth.contract(AccountAbi).at(AccountAddr);
 
 function addAccount(firstname, surname, biography, email){
   web3.eth.getAccounts(function(err, accounts){
     console.log(accounts);
-    userInstance.getAccount.call(accounts[0], function(err, accountInfo){
+    accountInstance.getAccount.call(accounts[0], function(err, accountInfo){
       console.log(accounts[0]);
-      if (accountInfo[0] == '0x00000000000000000000000000000000'){
-        userInstance.setAccount(accounts[0], firstname, surname, biography, email, function(err, result){
+      if (accountInfo[0] === '0x00000000000000000000000000000000'){
+        accountInstance.setAccount(accounts[0], firstname, surname, biography, email, function(err, result){
           console.log(biography);
           if(err){
             console.log(err);
@@ -33,16 +33,16 @@ function addAccount(firstname, surname, biography, email){
 
 // bad email validation, could be fixed with regex
 function validEmailCheck(email) {
-  return email.includes("@") && typeof(email) == "string" && email.includes(".")
+  return email.includes("@") && typeof(email) === "string" && email.includes(".")
 }
 
 function validInput(firstname, surname, biography, email){
-  var validFN = typeof(firstname) == "string" && firstname != "";
-  var validLN = typeof(surname) == "string" && surname != "";
-  var validBio = typeof(biography) == "string" && biography != "";
+  var validFN = typeof(firstname) === "string" && firstname !== "";
+  var validLN = typeof(surname) === "string" && surname !== "";
+  var validBio = typeof(biography) === "string" && biography !== "";
   var validEmail = validEmailCheck(email);
 
-  console.log(validFN , validLN , validBio , validEmail)
+  console.log(validFN , validLN , validBio , validEmail);
 
   if (!validFN) {
     alert("Please enter a valid first name");
@@ -73,4 +73,4 @@ window.onload = function(){
     }
 
   })
-}
+};

@@ -9,7 +9,7 @@ var jobs = [];
 
 // getting an intance of hosted contract
 var jobPostInstance = web3.eth.contract(JobPostAbi).at(JobPostAddr);
-var accountInstance = web3.eth.contract(UserAbi).at(UserAddr);
+var accountInstance = web3.eth.contract(AccountAbi).at(AccountAddr);
 
 var app = angular.module('displaySearch', []);
 
@@ -25,7 +25,7 @@ app.controller('showResults', function($scope) {
   if (firstItem == null){
     return;
   } else {
-    if (firstItem.substring(0, 2) == "0x") {
+    if (firstItem.substring(0, 2) === "0x") {
       showUsers(splitUrl);
     } else {
       showJobs(splitUrl);
@@ -43,10 +43,10 @@ app.controller('showResults', function($scope) {
           jobPostInstance.isComplete.call(result[0], function(err, isCompleted){
             //console.log(result);
             $scope.$apply(function(){
-              if (worker == defaultAcc && !isCompleted){
+              if (worker === defaultAcc && !isCompleted){
                 status = "Open";
-              } else if (worker != defaultAcc && !isCompleted) {
-                console.log(worker)
+              } else if (worker !== defaultAcc && !isCompleted) {
+                console.log(worker);
                 status = "In Progress";
               } else {
                 status = "Closed";

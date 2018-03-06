@@ -23,7 +23,7 @@ app.controller('showJobReviews', function($scope) {
     $scope.reviews = [];
     reviewInstance.getJobReviews.call(jobId, function(err, reviews) {
         for (i in reviews) {
-            reviewInstance.getReview.call(reviews[i], (err, review) => {
+            reviewInstance.getReview.call(reviews[i], function(err, review) {
                 if (!err) {
                     $scope.$apply(function() {
                         var reviewObj = {
@@ -32,8 +32,8 @@ app.controller('showJobReviews', function($scope) {
                             reviewText: review[2],
                             stars: review[3],
                             reviewID: review[4],
-                            reviewer: review[5],
-                        }
+                            reviewer: review[5]
+                        };
                         $scope.reviews.push(reviewObj);
                     });
                 }

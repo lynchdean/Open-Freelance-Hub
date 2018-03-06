@@ -9,7 +9,7 @@ if (typeof web3 !== 'undefined') {
 }
 
 var jobPostInstance = web3.eth.contract(JobPostAbi).at(JobPostAddr);
-var accountInstance = web3.eth.contract(UserAbi).at(UserAddr);
+var accountInstance = web3.eth.contract(AccountAbi).at(AccountAddr);
 var jobs = [];
 var users = [];
 

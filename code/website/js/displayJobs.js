@@ -160,41 +160,47 @@ app.controller('showJob', function($scope) {
     jobPostInstance.getJob.call(jobId, function(err, result) {
         jobPostInstance.isComplete.call(jobId, function(err, isCompleted) {
             jobPostInstance.getWorker.call(jobId, function(err, worker) {
+                accountInstance.getAccount.call(result[4], function(err, owner) {
+                    $scope.$apply(function () {
+                        if (worker === defaultAcc && !isCompleted) {
+                            status = "Open";
+                        } else if (worker !== defaultAcc && !isCompleted) {
+                            status = "In Progress";
+                        } else {
+                            status = "Closed";
+                        }
+                        $scope.job = {
+                            id: result[0],
+                            title: result[1],
+                            description: result[2],
+                            payment: web3.fromWei(result[3].toNumber()),
+                            owner: result[4],
+                            status: status
+                        };
 
-                $scope.$apply(function () {
-                    if (worker === defaultAcc && !isCompleted){
-                        status = "Open";
-                    } else if (worker !== defaultAcc && !isCompleted) {
-                        status = "In Progress";
-                    } else {
-                        status = "Closed";
+                        $scope.employerInfo = {
+                            addr: result[4],
+                            bio: owner[5]
+                        }
+                    });
+                    if (isCompleted) {
+                        var completeBtn = document.getElementById('completeJobButton');
+                        completeBtn.className += " disabled";
+                        var cancelBtn = document.getElementById('cancelJobButton');
+                        cancelBtn.className += " disabled";
+                        var applyBtn = document.getElementById('applyButton');
+                        applyBtn.className += " disabled";
                     }
-                    $scope.job = {
-                        id: result[0],
-                        title: result[1],
-                        description: result[2],
-                        payment: web3.fromWei(result[3].toNumber()),
-                        owner: result[4],
-                        status: status
-                    };
-                });
-                if (isCompleted) {
-                    var completeBtn = document.getElementById('completeJobButton');
-                    completeBtn.className += " disabled";
-                    var cancelBtn = document.getElementById('cancelJobButton');
-                    cancelBtn.className += " disabled";
-                    var applyBtn = document.getElementById('applyButton');
-                    applyBtn.className += " disabled";
-                }
 
-                var jobCard = document.getElementById('jobCard');
-                if (worker === defaultAcc && !isCompleted){
-                    jobCard.className += " openJob";
-                } else if (worker !== defaultAcc && !isCompleted) {
-                    jobCard.className += " inProgressJob";
-                } else {
-                    jobCard.className += " closedJob";
-                }
+                    var jobCard = document.getElementById('jobCard');
+                    if (worker === defaultAcc && !isCompleted) {
+                        jobCard.className += " openJob";
+                    } else if (worker !== defaultAcc && !isCompleted) {
+                        jobCard.className += " inProgressJob";
+                    } else {
+                        jobCard.className += " closedJob";
+                    }
+                });
             });
         });
     });

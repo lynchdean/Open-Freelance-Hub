@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {
   "name": "freelance-hub",
   "version": "1.0.0",
@@ -21,29 +20,3 @@
   },
   "description": ""
 }
-=======
-{
-  "name": "freelance-hub",
-  "version": "1.0.0",
-  "main": "truffle.js",
-  "directories": {
-    "test": "test"
-  },
-  "scripts": {
-    "dev": "lite-server",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "bad-words": "^1.6.1",
-    "lite-server": "^2.3.0",
-    "profane-words": "^0.2.4",
-    "solidity-to-abi": "^1.0.4"
-  },
-  "dependencies": {
-    "web3": "github:ethereum/web3.js"
-  },
-  "description": ""
-}
->>>>>>> 509acc87862e074f29463d49b5c51d007e2be2d8

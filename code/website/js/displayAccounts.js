@@ -9,7 +9,7 @@ if (typeof web3 !== 'undefined') {
 }
 
 // getting an intance of hosted contract
-var accountInstance = web3.eth.contract(UserAbi).at(UserAddr);
+var accountInstance = web3.eth.contract(AccountAbi).at(AccountAddr);
 var jobPostInstance = web3.eth.contract(JobPostAbi).at(JobPostAddr);
 var reviewInstance = web3.eth.contract(ReviewAbi).at(ReviewAddr);
 
