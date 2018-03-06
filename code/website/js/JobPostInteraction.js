@@ -188,6 +188,9 @@ function completeWork() {
     var url = (window.location.href).split("?");
     var jobId = parseInt(url[1]);
 
+    var reviewText = document.getElementById('workReviewTextInput').value;
+    var stars = document.getElementById('workStarRating').innerHTML;
+
     if (profanityFilter(reviewText) === true) {
         alert("Your review contains profanities, please try again.")
     } else {
@@ -198,8 +201,6 @@ function completeWork() {
                     jobPostInstance.completeWork(jobId, function(err, success) {
                         if (success) {
                             jobPostInstance.getOwner.call(jobId, function(err, reviewee) {
-                                var reviewText = document.getElementById('workReviewTextInput').value;
-                                var stars = document.getElementById('workStarRating').innerHTML;
                                 postReview(reviewee, jobId, reviewText, stars);
 
                                 //Disable buttons

@@ -215,24 +215,35 @@
             </div>
             <form>
                 <div class="modal-body">
+                    <p><b>Comment:</b></p>
                     <textarea type="ReviewText" class="form-control" id="completeReviewTextInput"
                               placeholder="Write review here" maxlength="200" onkeyup="charCount(this)"
                               required></textarea>
                     <small id="char-count" class="form-text text-muted float-right">Max 200 characters</small>
                     <br/>
                     <div class="rating text-center">
-                        <span><input type="radio" name="rating" id="star1Complete" value="1" onclick="completeRating(1)"
-                                     required><label for="star1Complete"></label></span>
-                        <span><input type="radio" name="rating" id="star2Complete" value="2" onclick="completeRating(2)"
-                                     required><label for="star2Complete"></label></span>
-                        <span><input type="radio" name="rating" id="star3Complete" value="3" onclick="completeRating(3)"
-                                     required><label for="star3Complete"></label></span>
-                        <span><input type="radio" name="rating" id="star4Complete" value="4" onclick="completeRating(4)"
-                                     required><label for="star4Complete"></label></span>
-                        <span><input type="radio" name="rating" id="star5Complete" value="5" onclick="completeRating(5)"
-                                     required><label for="star5Complete"></label></span>
+                        <span class="text-center d-inline-block">
+                            <input type="radio" name="rating" id="star1Complete" value="1" onclick="completeRating(1)" required>
+                            <label for="star1Complete"class="d-block">1</label>
+                        </span>
+                        <span class="text-center d-inline-block">
+                            <input type="radio" name="rating" id="star2Complete" value="2" onclick="completeRating(2)" required>
+                            <label for="star2Complete"class="d-block">2</label>
+                        </span>
+                        <span class="text-center d-inline-block">
+                            <input type="radio" name="rating" id="star3Complete" value="3" onclick="completeRating(3)" required>
+                            <label for="star3Complete"class="d-block">3</label>
+                        </span>
+                        <span class="text-center d-inline-block">
+                            <input type="radio" name="rating" id="star4Complete" value="4" onclick="completeRating(4)" required>
+                            <label for="star4Complete"class="d-block">4</label>
+                        </span>
+                        <span class="text-center d-inline-block">
+                            <input type="radio" name="rating" id="star5Complete" value="5" onclick="completeRating(5)" required>
+                            <label for="star5Complete"class="d-block">5</label>
+                        </span>
                     </div>
-                    <span id="completeStarRating">0</span>
+                    <span id="completeStarRating" ng-hide="true">1</span>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
