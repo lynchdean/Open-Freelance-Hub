@@ -16,7 +16,7 @@
     * [3.5 Accepting an Application for a Job](#35-accepting-an-application-for-a-job)
     * [3.6 Cancelling a Job](#36-cancelling-a-job)
     * [3.7 Completing a Job](#37-completing-a-job)
-    * [3.8 Searching for a Job or User](#37-searching-for-a-job-or-user)
+    * [3.8 Searching for a Job or User](#38-searching-for-a-job-or-user)
 
 ### 1. General
 

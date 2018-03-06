@@ -2,14 +2,28 @@
 ## Technical Manual
 ###### Dean Lynch & David Weir
 
-### Introduction
+### Table of Contents
+* [1. Introduction](#1-introduction)
+  * [1.1 Overview](#11-overview)
+  * [1.2 Glossary](#12-glossary)
+* [2. System Architecture](#2-system-architecture)
+* [3. High Level Design](#3-high-level-design)
+    * [3.1 Data Flow Diagram](#31-data-flow-diagram)
+    * [3.2 Architectural Overview Diagram](#32-architectural-overview-diagram)
+    * [3.3 Component Diagram](#33-component-diagram)
+    * [3.4 State Diagram](#34-state-diagram)
+* [4. Problems & Resolutions](#4-problems-&-resolutions)
+* [5. Installation Guide](#5-installation-guide)
+* [6. Future Work](#3-future-work)
+
+### 1. Introduction
 
 
-##### Overview
+##### 1.1 Overview
 
 The goal of Open Freelance Hub is to create a more open and transparent marketplace for freelance or casual work transactions. This application allows users to trade Ether, a cryptocurrency, for some amount of work completed. For Example, a proof reader could be paid by a student for completing an analysis of their dissertation. With the growing popularity of blockchain based technologies, this application is a showcase of how blockchain "decentralised applications" can be used in place of commonly used applications.
 
-##### Glossary
+##### 1.2 Glossary
 
 - **Blockchain**: A distributed digital public ledger that records transactions across multiple computers to prevent transaction history from being altered.
 - **Smart Contracts**: Self-executing programmable contracts that allow for the transfer of currencies on the blockchain, and the updating of the public ledger.
@@ -21,7 +35,7 @@ The goal of Open Freelance Hub is to create a more open and transparent marketpl
 - **web3.js**: A JavaScript API compatible with the Ethereum blockchain.
 - **MetaMask**: A browser plugin for Chrome and Firefox which allows you to browse Ðapps without running a full Ethereum Node.
 
-### System Architecture
+### 2. System Architecture
 
 ![System Architecture](images/systemArchitecture.png)
 
@@ -32,15 +46,15 @@ The front end of the application is written in HTML, CSS, & JavaScript, using Bo
 The smart contracts stored on the ethereum blockchain are where the data for the application is stored. Written in Solidity, they perform the transactions necessary for completing a piece of work and store the relevant data for our users and their jobs.
 
 
-### High-Level Design
+### 3. High Level Design
 
-##### Data Flow Diagram
+##### 3.1 Data Flow Diagram
 
 ![Data Flow Diagram](images/dfd.png)
 
 _Note_: Each of the users shown in the data flow can collectively be one user. _I.E._ The employer user for one job could be the worker user for a different job at the same time, and an unregistered user could become an employer user after they register their ethereum account and post a job.
 
-##### Architectural Overview Diagram
+##### 3.2 Architectural Overview Diagram
 
 ![Architectural Overview Diagram](images/aod.png)
 
@@ -48,19 +62,19 @@ _Note_: As in the data flow diagram, the two employer and worker users can be on
 
 The architectural overview diagram provides a general overview of the structure of the designed system. As shown simply in the diagram the user interface interacts with a contract interaction section which will complete the main functionalities on the site using the smart contracts stored on the ethereum blockchain.
 
-##### Component Diagram
+##### 3.3 Component Diagram
 
 ![Component Diagram](images/component.png)
 
 The component diagram can be viewed as a more specific version of the architectural overview diagram. The different sections of the architecural overview diagram are displayed as the components that make up the functionality. For instance, the user interface section is broken down into the page generation, user input validation and the different functionalities for the Application. The contract interaction section is broken down into the various setters for the contracts and the contract getter used to populate the dynamic page generation.
 
-##### State diagram for Job Completion
+##### 3.4 State diagram
 
 ![State Diagram](images/state.png)
 
 This state diagram displays the different possible states for a job as it is completed by users on the application.
 
-### Problems & Resolutions
+### 4. Problems & Resolutions
 
 ##### Dynamically creating unique webpages
 
@@ -104,9 +118,9 @@ This state diagram displays the different possible states for a job as it is com
 - **Problem**: As a larger number of jobs were added to the application, the job list & open job list slowed down greatly as initially every job posted on the application would be retrieved from the blockchain in order to display them all in one page.
 - **Solution**: Modified job list and open job list to display jobs in a series of pages rather than on one page. The page information is passed as part of the URL similarly to the dynamic creation of webpages mentioned previously.
 
-### Installation Guide
+### 5. Installation Guide
 
-##### Local Installation
+##### 5.1 Local Installation
 
 These steps will function as a walkthrough for deploying the application for use on a private blockchain on a local machine. All users will have to use the same machine when interacting with the site.
 
@@ -130,7 +144,7 @@ These steps will function as a walkthrough for deploying the application for use
 
 - The application can now be used in chrome, at *localhost:3000*.
 
-##### Ropsten Deployment
+##### 5.2 Ropsten Deployment
 
 These steps will function as a walkthrough for deplying the smart contracts to the Ropsten network. The front end can be hosted either locally using _npm run dev_ as in this walkthrough or a server for public users to access it. Similar steps have also ben outlined on our project blog.
 
