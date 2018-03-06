@@ -13,7 +13,7 @@ contract('UserAccount', function(accounts){
       assert.equal(web3.toAscii(me[0]).replace(/\u0000/g, ''), "Dave", "Firstname returned incorrectly")
       assert.equal(web3.toAscii(me[1]).replace(/\u0000/g, ''), "Weir", "Secondname returned incorrectly");
     })
-  })
+  });
 
   it("Should add a job as employer", function(){
     return UserAccount.deployed().then(function(instance){
@@ -31,7 +31,7 @@ contract('UserAccount', function(accounts){
     }).then(function(employerJobs){
       assert.equal(employerJobs, 1, "jobId returned incorrectly by getEmployerJobs")
     })
-  })
+  });
 
   it("Should not return a registered account", function(){
     return UserAccount.deployed().then(function(instance){
@@ -45,5 +45,4 @@ contract('UserAccount', function(accounts){
       assert.equal(account[3].length, 0, "workerJobs does not = null");
     })
   })
-
-})
+});
