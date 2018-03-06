@@ -2,7 +2,23 @@
 ## User Manual
 ###### Dean Lynch & David Weir
 
-### General
+### Table of Contents
+* [1. General](#1-general)
+* [2. Page Walkthroughs](#2-page-walkthroughs)
+    * [2.1 Navigation Bar](#21-navigation-bar)
+    * [2.2 Account Page](#22-account-page)
+    * [2.3 Job Page](#23-job-page)
+* [3. Functionality Walkthroughs](#3-functionality-walkthroughs)
+    * [3.1 Registering an Account](#31-registering-an-account)
+    * [3.2 Posting a Job](#32-posting-a-job)
+    * [3.3 Browse Jobs](#33-browse-jobs)
+    * [3.4 Applying to Work for a Job](#34-applying-to-work-for-a-job)
+    * [3.5 Accepting an Application for a Job](#35-accepting-an-application-for-a-job)
+    * [3.6 Cancelling a Job](#36-cancelling-a-job)
+    * [3.7 Completing a Job](#37-completing-a-job)
+    * [3.8 Searching for a Job or User](#37-searching-for-a-job-or-user)
+
+### 1. General
 
 * The homepage provides simple navigation of the site, you can navigate to the job posting page (Green), the register account page (Pink), browse jobs (Red), and browse all users (Black)
 * The MetaMask Chrome extension can provide access to ethereum Dapps, the MetaMask pop-up can allows you to approve transactions from your chrome browser. The 'SUBMIT' button will accept the transaction, the 'REJECT' button will cancel the transaction and no ETH will be removed from the user account.
@@ -11,9 +27,9 @@
 | ------------- | ------------- |
 | ![Homepage](images/homepage.png)    |![MetaMask Transaction](images/metamask.png)|
 
-### Page Walkthroughs
+### 2. Page Walkthroughs
 
-##### Navigation Bar
+##### 2.1 Navigation Bar
 
 * The _jobs dropdown_ on the navigation bar provides access to the open jobs list, the all jobs list and the post a job functionality.(Green)
 * The _freelancers_ link will take you to a list of all users on the site.(Pink)
@@ -24,7 +40,7 @@
 | ------------- |
 | ![Navigation Bar](images/navbar.png)    |
 
-##### Account Page
+##### 2.2 Account Page
 
 * The account information is displayed at the top of the page. Firstname, Lastname, email and biography. (Red)
 * A list of jobs created by the account is along the left side. (Pink)
@@ -35,7 +51,7 @@
 | ------------- |
 | ![Account Page](images/accountPage.png)    |
 
-##### Job Page
+##### 2.3 Job Page
 
 * The job information is displayed at the top of the page. Job title, description, payment amount. (Red)
 * Information about the owner of the job is displayed on the right side of the page. Job Owner biography, and a list of passed reviews. (Pink)
@@ -45,9 +61,9 @@
 | ------------- |
 | ![Job Page](images/jobPage.png)    |
 
-### Functionality Walkthroughs
+### 3. Functionality Walkthroughs
 
-##### Registering an Account
+##### 3.1 Registering an Account
 
 1. Choose either “Not Registered”, "Register Account", or “Settings” and then “My Account”, these will take you to the account registration page.
 2.  Input the details for your account and choose “Register”.
@@ -57,7 +73,7 @@
 | ------------- |
 | ![Account Registration Page](images/registerPage.png)    |
 
-##### Posting a Job
+##### 3.2 Posting a Job
 
 1. If the account is registered, choose “Jobs” and then “Post a Job”, this will take you to the job creation page.
 2. Input the details of the job you wish to post. The maximum size for a title is 50 characters & the maximum size for a description is 500 words.
@@ -69,7 +85,7 @@
 | ------------- |
 | ![Post Job Page](images/postJobPage.png)    |
 
-##### Browse Jobs
+##### 3.3 Browse Jobs
 
 1. Choose “Jobs” and then “Job List” or “Open Jobs”, these will take you to a list of all jobs posted on the site or all open jobs on the site respectively.
 2. You can now browse the list of jobs. The status of each job is displayed on the right-hand side of each job card.
@@ -80,7 +96,7 @@
 | **All Jobs** |
 | ![All Jobs](images/jobList.png) |
 
-##### Applying to Work for a Job
+##### 3.4 Applying to Work for a Job
 
 1. After finding a job you wish to apply to enter the job page by clicking on the title of the job.
 2. Click “Apply” on the job page.
@@ -90,7 +106,7 @@
 | ------------- |
 | ![Post Job Page](images/applyToJob.png)    |
 
-##### Accepting an Application for a Job
+##### 3.5 Accepting an Application for a Job
 
 1. Enter the job page for the particular job, this page will display a list of all applicants if you are signed in as the owner of the job.
 2. From this list, you can choose the “Accept” button beside the applicant you wish to accept. This will assign them as the worker for the job and mark the job as “In Progress”
@@ -100,7 +116,7 @@
 | ------------- |
 | ![Post Job Page](images/jobOwnerJobPage.png)    |
 
-##### Cancelling a Job
+##### 3.6 Cancelling a Job
 
 1. Enter the job page for the particular job.
 2. Choose the “Cancel Job” button that is present only if you are the owner of the job.
@@ -110,7 +126,7 @@
 | ------------- |
 | ![Post Job Page](images/cancel.png)    |
 
-##### Completing a Job
+##### 3.7 Completing a Job
 1. Assign a worker to a job as explained previously.
 2. The worker must mark the job as complete on the job page, the worker complete job button is only present if the worker is logged in.
 3. The worker must complete a review of the job owner in order to mark the job as complete.
@@ -127,7 +143,7 @@
 | **Review Pop-up** |
 | ![Post Job Page](images/reviewPopup.png) |
 
-##### Searching for a Job/User
+##### 3.8 Searching for a Job or User
 1. From any page on the site click into the search input box and enter the search criteria.
 2. Click "Search", and choose either "Search Jobs" or "Search Users".
 3. A new page will be generated with the results of the search.
