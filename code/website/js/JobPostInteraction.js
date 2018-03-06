@@ -25,26 +25,24 @@ function addJob(title, desc, pay) {
         // Check if the account is registered
         if (accountInfo[0] !== emptyAddr) {
             var amount = parseFloat(web3.toWei(pay, 'ether'));
-            jobPostInstance.addJob(title, desc, amount, {
-                from: web3.eth.defaultAccount,
-                value: amount
-            }, function(err, result) {
-                if (!err) {
-                    // Add job to owners employerJobs list
-                    jobPostInstance.getJobCount.call(function(error, jobCount) {
-                        if (!error) {
-                            accountInstance.addEmployerJob(web3.eth.defaultAccount, jobCount - 1, function (err, result) {
+            // Add job to owners employerJobs list
+            jobPostInstance.getJobCount.call(function(error, jobCount) {
+                if (!error) {
+                    accountInstance.addEmployerJob(web3.eth.defaultAccount, jobCount, function (err, result) {
+                        if (!err) {
+                            jobPostInstance.addJob(title, desc, amount, {
+                                from: web3.eth.defaultAccount,
+                                value: amount
+                            }, function(err, result) {
                                 if (!err) {
                                     console.log('Added to EmployerJobs');
                                     alert('Job posted successfully');
-                                } else {
-                                    console.log('Not added to EmployerJobs');
                                 }
                             });
+                        } else {
+                            console.log('Not added to EmployerJobs');
                         }
                     });
-                } else {
-                    console.log(err);
                 }
             });
         } else {
