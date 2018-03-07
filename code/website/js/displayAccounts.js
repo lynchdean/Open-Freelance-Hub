@@ -139,7 +139,7 @@ app.controller('showAccount', function($scope){
                 firstName: web3.toAscii(accountDetails[0]).replace(/\u0000/g, ''),
                 lastName: web3.toAscii(accountDetails[1]).replace(/\u0000/g, ''),
                 biography: accountDetails[5],
-                email: web3.toAscii(accountDetails[6]).replace(/\u0000/g, '')
+                email: accountDetails[6]
             };
         });
       });

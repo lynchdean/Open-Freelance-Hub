@@ -5,7 +5,7 @@ contract Accounts {
         bytes16 firstName;
         bytes16 lastName;
         string biography;
-        bytes16 email;
+        string email;
         uint[] employerJobs; // All jobs a user has created
         uint[] workerJobs;  // All jobs a user has been assigned to
         address addr;
@@ -15,7 +15,7 @@ contract Accounts {
     address[] public allAccounts;
 
     // Create an account
-    function setAccount(address _addr, bytes16 _firstName, bytes16 _lastName, string _biography, bytes16 _email) public {
+    function setAccount(address _addr, bytes16 _firstName, bytes16 _lastName, string _biography, string _email) public {
         var account = accounts[_addr];
 
         account.firstName = _firstName;
@@ -35,18 +35,24 @@ contract Accounts {
     }
 
     // Get a single account
-    function getAccount(address _addr) public constant returns (bytes16, bytes16, uint[], uint[], address,string,bytes16) {
+    function getAccount(address _addr) public constant returns (bytes16, bytes16, uint[], uint[], address,string,string) {
         return (accounts[_addr].firstName, accounts[_addr].lastName, accounts[_addr].employerJobs, accounts[_addr].workerJobs, accounts[_addr].addr, accounts[_addr].biography, accounts[_addr].email);
     }
 
     // Add a job to an accounts employerJobs list
     function addEmployerJob(address _addr, uint id) public {
-        accounts[_addr].employerJobs.push(id);
+        var acc = accounts[_addr];
+        if (acc.addr == msg.sender) {
+            acc.employerJobs.push(id);
+        }
     }
 
     // Add a job to an accounts workerJobs list
     function addWorkerJob(address _addr, uint id) public {
-        accounts[_addr].workerJobs.push(id);
+        var acc = accounts[_addr];
+        if (acc.addr == msg.sender) {
+            acc.workerJobs.push(id);
+        }
     }
 
     // Returns all of an accounts employerJobs

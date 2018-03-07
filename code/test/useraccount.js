@@ -13,7 +13,7 @@ contract('UserAccount', function(accounts){
       assert.equal(web3.toAscii(me[0]).replace(/\u0000/g, ''), "Dave", "Firstname returned incorrectly");
       assert.equal(web3.toAscii(me[1]).replace(/\u0000/g, ''), "Weir", "Secondname returned incorrectly");
       assert.equal(me[5], "Biography", "Biography returned incorrectly");
-      assert.equal(web3.toAscii(me[6]).replace(/\u0000/g, ''), "email@email.com", "Email returned incorrectly");
+      assert.equal(me[6], "email@email.com", "Email returned incorrectly");
     })
   });
 
