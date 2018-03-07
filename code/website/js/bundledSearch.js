@@ -11,7 +11,6 @@ if (typeof web3 !== 'undefined') {
 
 var jobPostInstance = web3.eth.contract(JobPostAbi).at(JobPostAddr);
 var accountInstance = web3.eth.contract(AccountAbi).at(AccountAddr);
-
 var jobs = [];
 var users = [];
 
@@ -35,7 +34,7 @@ window.onload = function(event) {
           id: jobDetails[0],
           title: jobDetails[1],
           description: jobDetails[2],
-          payment: web3.fromWei(jobDetails[3].toNumber()),
+          payment: web3.fromWei(jobDetails[3].toNumber())
           //status: status,
         };
         jobs.push(jobObj);
@@ -51,11 +50,11 @@ window.onload = function(event) {
           addr: accountDetails[4],
           firstName: web3.toAscii(accountDetails[0]).replace(/\u0000/g, ''),
           lastName: web3.toAscii(accountDetails[1]).replace(/\u0000/g, '')
-        }
+        };
         users.push(accountObj)
       })
     }
-  })
+  });
 
 
   document.getElementById('searchJobsButton').addEventListener('click', function(event) {
@@ -97,7 +96,7 @@ window.onload = function(event) {
 
     window.location.href = "../searchResults.html?" + urlData;
   })
-}
+};
 
 },{"fuse.js":2}],2:[function(require,module,exports){
 /*!

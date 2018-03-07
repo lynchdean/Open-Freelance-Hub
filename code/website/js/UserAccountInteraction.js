@@ -68,8 +68,8 @@ function validInput(firstname, surname, biography, email){
     return validFN && validLN && validBio && validEmail
 }
 
-window.onload = function(){
-    document.getElementById('registerButton').addEventListener('click', function(event){
+window.addEventListener("load", function() {
+      document.getElementById('registerButton').addEventListener('click', function(event){
         event.preventDefault();
         var firstname = document.getElementById('firstnameInput').value;
         var surname = document.getElementById('surnameInput').value;
@@ -81,4 +81,4 @@ window.onload = function(){
         }
 
     })
-};
+});

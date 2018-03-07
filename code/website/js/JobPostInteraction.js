@@ -19,6 +19,7 @@ var jobId = parseInt(url[1]);
 
 // Post a job
 function addJob(title, desc, pay) {
+
     var emptyAddr = '0x00000000000000000000000000000000';
 
     var ti = document.getElementById('titleInput').value;
@@ -229,56 +230,56 @@ function completeWork() {
     }
 }
 
-window.onload = function() {
-    var url = (window.location.href).split("/");
-    // listening for post button click when on postJob.html
-    // validates that the inputs are of the correct type
-    if (url[3] === "postJob.html") {
-        document.getElementById('postButton').addEventListener('click', function(event) {
-            event.preventDefault();
-            var title = document.getElementById('titleInput').value;
-            var description = document.getElementById('descriptionInput').value;
-            try {
-                var payment = parseFloat(document.getElementById('paymentInput').value);
-            } catch (err) {
-                alert("The payment must be a number")
-            }
+window.addEventListener("load", function() {
+  var url = (window.location.href).split("/");
+  // listening for post button click when on postJob.html
+  // validates that the inputs are of the correct type
+  if (url[3] === "postJob.html") {
+      document.getElementById('postButton').addEventListener('click', function(event) {
+          event.preventDefault();
+          var title = document.getElementById('titleInput').value;
+          var description = document.getElementById('descriptionInput').value;
+          try {
+              var payment = parseFloat(document.getElementById('paymentInput').value);
+          } catch (err) {
+              alert("The payment must be a number")
+          }
 
 
-            if (typeof(title) !== "string") {
-                alert("The title must be a string");
-            } else if (typeof(description) !== "string") {
-                alert("The description must be a string");
-            } else if (typeof(payment) !== "number") {
-                alert("The payment must be a number")
-            } else if (payment < 0) {
-                alert("The payment must be a positive number")
-            } else {
-                addJob(title, description, payment);
-            }
-        })
-    }
+          if (typeof(title) !== "string") {
+              alert("The title must be a string");
+          } else if (typeof(description) !== "string") {
+              alert("The description must be a string");
+          } else if (typeof(payment) !== "number") {
+              alert("The payment must be a number")
+          } else if (payment < 0) {
+              alert("The payment must be a positive number")
+          } else {
+              addJob(title, description, payment);
+          }
+      })
+  }
 
-    // Listening for button click on the job page
-    if (url[3].split("?")[0] === "job.html") {
-        document.getElementById('applyButton').addEventListener('click', function(event) {
-            event.preventDefault();
-            applyToJob();
-        });
+  // Listening for button click on the job page
+  if (url[3].split("?")[0] === "job.html") {
+      document.getElementById('applyButton').addEventListener('click', function(event) {
+          event.preventDefault();
+          applyToJob();
+      });
 
-        document.getElementById('completeJobButton').addEventListener('click', function(event) {
-            event.preventDefault();
-            completeJob();
-        });
+      document.getElementById('completeJobButton').addEventListener('click', function(event) {
+          event.preventDefault();
+          completeJob();
+      });
 
-        document.getElementById('cancelJobButton').addEventListener('click', function(event) {
-            event.preventDefault();
-            cancelJob();
-        });
+      document.getElementById('cancelJobButton').addEventListener('click', function(event) {
+          event.preventDefault();
+          cancelJob();
+      });
 
-        document.getElementById('completeWorkButton').addEventListener('click', function(event) {
-            event.preventDefault();
-            completeWork();
-        })
-    }
-};
+      document.getElementById('completeWorkButton').addEventListener('click', function(event) {
+          event.preventDefault();
+          completeWork();
+      })
+  }
+});
