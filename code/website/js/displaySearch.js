@@ -56,19 +56,19 @@ app.controller('showResults', function($scope) {
                 title: result[1],
                 description: result[2],
                 payment: web3.fromWei(result[3].toNumber()),
-                status: status,
-              }
-              console.log(jobObj)
+                status: status
+              };
+              console.log(jobObj);
               $scope.jobs.push(jobObj);
-            })
+            });
 
 
             var jobCard = document.getElementById('jobCard'+result[0])
             var status;
             $scope.$apply(function(){
-              if (worker == defaultAcc && !isCompleted){
+              if (worker === defaultAcc && !isCompleted){
                 jobCard.className += " openJob";
-              } else if (worker != defaultAcc && !isCompleted) {
+              } else if (worker !== defaultAcc && !isCompleted) {
                 jobCard.className += " inProgressJob";
               } else {
                 jobCard.className += " closedJob";
@@ -90,10 +90,10 @@ app.controller('showResults', function($scope) {
               addr: accountDetails[4],
               firstName: web3.toAscii(accountDetails[0]).replace(/\u0000/g, ''),
               lastName: web3.toAscii(accountDetails[1]).replace(/\u0000/g, '')
-          }
+          };
           $scope.accounts.push(accountObj);
         })
       })
     }
   }
-})
+});

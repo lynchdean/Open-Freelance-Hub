@@ -37,11 +37,11 @@ window.onload = function(event) {
           description: jobDetails[2],
           payment: web3.fromWei(jobDetails[3].toNumber()),
           //status: status,
-        }
+        };
         jobs.push(jobObj);
       })
     }
-  })
+  });
 
   accountInstance.getAccounts.call(function(err, allAccounts) {
     for(var i in allAccounts) {
@@ -76,7 +76,7 @@ window.onload = function(event) {
     }
 
     window.location.href = "../searchResults.html?" + urlData;
-  })
+  });
 
   document.getElementById('searchUsersButton').addEventListener('click', function(event) {
 
