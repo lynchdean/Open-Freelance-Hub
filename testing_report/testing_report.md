@@ -15,23 +15,22 @@
 
 |Use Case No.|Title|Steps|Result|
 | :-------------: | :-------------: | :------------- | :------------- |
-|1|Posting a Job|1) Choose 'post a job' <br/> 2) Enter the details of a job <br/> 3) Click 'Post Job' & approve the transaction <br/> **Expected Result**: Job is posted and is visible on the job list page| PASS 05/03/18 |
-|2|Applying to a Job|1) Create an open job as specified in Test Case 1 <br/> 2) Sign into a different account <br/> 3) Enter the job page of the previously created job <br/> 4) Click the 'apply' button and approve the transaction <br/> 5) Sign into the the account that owns the job <br/> 6) Enter the job page <br/> **Expected Result**: The address of the non-owner account is visible in the list of applicants| PASS 05/03/18 |
-|3|Accepting a candidate for a job|1) Apply to a job as in Test Case 2 <br/> 2) As the owner of the job, click 'Accept' on an applicant <br/> **Expected Result**: The address of the candidate appears as the 'Accepted Worker'. The status of the job is marked as 'In Progress'. | PASS 05/03/18 |
-|4|Reviewing another party|1) Accept a worker as in Test Case 3 <br/> 2) As the accepted worker, enter the job page <br/> 3) Click 'Confirm work completed' and complete a review of the employer <br/> 4) As the owner of the job, choose 'Complete Job' and complete a review of the worker <br/> **Expected Result**: Both reviews are completed. The job status is marked as closed. The payment amount is transferred to the worker. The reviews of each party can be seen on the job page.| PASS 05/03/18 |
-|5|Registering an ethereum account|1) Enter the site as an unregistered user <br/> 2) Choose 'Register Account' <br/> 3) Enter the details for the account <br/> 4) Click 'Register' and approve the transaction <br/> **Expected Result**: The ethereum account is registered. The user details can be seen in the list of users, which will link to an account page for the new users. | PASS 05/03/18 |  
+|1|Posting a Job|1) Choose 'post a job' <br/> 2) Enter the details of a job <br/> 3) Click 'Post Job' & approve the transaction <br/> **Expected Result**: Job is posted and is visible on the job list page| PASS |
+|2|Applying to a Job|1) Create an open job as specified in Test Case 1 <br/> 2) Sign into a different account <br/> 3) Enter the job page of the previously created job <br/> 4) Click the 'apply' button and approve the transaction <br/> 5) Sign into the the account that owns the job <br/> 6) Enter the job page <br/> **Expected Result**: The address of the non-owner account is visible in the list of applicants| PASS |
+|3|Accepting a candidate for a job|1) Apply to a job as in Test Case 2 <br/> 2) As the owner of the job, click 'Accept' on an applicant <br/> **Expected Result**: The address of the candidate appears as the 'Accepted Worker'. The status of the job is marked as 'In Progress'. | PASS |
+|4|Reviewing another party|1) Accept a worker as in Test Case 3 <br/> 2) As the accepted worker, enter the job page <br/> 3) Click 'Confirm work completed' and complete a review of the employer <br/> 4) As the owner of the job, choose 'Complete Job' and complete a review of the worker <br/> **Expected Result**: Both reviews are completed. The job status is marked as closed. The payment amount is transferred to the worker. The reviews of each party can be seen on the job page.| PASS |
+|5|Registering an ethereum account|1) Enter the site as an unregistered user <br/> 2) Choose 'Register Account' <br/> 3) Enter the details for the account <br/> 4) Click 'Register' and approve the transaction <br/> **Expected Result**: The ethereum account is registered. The user details can be seen in the list of users, which will link to an account page for the new users. | PASS |  
 
 
 ### Additional Test Cases
 
 |Test Case No.|Title|Steps|Result|
 | :-------------: | :-------------: | :------------- | :------------- |
-|6|Completing a Job|1) Post a job and accept a worker for the job <br/> 2) As the accepted worker, enter the job page and click 'Confirm work completed' <br/> 3) Complete a review of the employer for the job <br/> 4) As the owner of the job, enter the job page and click 'Complete Job' <br/> 5) Complete a review for the worker <br/> **Expected Result**: The job is completed. The status of the job is set to closed. The payment amount specified in the job post is tranferred to the etheruem account of the accepted worker.| PASS 05/03/18|
-|7|Searching for a Job|_Note_: The site must be populated with jobs for this test case. <br/> 1) Enter the search keywords for a job into the search bar <br/> 2) Click the 'Search' dropdown and selct 'search jobs' <br/> **Expected Result**: A search results page is generated with the result of the search. The correct job that was searched for and is posted correctly, is returned | PASS 05/03/18|
-|8|Searching for a User|_Note_: The site must be populated with users for this test case. <br/> 1) Enter the search keywords for a user into the search bar <br/> 2) Click the 'Search' dropdown and selct 'search users' <br/> **Expected Result**: A search results page is generated with the result of the search. The correct user that was searched for and is posted correctly, is returned| PASS 05/03/18|
-|9|Browsing Jobs|_Note_: The site must be populated with jobs for this test case. <br/> 1) Choose 'Browse Jobs' from the home page <br/> 2) Traverse the pages of the jobs <br/> **Expected Result**: All jobs are displayed in a number of different pages. They have different statuses: Open, In Progress, and Closed | PASS 05/03/18 |
+|6|Completing a Job|1) Post a job and accept a worker for the job <br/> 2) As the accepted worker, enter the job page and click 'Confirm work completed' <br/> 3) Complete a review of the employer for the job <br/> 4) As the owner of the job, enter the job page and click 'Complete Job' <br/> 5) Complete a review for the worker <br/> **Expected Result**: The job is completed. The status of the job is set to closed. The payment amount specified in the job post is tranferred to the etheruem account of the accepted worker.| PASS|
+|7|Searching for a Job|_Note_: The site must be populated with jobs for this test case. <br/> 1) Enter the search keywords for a job into the search bar <br/> 2) Click the 'Search' dropdown and selct 'search jobs' <br/> **Expected Result**: A search results page is generated with the result of the search. The correct job that was searched for and is posted correctly, is returned | PASS|
+|8|Searching for a User|_Note_: The site must be populated with users for this test case. <br/> 1) Enter the search keywords for a user into the search bar <br/> 2) Click the 'Search' dropdown and selct 'search users' <br/> **Expected Result**: A search results page is generated with the result of the search. The correct user that was searched for and is posted correctly, is returned| PASS|
+|9|Browsing Jobs|_Note_: The site must be populated with jobs for this test case. <br/> 1) Choose 'Browse Jobs' from the home page <br/> 2) Traverse the pages of the jobs <br/> **Expected Result**: All jobs are displayed in a number of different pages. They have different statuses: Open, In Progress, and Closed | PASS |
 |10| Canceling a Job | 1) Post a job and accept a worker for the job <br/> 2) As the owner of the job, enter the job page <br/> 3) Click 'Cancel Job' and approve the transaction <br/> **Expected Result**: The job status is marked as 'Closed' in the job list. The payment amount for the job is returned to the owners account. | PASS |
-|10|  | 1)  | PASS |
 
 ### Smart Contract Unit Testing
 
@@ -113,6 +112,18 @@ These tests can be run using the following command in the code directory: *truff
 
 ### Real World Testing (User Testing)
 
+##### Test Plan
 
+Each of the users who participated in our user testing were provided with a list of tasks and asked to complete these tasks before proceeding to delve freely into the site. The set of tasks cover the major functionalities of the application. The set tasks were as follows:
+* Register an unregistered etheruem account.
+* Post a job.
+* Apply to a job.
+* Accept an applicant for the job you have posted.
+* Complete a job.
+* Search for a job or user.
+
+##### User Test Outcome
+
+*__-=-=NEED SCREENSHOTS OF FORM=-=-__*
 
 ### Issues Found

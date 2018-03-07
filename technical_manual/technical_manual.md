@@ -6,11 +6,12 @@
 * [1. Introduction](#1-introduction)
   * [1.1 Overview](#11-overview)
   * [1.2 Glossary](#12-glossary)
+  * [1.3 Initial Design Vs Final Application](#13-initial-design-vs-final-application)
 * [2. System Architecture](#2-system-architecture)
 * [3. High Level Design](#3-high-level-design)
-    * [3.1 Data Flow Diagram](#31-data-flow-diagram)
-    * [3.2 Architectural Overview Diagram](#32-architectural-overview-diagram)
-    * [3.3 Component Diagram](#33-component-diagram)
+    * [3.1 Architectural Overview Diagram](#31-architectural-overview-diagram)
+    * [3.2 Component Diagram](#32-component-diagram)
+    * [3.3 Data Flow Diagram](#33-data-flow-diagram)
     * [3.4 State Diagram](#34-state-diagram)
 * [4. Problems and Resolutions](#4-problems-and-resolutions)
 * [5. Installation Guide](#5-installation-guide)
@@ -35,6 +36,12 @@ The goal of Open Freelance Hub is to create a more open and transparent marketpl
 - **web3.js**: A JavaScript API compatible with the Ethereum blockchain.
 - **MetaMask**: A browser plugin for Chrome and Firefox which allows you to browse Ðapps without running a full Ethereum Node.
 
+##### 1.3 Initial Design Vs Final Application
+
+The application that was developed achieves the minimum viable product that was outlined as part of the functional specification. Registered users have the ability to post jobs, browse both all jobs and all open jobs, apply to relevant jobs as a worker, and search for jobs based on job title and description.
+
+Time was spent in an attempt to develop a chat functionality using the Whisper protocol, in hindsight this was wasted time as we discovered that the whisper protocol is still heavily in development and it would not be possible to complete a chat functionality in time.
+
 ### 2. System Architecture
 
 ![System Architecture](images/systemArchitecture.png)
@@ -48,13 +55,7 @@ The smart contracts stored on the ethereum blockchain are where the data for the
 
 ### 3. High Level Design
 
-##### 3.1 Data Flow Diagram
-
-![Data Flow Diagram](images/dfd.png)
-
-_Note_: Each of the users shown in the data flow can collectively be one user. _I.E._ The employer user for one job could be the worker user for a different job at the same time, and an unregistered user could become an employer user after they register their ethereum account and post a job.
-
-##### 3.2 Architectural Overview Diagram
+##### 3.1 Architectural Overview Diagram
 
 ![Architectural Overview Diagram](images/aod.png)
 
@@ -62,11 +63,17 @@ _Note_: As in the data flow diagram, the two employer and worker users can be on
 
 The architectural overview diagram provides a general overview of the structure of the designed system. As shown simply in the diagram the user interface interacts with a contract interaction section which will complete the main functionalities on the site using the smart contracts stored on the ethereum blockchain.
 
-##### 3.3 Component Diagram
+##### 3.2 Component Diagram
 
 ![Component Diagram](images/component.png)
 
 The component diagram can be viewed as a more specific version of the architectural overview diagram. The different sections of the architecural overview diagram are displayed as the components that make up the functionality. For instance, the user interface section is broken down into the page generation, user input validation and the different functionalities for the Application. The contract interaction section is broken down into the various setters for the contracts and the contract getter used to populate the dynamic page generation.
+
+##### 3.3 Data Flow Diagram
+
+![Data Flow Diagram](images/dfd.png)
+
+_Note_: Each of the users shown in the data flow can collectively be one user. _I.E._ The employer user for one job could be the worker user for a different job at the same time, and an unregistered user could become an employer user after they register their ethereum account and post a job.
 
 ##### 3.4 State diagram
 
@@ -75,6 +82,11 @@ The component diagram can be viewed as a more specific version of the architectu
 This state diagram displays the different possible states for a job as it is completed by users on the application.
 
 ### 4. Problems and Resolutions
+
+##### Profanity in the application
+
+- **Problem**: It was mentioned at our project proposal demonstration that we should be wary of the use of profanity by users in our application. As the storage for this application in on a blockchain, traditional moderation would be extremely difficult.
+- **Solution**: We developed a profanity filter with ~3000 profane words. These words were gathered by scraping a number of online profanity lists and compiling our own list of the unique words. Much of these words are slight variations of the same word. In the filter we strip the words of any special characters in order to catch attempts circumvent the filter by appending special characters.
 
 ##### Dynamically creating unique webpages
 
@@ -164,5 +176,6 @@ These steps will function as a walkthrough for deplying the smart contracts to t
 ### 6. Future work
 
 - Ability to add to the profanity filter based on a report system.
+- Allow users to update their biography through the application after registratio has completed.
 - Whisper chat functionality between an employer and an applicant.
-- Swarm hosting of appliction front-end.
+- Swarm hosting of the appliction front-end to allow a fully decentralised deployment.
