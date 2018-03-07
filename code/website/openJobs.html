@@ -100,10 +100,10 @@
       </div>
       <div class="row justify-content-center" ng-show="jobs.length">
         <div ng-hide="isStart">
-          <a class="btn btn-lg btn-outline-primary m-5" href="/jobList.html?{{pageId - 1}}"> Previous Page </a>
+          <a class="btn btn-lg btn-outline-primary m-5" href="/openJobs.html?{{pageId - 1}}"> Previous Page </a>
         </div>
         <div ng-hide="isLast">
-          <a class="btn btn-lg btn-outline-primary m-5" href="/jobList.html?{{pageId + 1}}"> Next Page </a>
+          <a class="btn btn-lg btn-outline-primary m-5" href="/openJobs.html?{{pageId + 1}}"> Next Page </a>
         </div>
       </div>
       <div ng-show="!jobs.length" class="text-center">
