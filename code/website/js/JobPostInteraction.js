@@ -21,34 +21,41 @@ var jobId = parseInt(url[1]);
 function addJob(title, desc, pay) {
     var emptyAddr = '0x00000000000000000000000000000000';
 
-    accountInstance.getAccount(web3.eth.defaultAccount, function(err, accountInfo) {
-        // Check if the account is registered
-        if (accountInfo[0] !== emptyAddr) {
-            var amount = parseFloat(web3.toWei(pay, 'ether'));
-            // Add job to owners employerJobs list
-            jobPostInstance.getJobCount.call(function(error, jobCount) {
-                if (!error) {
-                    accountInstance.addEmployerJob(web3.eth.defaultAccount, jobCount, function (err, result) {
-                        if (!err) {
-                            jobPostInstance.addJob(title, desc, amount, {
-                                from: web3.eth.defaultAccount,
-                                value: amount
-                            }, function(err, result) {
-                                if (!err) {
-                                    console.log('Added to EmployerJobs');
-                                    alert('Job posted successfully');
-                                }
-                            });
-                        } else {
-                            console.log('Not added to EmployerJobs');
-                        }
-                    });
-                }
-            });
-        } else {
-            alert('This account is not registered');
-        }
-    });
+    var ti = document.getElementById('titleInput').value;
+    var di = document.getElementById('descriptionInput').value;
+
+    if (profanityFilter(ti) === true || profanityFilter(di) === true) {
+        alert("Your input contains profanities, please try again.")
+    } else {
+        accountInstance.getAccount(web3.eth.defaultAccount, function (err, accountInfo) {
+            // Check if the account is registered
+            if (accountInfo[0] !== emptyAddr) {
+                var amount = parseFloat(web3.toWei(pay, 'ether'));
+                // Add job to owners employerJobs list
+                jobPostInstance.getJobCount.call(function (error, jobCount) {
+                    if (!error) {
+                        accountInstance.addEmployerJob(web3.eth.defaultAccount, jobCount, function (err, result) {
+                            if (!err) {
+                                jobPostInstance.addJob(title, desc, amount, {
+                                    from: web3.eth.defaultAccount,
+                                    value: amount
+                                }, function (err, result) {
+                                    if (!err) {
+                                        console.log('Added to EmployerJobs');
+                                        alert('Job posted successfully');
+                                    }
+                                });
+                            } else {
+                                console.log('Not added to EmployerJobs');
+                            }
+                        });
+                    }
+                });
+            } else {
+                alert('This account is not registered');
+            }
+        });
+    }
 }
 
 // Apply worker to a job

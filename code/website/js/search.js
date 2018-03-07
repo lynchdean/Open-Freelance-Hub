@@ -33,13 +33,13 @@ window.onload = function(event) {
           id: jobDetails[0],
           title: jobDetails[1],
           description: jobDetails[2],
-          payment: web3.fromWei(jobDetails[3].toNumber()),
+          payment: web3.fromWei(jobDetails[3].toNumber())
           //status: status,
-        }
+        };
         jobs.push(jobObj);
       })
     }
-  })
+  });
 
   accountInstance.getAccounts.call(function(err, allAccounts) {
     for(var i in allAccounts) {
@@ -49,11 +49,11 @@ window.onload = function(event) {
           addr: accountDetails[4],
           firstName: web3.toAscii(accountDetails[0]).replace(/\u0000/g, ''),
           lastName: web3.toAscii(accountDetails[1]).replace(/\u0000/g, '')
-        }
+        };
         users.push(accountObj)
       })
     }
-  })
+  });
 
 
   document.getElementById('searchJobsButton').addEventListener('click', function(event) {
@@ -74,7 +74,7 @@ window.onload = function(event) {
     }
 
     window.location.href = "../searchResults.html?" + urlData;
-  })
+  });
 
   document.getElementById('searchUsersButton').addEventListener('click', function(event) {
 
@@ -95,4 +95,4 @@ window.onload = function(event) {
 
     window.location.href = "../searchResults.html?" + urlData;
   })
-}
+};
