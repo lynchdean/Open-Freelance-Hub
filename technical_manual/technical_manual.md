@@ -22,7 +22,7 @@
 
 ##### 1.1 Overview
 
-The goal of Open Freelance Hub is to create a more open and transparent marketplace for freelance or casual work transactions. This application allows users to trade Ether, a cryptocurrency, for some amount of work completed. For Example, a proof reader could be paid by a student for completing an analysis of their dissertation. With the growing popularity of blockchain based technologies, this application is a showcase of how blockchain "decentralised applications" can be used in place of commonly used applications.
+The goal of Open Freelance Hub is to create a more open and transparent marketplace for freelance or casual work transactions. This application allows users to trade Ether, a cryptocurrency, for some amount of work completed. For example, a proofreader could be paid by a student for completing an analysis of their dissertation. With the growing popularity of blockchain based technologies, this application is a showcase of how blockchain "decentralised applications" can be used in place of commonly used applications.
 
 ##### 1.2 Glossary
 
@@ -36,21 +36,21 @@ The goal of Open Freelance Hub is to create a more open and transparent marketpl
 - **web3.js**: A JavaScript API compatible with the Ethereum blockchain.
 - **MetaMask**: A browser plugin for Chrome and Firefox which allows you to browse Ðapps without running a full Ethereum Node.
 
-##### 1.3 Initial Design Vs Final Application
+##### 1.3 Initial Design Vs. Final Application
 
 The application that was developed achieves the minimum viable product that was outlined as part of the functional specification. Registered users have the ability to post jobs, browse both all jobs and all open jobs, apply to relevant jobs as a worker, and search for jobs based on job title and description.
 
-Time was spent in an attempt to develop a chat functionality using the Whisper protocol, in hindsight this was wasted time as we discovered that the whisper protocol is still heavily in development and it would not be possible to complete a chat functionality in time.
+Time was spent in an attempt to develop a chat functionality using the Whisper protocol, in hindsight this time was wasted as we discovered that the whisper protocol is still heavily in development and severely lacking documentation, and therefore it would not be possible to integrate a chat functionality in time.
 
 ### 2. System Architecture
 
 ![System Architecture](images/systemArchitecture.png)
 
-The Ðapp web browser or ethereum enabled browser is a browser capable of interacting with the ethereum blockchain through web3js. Development took place primarily on Chrome with the MetaMask extension, another browser is the mist browser.
+The Ðapp web browser or ethereum enabled browser is a browser capable of interacting with the ethereum blockchain through web3js. Development took place primarily on Chrome with the MetaMask extension. The Mist browser is also another option to interact with the ethereum blockchain.
 
-The front end of the application is written in HTML, CSS, & JavaScript, using Bootstrap and angularJs. The content for the front-end is populated using web3js, a JavaScript library specifically used for interacting with smart contracts stored on the ethereum blockchain. Ideally in a fully decentralised application you would not use a web server, you would use a service called 'swarm' which can provide the front end via a peer-to-peer network. This was not used for this application as 'swarm' is still heavily in development.
+The front end of the application is written in HTML, CSS, & JavaScript, using Bootstrap and AngularJS. The content for the front-end is populated using web3js, a JavaScript library specifically used for interacting with smart contracts stored on the ethereum blockchain. Ideally in a fully decentralised application you would not use a web server, you would use a service called 'swarm' which can provide the front end via a peer-to-peer network. This was not used for this application as 'swarm' is still too early in development.
 
-The smart contracts stored on the ethereum blockchain are where the data for the application is stored. Written in Solidity, they perform the transactions necessary for completing a piece of work and store the relevant data for our users and their jobs.
+The smart contracts contained on the ethereum blockchain are where the data for the application is stored. Written in Solidity, they perform the transactions necessary for completing a piece of work and store the relevant data for our users and their jobs.
 
 
 ### 3. High Level Design
@@ -59,25 +59,31 @@ The smart contracts stored on the ethereum blockchain are where the data for the
 
 ![Architectural Overview Diagram](images/aod.png)
 
-_Note_: As in the data flow diagram, the two employer and worker users can be one user.
+_Note_: Each of the users shown in the architectural overview diagram can collectively be one user. _I.E._ The employer user for one job could be the worker user for a different job at the same time, and an unregistered user could become an employer user after they register their ethereum account and post a job.
 
-The architectural overview diagram provides a general overview of the structure of the designed system. As shown simply in the diagram the user interface interacts with a contract interaction section which will complete the main functionalities on the site using the smart contracts stored on the ethereum blockchain.
+The A.O.D. is a high-level shared vision of the architecture and scope of the proposed application. It explores and evaluates alternative architectural options and enables early recognition and validation of the implications of the architectural approach. It helps to provides a conceptual understanding of the system. As shown in the diagram, the user interface interacts with a contract interaction section which will complete the main functionalities on the site using the smart contracts stored on the ethereum blockchain.
 
 ##### 3.2 Component Diagram
 
 ![Component Diagram](images/component.png)
 
-The component diagram can be viewed as a more specific version of the architectural overview diagram. The different sections of the architecural overview diagram are displayed as the components that make up the functionality. For instance, the user interface section is broken down into the page generation, user input validation and the different functionalities for the Application. The contract interaction section is broken down into the various setters for the contracts and the contract getter used to populate the dynamic page generation.
+The component model is used to illustrate at a high level how components will interact within a system. The component diagram can be viewed as a lower level version of the architectural overview diagram. The different sections of the architecural overview diagram are displayed as components. Components are functionalities in the system that complete a certain task.
+
+For instance, the user interface section is broken down into page generation, user input validation and the different functionalities for the application. The contract interaction section is broken down into the various setters for the contracts and the contract getter used to populate the dynamic page generation.
 
 ##### 3.3 Data Flow Diagram
 
 ![Data Flow Diagram](images/dfd.png)
 
-_Note_: Each of the users shown in the data flow can collectively be one user. _I.E._ The employer user for one job could be the worker user for a different job at the same time, and an unregistered user could become an employer user after they register their ethereum account and post a job.
+_Note_: As in the architectural overview diagram, the two employer and worker users can be one user.
+
+A data flow diagram shows the flow of information for each process in our system.
 
 ##### 3.4 State diagram
 
 ![State Diagram](images/state.png)
+
+A state diagram describes the behaviour of a component.
 
 This state diagram displays the different possible states for a job as it is completed by users on the application.
 
@@ -97,7 +103,7 @@ This state diagram displays the different possible states for a job as it is com
 
 ##### Deploying to a live network
 
-- **Problem**: There are many conflicting tutorials on how to deply certain applications to the Ropsten test network, most of which did not work for our application. Deploying to a test network allowed us to see how our application would act on a live network.
+- **Problem**: There are many conflicting tutorials on how to deploy certain applications to the Ropsten test network, most of which did not work for our application. Deploying to a test network allowed us to see how our application would act on a live network.
 - **Solution**: After trial and error, our application was deployed to the Ropsten test network. We created a tutorial as part of our blog in order for us to remember how to deploy our application to the test network.
 
 ##### Returning an array of values from a contract
@@ -107,8 +113,8 @@ This state diagram displays the different possible states for a job as it is com
 
 ##### Lack of documentation
 
-- **Problem**: Solidity, Truffle and many Ethereum based technologies are still heavily in active development, this means that there is very little official documentation for much of the technologies used. Of the documentation that is available quite a lot of it is depreciated or conflicts with other documentation.
-- **Solution**: We became members of publilc forumn sites such as the Ethereum stackexchange and the gitter chatrooms for some of the technologies used in this project. The gitter chatrooms were particularly useful as in some cases we could interact with some of the open source developers of the projects.
+- **Problem**: Solidity, Truffle and many Ethereum based technologies are still in active development, this means that there is very little official documentation for many of the technologies we used. Of the documentation that is available, quite a lot of it is depreciated or conflicts with other documentation.
+- **Solution**: We became members of publilc forum sites such as Ethereum Stack Exchange, Ethereum.org forum and Gitter chatrooms for some of the technologies used in this project. The Gitter chatrooms were particularly useful as in some cases we could interact with some of the open source developers of the projects.  
 
 ##### Updating smart-contract ABI's for JavaScript interaction
 
