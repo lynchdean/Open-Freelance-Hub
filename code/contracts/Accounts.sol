@@ -50,9 +50,7 @@ contract Accounts {
     // Add a job to an accounts workerJobs list
     function addWorkerJob(address _addr, uint id) public {
         var acc = accounts[_addr];
-        if (acc.addr == msg.sender) {
-            acc.workerJobs.push(id);
-        }
+        acc.workerJobs.push(id);
     }
 
     // Returns all of an accounts employerJobs
