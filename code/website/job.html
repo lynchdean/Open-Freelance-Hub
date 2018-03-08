@@ -101,7 +101,9 @@
                     <h5>Accepted Worker: <a href="./account.html?{{worker}}">{{worker}}</a> </h5>
                 </div>
                 <div class="row justify-content-center" ng-show="!applicantAccepted">
-                    <a class="btn btn-primary" id="applyButton" href="#"> Apply for this job </a>
+                    <button type="button" id="applyButton" class="btn btn-success m-1">
+                        Apply for this job
+                    </button>
                 </div>
                 <div class="row justify-content-center p-3">
                     <div ng-show="applicantAccepted && isOwner">

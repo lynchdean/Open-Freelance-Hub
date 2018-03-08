@@ -8,3 +8,6 @@ code/package.json
 #Web dependancies
 website/bootstrap
 website/js/*.min.js
+
+# IDE configuration files
+.idea/

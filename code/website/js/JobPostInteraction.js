@@ -83,8 +83,8 @@ function applyToJob() {
                                 if (err)
                                     console.log(err);
                                 else {
-                                    console.log(result);
-                                    alert("Success!");
+                                    document.getElementById('applyButton').disabled = true;
+                                    alert("Successfully applied to the job!");
                                 }
                             });
                         }
@@ -148,14 +148,12 @@ function completeJob() {
                             if (confirm('Are you sure you want to complete this job?')) {
                                 jobPostInstance.completeJob(jobId, function(err, result) {
                                     postReview(reviewee, jobId, reviewText, stars);
-
                                     // Disable buttons.
                                     document.getElementById('completeModalButton').disabled = true;
                                     document.getElementById('completeJobButton').disabled = true;
                                     document.getElementById('cancelJobButton').disabled = true;
                                     // Close modal.
                                     $("#completeJobModal").modal("hide");
-
                                 });
                             }
                         }
