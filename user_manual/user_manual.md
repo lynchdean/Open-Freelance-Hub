@@ -24,7 +24,7 @@
 * The MetaMask Chrome extension can provide access to Ethereum Ðapps, the MetaMask popup can allows you to approve transactions from your Chrome browser. The 'SUBMIT' button will accept the transaction, the 'REJECT' button will cancel the transaction and no Ether will be removed from the user account.
 
 | **Homepage**        |**MetaMask Transaction**|
-| ------------- | ------------- |
+| :-------------: | :-------------: |
 | ![Homepage](images/homepage.png)    |![MetaMask Transaction](images/metamask.png)|
 
 ### 2. Page Walkthroughs
@@ -37,7 +37,7 @@
 * The _settings dropdown_ offers links to the account page and displays what type of network the browser is connected to. E.g. Private network or live network (Black Circle).
 
 | **Navigation Bar**        |
-| ------------- |
+| :-------------: |
 | ![Navigation Bar](images/navbar.png)    |
 
 ##### 2.2 Account Page
@@ -48,7 +48,7 @@
 * A list of previous reviews of the account is along the right side (Green Circle).
 
 | **Account Page**        |
-| ------------- |
+| :-------------: |
 | ![Account Page](images/accountPage.png)    |
 
 ##### 2.3 Job Page
@@ -58,7 +58,7 @@
 * The list of applicants to the job is displayed at the bottom of the page. This is only displayed if the job owner is signed into their Ethereum account (Black Circle).
 
 | **Total Job Page**        |
-| ------------- |
+| :-------------: |
 | ![Job Page](images/jobPage.png)    |
 
 ### 3. Functionality Walkthroughs
@@ -70,7 +70,7 @@
 3. Approve the transaction for the account registration using your Ethereum browser.
 
 | **Account Registration Page**        |
-| ------------- |
+| :-------------: |
 | ![Account Registration Page](images/registerPage.png)    |
 
 ##### 3.2 Posting a Job
@@ -82,7 +82,7 @@
 5. Approve the transaction for the job posting using your Ethereum browser.
 
 | **Post Job Page**        |
-| ------------- |
+| :-------------: |
 | ![Post Job Page](images/postJobPage.png)    |
 
 ##### 3.3 Browse Jobs
@@ -91,7 +91,7 @@
 2. You can now browse the list of jobs. The status of each job is displayed on the right-hand side of each job card.
 
 | **Open Jobs**        |
-| ------------- |
+| :-------------: |
 | ![Open Jobs](images/openJobs.png)    |
 | **All Jobs** |
 | ![All Jobs](images/jobList.png) |
@@ -103,7 +103,7 @@
 3. Approve the transaction for the application using your Ethereum browser.
 
 | **Job Page for an applicant**        |
-| ------------- |
+| :-------------: |
 | ![Post Job Page](images/applyToJob.png)    |
 
 ##### 3.5 Accepting an Application for a Job
@@ -113,7 +113,7 @@
 3. Approve the transaction for worker assigning using your Ethereum browser.
 
 | **Job Page for an employer**        |
-| ------------- |
+| :-------------: |
 | ![Post Job Page](images/jobOwnerJobPage.png)    |
 
 ##### 3.6 Cancelling a Job
@@ -123,7 +123,7 @@
 3. Approve the cancellation transaction using your ethereum browser and the Ether posted when creating the job will be returned to your account.
 
 | **Post Job Page**        |
-| ------------- |
+| :-------------: |
 | ![Post Job Page](images/cancel.png)    |
 
 ##### 3.7 Completing a Job
@@ -136,7 +136,7 @@
 7. The amount specified in the payment field will be transferred to the assigned worker.
 
 | **Worker completes job **        |
-| ------------- |
+| :-------------: |
 | ![Post Job Page](images/workerAcceptedJob.png)    |
 | ** Job Owner completes job ** |
 | ![Post Job Page](images/jobOwnerAcceptedWorker.png) |
@@ -151,7 +151,7 @@
 _Note_: The search functionality is a "fuzzy search", it will return all items that match the search criteria in order of how close they match the search criteria.
 
 | ** Search Input **        |
-| ------------- |
+| :-------------: |
 | ![Post Job Page](images/searchInput.png)    |
 |**Search Results** |
 | ![Post Job Page](images/searchResult.png) |
