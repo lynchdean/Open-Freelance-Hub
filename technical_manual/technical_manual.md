@@ -40,17 +40,17 @@ The goal of Open Freelance Hub is to create a more open and transparent marketpl
 
 The application that was developed achieves the minimum viable product that was outlined as part of the functional specification. Registered users have the ability to post jobs, browse both all jobs and all open jobs, apply to relevant jobs as a worker, and search for jobs based on job title and description.
 
-Time was spent in an attempt to develop a chat functionality using the Whisper protocol, in hindsight this time was wasted as we discovered that the whisper protocol is still heavily in development and severely lacking documentation, and therefore it would not be possible to integrate a chat functionality in time.
+Time was spent in an attempt to develop a chat functionality using the Whisper protocol, in hindsight this time was wasted as we discovered that the Whisper protocol is still heavily in development and severely lacking documentation, and therefore it would not be possible to integrate a chat functionality in time.
 
 ### 2. System Architecture
 
 ![System Architecture](images/systemArchitecture.png)
 
-The Ðapp web browser or ethereum enabled browser is a browser capable of interacting with the ethereum blockchain through web3js. Development took place primarily on Chrome with the MetaMask extension. The Mist browser is also another option to interact with the ethereum blockchain.
+The Ðapp web browser or Ethereum enabled browser is a browser capable of interacting with the Ethereum blockchain through web3js. Development took place primarily on Chrome with the MetaMask extension. The Mist browser is also another option to interact with the Ethereum blockchain.
 
-The front end of the application is written in HTML, CSS, & JavaScript, using Bootstrap and AngularJS. The content for the front-end is populated using web3js, a JavaScript library specifically used for interacting with smart contracts stored on the ethereum blockchain. Ideally in a fully decentralised application you would not use a web server, you would use a service called 'swarm' which can provide the front end via a peer-to-peer network. This was not used for this application as 'swarm' is still too early in development.
+The front end of the application is written in HTML, CSS, & JavaScript, using Bootstrap and AngularJS. The content for the front-end is populated using web3js, a JavaScript library specifically used for interacting with smart contracts stored on the Ethereum blockchain. Ideally in a fully decentralised application, you would not use a web server; you would use a service called 'swarm' which can provide the front end via a peer-to-peer network. This was not used for this application as 'swarm' is still too early in development.
 
-The smart contracts contained on the ethereum blockchain are where the data for the application is stored. Written in Solidity, they perform the transactions necessary for completing a piece of work and store the relevant data for our users and their jobs.
+The smart contracts contained on the Ethereum blockchain are where the data for the application is stored. Written in Solidity, they perform the transactions necessary for completing a piece of work and store the relevant data for our users and their jobs.
 
 
 ### 3. High Level Design
@@ -59,9 +59,9 @@ The smart contracts contained on the ethereum blockchain are where the data for 
 
 ![Architectural Overview Diagram](images/aod.png)
 
-_Note_: Each of the users shown in the architectural overview diagram can collectively be one user. _I.E._ The employer user for one job could be the worker user for a different job at the same time, and an unregistered user could become an employer user after they register their ethereum account and post a job.
+_Note_: Each of the users shown in the architectural overview diagram can collectively be one user. For example, the employer user for one job could be the worker user for a different job at the same time, and an unregistered user could become an employer user after they register their Ethereum account and post a job.
 
-The A.O.D. is a high-level shared vision of the architecture and scope of the proposed application. It explores and evaluates alternative architectural options and enables early recognition and validation of the implications of the architectural approach. It helps to provides a conceptual understanding of the system. As shown in the diagram, the user interface interacts with a contract interaction section which will complete the main functionalities on the site using the smart contracts stored on the ethereum blockchain.
+The A.O.D. is a high-level shared vision of the architecture and scope of the proposed application. It explores and evaluates alternative architectural options and enables early recognition and validation of the implications of the architectural approach. It helps to provides a conceptual understanding of the system. As shown in the diagram, the user interface interacts with a contract interaction section which will complete the main functionalities on the site using the smart contracts stored on the Ethereum blockchain.
 
 ##### 3.2 Component Diagram
 
@@ -83,7 +83,7 @@ A data flow diagram shows the flow of information for each process in our system
 
 ![State Diagram](images/state.png)
 
-A state diagram describes the behaviour of a component.
+A state diagram describes the behaviour of a system.
 
 This state diagram displays the different possible states for a job as it is completed by users on the application.
 
@@ -92,7 +92,7 @@ This state diagram displays the different possible states for a job as it is com
 ##### Profanity in the application
 
 - **Problem**: It was mentioned at our project proposal demonstration that we should be wary of the use of profanity by users in our application. As the storage for this application in on a blockchain, traditional moderation would be extremely difficult.
-- **Solution**: We developed a profanity filter with ~3000 profane words. These words were gathered by scraping a number of online profanity lists and compiling our own list of the unique words. Much of these words are slight variations of the same word. In the filter we strip the words of any special characters in order to catch attempts circumvent the filter by appending special characters.
+- **Solution**: We developed a profanity filter with 3000+ profane words. These words were gathered by scraping a number of online profanity lists and compiling our own list of the unique words. Much of these words are slight variations of the same word. In the filter we strip the words of any special characters in order to catch attempts circumvent the filter by appending special characters.
 
 ##### Dynamically creating unique webpages
 
@@ -118,7 +118,7 @@ This state diagram displays the different possible states for a job as it is com
 
 ##### Updating smart-contract ABI's for JavaScript interaction
 
-- **Problem**: When interacting with smart contracts on ethereum using JavaScript you must include the ABI of the contracts you are interacting with. When developing the application we had to generate a new ABI whenever any changes were made to the contracts in any way. Each JavaScript file that interacts with the contracts must have access to this ABI and the address of the contract on the blockchain.
+- **Problem**: When interacting with smart contracts on Ethereum using JavaScript you must include the ABI of the contracts you are interacting with. When developing the application we had to generate a new ABI whenever any changes were made to the contracts in any way. Each JavaScript file that interacts with the contracts must have access to this ABI and the address of the contract on the blockchain.
 - **Solution**: In order to prevent us having to edit every JavaScript file whenever a change was made to one of the contracts, we centralised these ABI's and contract addresses. Each contract ABI and address is stored in a file called *contractInfo.js* which every JavaScript file has access to.
 
 ##### Creating a "fuzzy search"
@@ -166,7 +166,7 @@ These steps will function as a walkthrough for deploying the application for use
 
 These steps will function as a walkthrough for deplying the smart contracts to the Ropsten network. The front end can be hosted either locally using _npm run dev_ as in this walkthrough or a server for public users to access it. Similar steps have also ben outlined on our project blog.
 
-**Requirements**: geth (ethereum implement using go), truffle framework, chrome with MetaMask extension, lite-server node module
+**Requirements**: geth (Ethereum implement using go), truffle framework, chrome with MetaMask extension, lite-server node module
 
 - Run geth using the following command in a terminal window: _geth --testnet --syncmode "fast" --rpc --rpcapi db,eth,net,web3,personal --rpcport 8545_
 

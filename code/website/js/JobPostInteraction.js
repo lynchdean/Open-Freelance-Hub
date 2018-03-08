@@ -43,7 +43,7 @@ function addJob(title, desc, pay) {
                                 }, function (err, result) {
                                     if (!err) {
                                         console.log('Added to EmployerJobs');
-                                        alert('Job posted successfully');
+                                        if(confirm('Job posted successfully')) window.location.href = "index.html";
                                     }
                                 });
                             } else {

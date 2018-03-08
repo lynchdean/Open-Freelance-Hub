@@ -27,8 +27,8 @@ function addAccount(firstname, surname, biography, email){
                         if (err) {
                             console.log(err);
                         } else {
-                            alert("Thank you for registering");
-                            document.getElementById("welcome").innerHTML = "Welcome, " + firstname + "!";
+                            if(confirm("Thank you for registering")) window.location.href = "index.html";
+                            //document.getElementById("welcome").innerHTML = "Welcome, " + firstname + "!";
                         }
                     });
                 } else {
