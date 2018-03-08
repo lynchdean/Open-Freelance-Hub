@@ -10,11 +10,7 @@ if (typeof web3 !== 'undefined') {
 var accountInstance = web3.eth.contract(AccountAbi).at(AccountAddr);
 
 function addAccount(firstname, surname, biography, email){
-    var fn = document.getElementById('firstnameInput').value;
-    var sn = document.getElementById('surnameInput').value;
-    var bio = document.getElementById('biographyInput').value;
-
-    if (profanityFilter(fn) === true || profanityFilter(sn) === true || profanityFilter(bio) === true) {
+    if (profanityFilter(firstname) === true || profanityFilter(surname) === true || profanityFilter(biography) === true) {
         alert("Your input contains profanities, please try again.")
     } else {
         web3.eth.getAccounts(function (err, accounts) {
@@ -28,7 +24,7 @@ function addAccount(firstname, surname, biography, email){
                             console.log(err);
                         } else {
                             if(confirm("Thank you for registering")) window.location.href = "index.html";
-                            //document.getElementById("welcome").innerHTML = "Welcome, " + firstname + "!";
+                            document.getElementById("welcome").innerHTML = "Welcome, " + firstname + "!";
                         }
                     });
                 } else {

@@ -22,41 +22,45 @@ function addJob(title, desc, pay) {
 
     var emptyAddr = '0x00000000000000000000000000000000';
 
-    var ti = document.getElementById('titleInput').value;
-    var di = document.getElementById('descriptionInput').value;
-
-    if (profanityFilter(ti) === true || profanityFilter(di) === true) {
-        alert("Your input contains profanities, please try again.")
-    } else {
-        accountInstance.getAccount(web3.eth.defaultAccount, function (err, accountInfo) {
-            // Check if the account is registered
-            if (accountInfo[0] !== emptyAddr) {
-                var amount = parseFloat(web3.toWei(pay, 'ether'));
-                // Add job to owners employerJobs list
-                jobPostInstance.getJobCount.call(function (error, jobCount) {
-                    if (!error) {
-                        accountInstance.addEmployerJob(web3.eth.defaultAccount, jobCount, function (err, result) {
-                            if (!err) {
-                                jobPostInstance.addJob(title, desc, amount, {
-                                    from: web3.eth.defaultAccount,
-                                    value: amount
-                                }, function (err, result) {
+    // check if the account has sufficient funds to post the job
+    web3.eth.getBalance(web3.eth.accounts[0], function(err, balance) {
+        if (web3.fromWei(balance) < pay) {
+            alert("You have insufficient funds to post this job.");
+        } else {
+            if (profanityFilter(title) === true || profanityFilter(desc) === true) {
+                alert("Your input contains profanities, please try again.");
+            } else {
+                accountInstance.getAccount(web3.eth.defaultAccount, function (err, accountInfo) {
+                    // Check if the account is registered
+                    if (accountInfo[0] !== emptyAddr) {
+                        var amount = parseFloat(web3.toWei(pay, 'ether'));
+                        // Add job to owners employerJobs list
+                        jobPostInstance.getJobCount.call(function (error, jobCount) {
+                            if (!error) {
+                                accountInstance.addEmployerJob(web3.eth.defaultAccount, jobCount, function (err, result) {
                                     if (!err) {
-                                        console.log('Added to EmployerJobs');
-                                        if(confirm('Job posted successfully')) window.location.href = "index.html";
+                                        jobPostInstance.addJob(title, desc, amount, {
+                                            from: web3.eth.defaultAccount,
+                                            value: amount
+                                        }, function (err, result) {
+                                            if (!err) {
+                                                console.log('Added to EmployerJobs');
+                                                if(confirm('Job posted successfully')) window.location.href = "index.html";
+                                            }
+                                        });
+                                    } else {
+                                        console.log('Not added to EmployerJobs');
                                     }
                                 });
-                            } else {
-                                console.log('Not added to EmployerJobs');
                             }
                         });
+                    } else {
+                        alert('This account is not registered');
                     }
                 });
-            } else {
-                alert('This account is not registered');
             }
-        });
-    }
+        }
+    });
 }
 
 // Apply worker to a job
