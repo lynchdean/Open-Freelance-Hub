@@ -8,10 +8,10 @@
 * [3. Smart Contract Unit Testing](#3-smart-contract-unit-testing)
 * [4. Heuristic Testing](#4-heuristic-testing)
 * [5. Real World Testing](#5-real-world-testing)
-* [6. Issues Found](#6-issues-found)
+* [6. Known Issues](#6-known-issues)
 
 
-### Use Case Testing
+###1. Use Case Testing
 
 |Use Case No.|Title|Steps|Result|
 | :-------------: | :-------------: | :------------- | :------------- |
@@ -22,7 +22,7 @@
 |5|Registering an ethereum account|1) Enter the site as an unregistered user <br/> 2) Choose 'Register Account' <br/> 3) Enter the details for the account <br/> 4) Click 'Register' and approve the transaction <br/> **Expected Result**: The ethereum account is registered. The user details can be seen in the list of users, which will link to an account page for the new users. | PASS |  
 
 
-### Additional Test Cases
+###2. Additional Test Cases
 
 |Test Case No.|Title|Steps|Result|
 | :-------------: | :-------------: | :------------- | :------------- |
@@ -32,7 +32,7 @@
 |9|Browsing Jobs|_Note_: The site must be populated with jobs for this test case. <br/> 1) Choose 'Browse Jobs' from the home page <br/> 2) Traverse the pages of the jobs <br/> **Expected Result**: All jobs are displayed in a number of different pages. They have different statuses: Open, In Progress, and Closed | PASS |
 |10| Canceling a Job | 1) Post a job and accept a worker for the job <br/> 2) As the owner of the job, enter the job page <br/> 3) Click 'Cancel Job' and approve the transaction <br/> **Expected Result**: The job status is marked as 'Closed' in the job list. The payment amount for the job is returned to the owners account. | PASS |
 
-### Smart Contract Unit Testing
+###3. Smart Contract Unit Testing
 
 The Truffle framework which we used in the development of this project allowed for the creation of unit tests written in JavaScript. We created a number of these while developing the different contracts used in the application. They can be viewed here: [test directory](./code/test).
 
@@ -45,7 +45,7 @@ They cover all of the functions used in the smart contracts to provide the funct
 These tests can be run using the following command in the code directory: *truffle test* (_Note_: *testrpc* must be running in a separate terminal window)
 
 
-### Heuristic Testing
+###4. Heuristic Testing
 
 ##### Nielsen's Heuristics
 
@@ -92,7 +92,7 @@ These tests can be run using the following command in the code directory: *truff
 - **Help and Documentation**: Users have access to the user manual for the application through the settings section of the navigation bar. This manual will walk them through the functionality of the application.
 **_ADD SCREENSHOT OF SETTINGS DROPDOWN WITH MANUAL_**
 
-### Accessibility Testing
+###5. Accessibility Testing
 
 ##### Sight Difficulties
 
@@ -110,7 +110,7 @@ These tests can be run using the following command in the code directory: *truff
 - The buttons and links, etc. used in the application are kept large.
 - The dropdowns on the site do not disappear if the mouse moves off the dropdown as is the case on some sites. This can cause issues for users with Parkinsons, for example.
 
-### Real World Testing (User Testing)
+###6. Real World Testing (User Testing)
 
 ##### Test Plan
 
@@ -124,8 +124,90 @@ Each of the users who participated in our user testing were provided with a list
 
 ##### User Test Outcome
 
+Once the user had finished testing the application they were given a survey to complete. An example of the survey can be seen below.
+
 | **User Survey**                 |
 | ------------------------------- |
 | ![Survey](images/survey.png)    |
 
-### Issues Found
+#### Results
+
+| **Question 1**                        |
+| ------------------------------------- |
+| ![question1](images/question1.png)    |
+| The majority of users had no previous experience with blockchain applications |
+
+| **Question 2**                        |
+| ------------------------------------- |
+| ![question2](images/question2.png)    |
+| None of the users surveyed had any previous experience with freelance/contract work sites. |
+
+| **Question 3**                        |
+| ------------------------------------- |
+| ![question3](images/question3.png)    |
+| Approximately 2/3 users had no difficulties at all when completing any of the tasks provided to them. |
+
+| **Question 4**                        |
+| ------------------------------------- |
+| ![question4](images/question4.png)    |
+| 2 users had issues searching for jobs from the job pages. |
+| 1 user had a problem viewing the jobs they were assigned to on thier job page. |
+
+| **Question 5**                        |
+| ------------------------------------- |
+| ![question5](images/question5.png)    |
+| 1 user would have liked the homepage to be populated more. |
+| 2 users would have liked the page to redirect after registering an account or posting a job. |
+| 2 users would have liked to be able to update their account details after creating an account. |
+| 3 users had no problems with any of the features   |
+
+| **Question 6**                        |
+| ------------------------------------- |
+| ![question6](images/question6.png)    |
+| Reviews turned out to be a popular feature among many of the users |
+
+| **Question 7**                        |
+| ------------------------------------- |
+| ![question7](images/question7.png)    |
+| A strong majority of users said that they would use the application again. |
+
+| **Question 8**                        |
+| ------------------------------------- |
+| ![question8](images/question8.png)    |
+| All users found the application easy to use. |
+
+| **Question 9**                        |
+| ------------------------------------- |
+| ![question9](images/question9.png)    |
+| Most users were pleased with the style of the application. |
+
+| **Question 10**                       |
+| ------------------------------------- |
+| ![question10](images/question10.png)  |
+| All users were in favour of reccomending this application to a friend. |
+
+| **Question 11**                       |
+| ------------------------------------- |
+| ![question11](images/question11.png)  |
+| All additional feedback was positive, which we were very pleased to see. |
+
+#### Issues Found
+| Issue | Fixed/Still Present |
+| ------------------------------------- |
+| Users were dissapointed that they weren't returned to the homepage after registering. | Fixed |
+| The search page was broken on pages where the profanity filter JavaScript was also imported. | Fixed |
+| Errors occurred when users attempted to post a job which paid more then the funds that they had available in their account. | Fixed |
+| Apply button wasn't disabled after applying for a job. | Fixed |
+| List scalability for jobs | Fixed |
+
+
+###6. Known Issues
+
+| Issue | Notes: |
+| ----- | ------ |
+| Editing accounts after registration | Through our user testing we learned that some of the users would have liked to edit their information after they had registered their account. Due to issues with keeping the data on our site consistantly "immutable" and time constraints, this feature was not implemented. |
+| Content reporting and moderation | In cases where a user has circumvented our profanity filter or has used slander, we would have liked to incluse a system where a another user could report this and have it reviewed by a moderator. We decided that we would not yet implement this system as it would take a considerable amount of time and we would not be able to complete it in the timeframe we were given |
+| Navbar welcome message | Retrieving the information from the blockchain to display whether a user is registered or not can sometimes take longer than expected. This can sometimes cause an issue where our function will return an error and not correctly display if a user has been signed in. |
+| Multiple transaction boxes for a single process | When interacting with two different contracts during a single process, the transactions would be split up into two separate dialog boxes. We would have liked replace this with a batch transaction with a single dialog box, but we did not have the time to do this. |
+| Open-Job list population | In our page to display only open jobs, it would not show the maximum of 10 open jobs per page, but only the number of open jobs found on the equivalent "All-Jobs" page. We found this issue too late in the development of the application and did not have time to fix it. |
+| Email address privacy | As we made a decision not to include the Whisper message protocol on our application, we still needed to allow users to communicate with each other. To allow this we have included the email address of the user on their account page. We realise that this is not a good practice and would have liked to give control to users as to who is shown thier contact information, but we did not have time to implement this. |
