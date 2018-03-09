@@ -1,4 +1,4 @@
-    # Open Freelance hub
+# Open Freelance hub
 ## Testing Report
 ###### Dean Lynch & David Weir
 
@@ -110,7 +110,7 @@ These tests can be run using the following command in the code directory: *truff
 - The buttons and links, etc. used in the application are kept large.
 - The dropdowns on the site do not disappear if the mouse moves off the dropdown as is the case on some sites. This can cause issues for users with Parkinsons, for example.
 
-### 6. User Testing
+### 5. User Testing
 
 ##### Test Plan
 
