@@ -56,6 +56,7 @@
 
             </ul>
 
+            <!-- Search bar -->
             <input class="col-4 form-control mr-sm-2" type="text" placeholder="Search" id="searchInput"/>
             <div class="dropdown">
               <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -86,29 +87,30 @@
         </div>
     </nav>
 
+    <!-- Show Account details -->
     <div class="container" ng-controller="showAccount">
-      <div class="row justify-content-center">
-        <h1> Account Details </h1>
-      </div>
         <div class="row justify-content-center">
-          <div class="col-8 mt-3 p-3" style="background-color:white; border-radius:8px; word-wrap: break-word;">
-            <h5><b>First name:</b> {{account.firstName}}</h5>
-            <h5><b>Last name:</b> {{account.lastName}}</h5>
-            <h5><b> EMAIL:</b> {{account.email}} </h5>
-            <h5><b>Biography:</b></h5>
-            <p class="pl-2" style="border-left: 3px solid #BDBDBD;">{{account.biography}}</p>
-          </div>
+            <h1> Account Details </h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-8 mt-3 p-3" style="background-color:white; border-radius:8px; word-wrap: break-word;">
+                <h5><b>First name:</b> {{account.firstName}}</h5>
+                <h5><b>Last name:</b> {{account.lastName}}</h5>
+                <h5><b> EMAIL:</b> {{account.email}} </h5>
+                <h5><b>Biography:</b></h5>
+                <p class="pl-2" style="border-left: 3px solid #BDBDBD;">{{account.biography}}</p>
+            </div>
         </div>
     </div>
 
     <div class="container mt-3" ng-controller="showAccountJobs">
     <div class="row">
+        <!-- Show all jobs a user has created -->
         <div class="col-4">
             <h4>Jobs created:</h4>
             <div ng-repeat="employerJob in employerJobs track by $index">
                 <div class="row justify-content-center">
                     <div id="employerJobCard{{employerJob.id}}" class="col-10 mt-3 p-3" style="background-color:white; border-radius:8px;  word-wrap: break-word;   ">
-                        <!--<h2>{{employerJob.id}}</h2>-->
                         <a href="./job.html?{{employerJob.id}}"><h3> {{employerJob.title}} </h3></a>
                         <p class="pl-2" style="border-left: 3px solid #BDBDBD;">{{employerJob.description}}</p>
                         <h5>Payment: Ξ {{employerJob.payment}} (ETH)</h5>
@@ -120,6 +122,7 @@
                 <p>User has not created any jobs</p>
             </div>
         </div>
+        <!-- Show all jobs a user has been assigned to -->
         <div class="col-4">
             <h4>Jobs assigned:</h4>
             <div ng-repeat="workerJob in workerJobs track by $index">
@@ -137,6 +140,7 @@
                 <p>User has not previously been assigned any jobs.</p>
             </div>
         </div>
+        <!-- Show all reviews a user has recieved -->
         <div class="col-4">
             <div ng-controller="showAccountReviews">
                 <h4>User reviews:</h4>

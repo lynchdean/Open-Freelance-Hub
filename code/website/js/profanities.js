@@ -11,17 +11,12 @@ badWords = ["$hit","*damn","*dyke","*fuck*","*shit*","2 girls 1 cup","2g1c","4r5
 function profanityFilter(s) {
     var isProfane = false;
 
-    s = s.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
-    s = s.toLowerCase();
-    var words = s.split(" ");
-    console.log(words);
+    words = s.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").split(" ");
 
     for (word in words) {
         if (badWords.indexOf(words[word]) >= 0) {
             isProfane = true;
         }
     }
-    console.log(s);
     return isProfane;
 }
-

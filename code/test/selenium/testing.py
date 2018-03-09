@@ -17,7 +17,7 @@ driver = webdriver.Chrome(executable_path=executable_path, chrome_options=chrome
 
 #seed_phrase = input("Enter seed phrase: ")
 password = "qwertyuiop"
-seed_phrase = "render nose birth horse moment license much news kiss radio damage love"
+seed_phrase = "hybrid abuse wire harsh narrow remind cotton insane minor fabric robot illegal"
 person1 = ["Dean", "Lynch", "lynchdean@gmail.com", "This is a biography"]
 
 time.sleep(5)
@@ -68,7 +68,6 @@ driver.get('localhost:3000')
 open_registration = driver.find_element_by_xpath('//*[@id="welcome"]')
 open_registration.click()
 
-"""
 # Fill in registration details
 time.sleep(2)
 first_name = driver.find_element_by_xpath('//*[@id="firstnameInput"]')
@@ -90,9 +89,15 @@ time.sleep(3)
 driver.switch_to_window(driver.window_handles[-1])
 
 time.sleep(3)
+print(driver.title)
+
 confirm_transaction = driver.find_element_by_xpath('//*[@id="pending-tx-form"]/div[3]/input')
 confirm_transaction.click()
-"""
+
+# -----------------------------------------------#
+# Breaks here, can't handle the confirm dialogue #
+# -----------------------------------------------#
+
 time.sleep(5)
 driver.switch_to.window(driver.window_handles[0])
 
@@ -100,8 +105,6 @@ driver.get('localhost:3000/accountList.html')
 time.sleep(5)
 x = driver.find_element_by_link_text(person1[0] + " " + person1[1])
 x.click()
-
-
 
 # Assertions
 
@@ -118,8 +121,4 @@ assert_biography = driver.find_element_by_xpath('/html/body/div[1]/div[2]/div/p'
 assert assert_biography == person1[3], "Biography incorrect"
 
 print("All assertions have passed!")
-
-#assert person1[0] in assert_first_name
-#driver.get('chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/notification.html')
-#print(driver.page_source)
-#driver.quit()
+driver.quit()

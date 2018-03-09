@@ -1,4 +1,4 @@
-# Open Freelance hub
+    # Open Freelance hub
 ## Testing Report
 ###### Dean Lynch & David Weir
 
@@ -101,7 +101,7 @@ These tests can be run using the following command in the code directory: *truff
 - The result of an online colour analysis tool states that the colour used in our links fail the contrast ratio for some users. To combat this we changed the colour of the links and underlined them when hovering over it.
 - In order to combat some of the other colour contrast issues, such as the different colours for marking the job status we stated what the status of the job is beside the coloured status indicator.
 
-| ** Analysis of Main Colours **        | ** Colour Contrast Fix **        |
+| **Analysis of Main Colours**        | **Colour Contrast Fix**        |
 | ------------- | ------------- |
 | ![Colour Analysis](images/homepageColour.png)    | ![Colour Contrast Fix](images/jobListContrast.png)    |
 
@@ -124,6 +124,8 @@ Each of the users who participated in our user testing were provided with a list
 
 ##### User Test Outcome
 
-*__-=-=NEED SCREENSHOTS OF FORM=-=-__*
+| **User Survey**                 |
+| ------------------------------- |
+| ![Survey](images/survey.png)    |
 
 ### Issues Found

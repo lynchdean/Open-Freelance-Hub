@@ -5,6 +5,6 @@ var Review = artifacts.require("./Reviews.sol");
 
 module.exports = function(deployer) {
   deployer.deploy(JobPost);
-  deployer.deploy(UserAccount)
-  deployer.deploy(Review)
+  deployer.deploy(UserAccount);
+  deployer.deploy(Review);
 };

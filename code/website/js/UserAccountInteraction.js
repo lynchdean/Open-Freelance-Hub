@@ -49,23 +49,23 @@ function validInput(firstname, surname, biography, email){
     console.log(validFN , validLN , validBio , validEmail);
 
     if (!validFN) {
-       alert("Please enter a valid first name");
+        alert("Please enter a valid first name");
     }
     if (!validLN) {
-       alert("Please enter a valid last name");
+        alert("Please enter a valid last name");
     }
     if (!validBio) {
-       alert("Please enter a valid biography");
+        alert("Please enter a valid biography");
     }
     if (!validEmail) {
-       alert("Please enter a valid email");
+        alert("Please enter a valid email");
     }
 
     return validFN && validLN && validBio && validEmail
 }
 
 window.addEventListener("load", function() {
-      document.getElementById('registerButton').addEventListener('click', function(event){
+    document.getElementById('registerButton').addEventListener('click', function(event){
         event.preventDefault();
         var firstname = document.getElementById('firstnameInput').value;
         var surname = document.getElementById('surnameInput').value;
@@ -73,8 +73,7 @@ window.addEventListener("load", function() {
         var email = document.getElementById('emailInput').value;
 
         if (validInput(firstname, surname, biography, email)) {
-            addAccount(firstname, surname, biography, email);
+              addAccount(firstname, surname, biography, email);
         }
-
     })
 });

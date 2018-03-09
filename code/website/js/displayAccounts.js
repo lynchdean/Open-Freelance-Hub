@@ -1,11 +1,11 @@
-// display a list of accounts to the html page
+// Display a list of accounts to the html page
 
-// initialising web3 provider, or connecting to established provider
+// Initialising web3 provider, or connecting to established provider
 if (typeof web3 !== 'undefined') {
-  web3 = new Web3(web3.currentProvider);
+    web3 = new Web3(web3.currentProvider);
 } else {
-  // set the provider you want from Web3.providers
-  web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+    // set the provider you want from Web3.providers
+    web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 }
 
 // getting an intance of hosted contract

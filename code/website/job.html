@@ -59,6 +59,7 @@
 
         </ul>
 
+        <!-- Search bar -->
         <input class="col-4 form-control mr-sm-2" type="text" placeholder="Search" id="searchInput"/>
         <div class="dropdown">
             <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -93,6 +94,7 @@
 <div class="container" ng-controller="checkOwner">
     <div ng-controller="acceptedApplicant">
         <div class="row justify-content-center" ng-controller="showJob">
+            <!-- Display job details and actions -->
             <div id="jobCard" class="col-8 mt-3 p-3" style="background-color:white; border-radius:8px; word-wrap: break-word;">
                 <h2> {{job.title}} </h2>
                 <p class="pl-2" style="border-left: 3px solid #BDBDBD;"> <b>Description: </b> {{job.description}} </p>
@@ -124,6 +126,8 @@
                 </div>
                 <p class="m-0 float-right">{{job.status}} </p>
             </div>
+
+            <!-- Display employer details -->
             <div class="col-3 mt-3 ml-3 p-3" style="background-color:white; border-radius:8px; word-wrap: break-word;">
                 <h4> Employer: </h4>
                 <p>{{employerInfo.bio}}</p>
@@ -224,6 +228,7 @@
                     <small id="char-count" class="form-text text-muted float-right">Max 200 characters</small>
                     <br/>
                     <div class="rating text-center">
+                        <p><b>Rating:</b></p>
                         <span class="text-center d-inline-block">
                             <input type="radio" name="rating" id="star1Complete" value="1" onclick="completeRating(1)" required>
                             <label for="star1Complete"class="d-block">1</label>

@@ -9,8 +9,8 @@ contract JobPost{
         address owner;
         address[] applicants;
         address worker;
-        bool workCompleted;
-        bool isCompleted;
+        bool workCompleted; // Indicates if the work has been marked as complete
+        bool isCompleted; // Indicates if the job has been marked as complete
     }
 
     uint totalJobs = 0;
