@@ -124,14 +124,6 @@ Each of the users who participated in our user testing were provided with a list
 
 ##### User Test Outcome
 
-Once the user had finished testing the application they were given a survey to complete. An example of the survey can be seen below.
-
-| **User Survey**                 |
-| ------------------------------- |
-| ![Survey](images/survey.png)    |
-
-#### Results
-
 | **Question 1**                        |
 | ------------------------------------- |
 | ![question1](images/question1.png)    |
