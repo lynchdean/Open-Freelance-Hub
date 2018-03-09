@@ -7,8 +7,9 @@
 * [2. Additional Test Cases](#2-additional-test-cases)
 * [3. Smart Contract Unit Testing](#3-smart-contract-unit-testing)
 * [4. Heuristic Testing](#4-heuristic-testing)
-* [5. User Testing](#5-user-testing)
-* [6. Known Issues](#6-known-issues)
+* [5. Accessibility Testing](#5-accessibility-testing)
+* [6. User Testing](#6-user-testing)
+* [7. Known Issues](#7-known-issues)
 
 
 ### 1. Use Case Testing
@@ -110,7 +111,7 @@ These tests can be run using the following command in the code directory: *truff
 - The buttons and links, etc. used in the application are kept large.
 - The dropdowns on the site do not disappear if the mouse moves off the dropdown as is the case on some sites. This can cause issues for users with Parkinsons, for example.
 
-### 5. User Testing
+### 6. User Testing
 
 ##### Test Plan
 
@@ -193,7 +194,7 @@ Each of the users who participated in our user testing were provided with a list
 | List scalability for jobs | Fixed |
 
 
-### 6. Known Issues
+### 7. Known Issues
 
 | Issue | Notes: |
 | ----- | ------ |
