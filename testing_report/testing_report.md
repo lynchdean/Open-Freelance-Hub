@@ -11,7 +11,7 @@
 * [6. Known Issues](#6-known-issues)
 
 
-###1. Use Case Testing
+### 1. Use Case Testing
 
 |Use Case No.|Title|Steps|Result|
 | :-------------: | :-------------: | :------------- | :------------- |
@@ -22,7 +22,7 @@
 |5|Registering an ethereum account|1) Enter the site as an unregistered user <br/> 2) Choose 'Register Account' <br/> 3) Enter the details for the account <br/> 4) Click 'Register' and approve the transaction <br/> **Expected Result**: The ethereum account is registered. The user details can be seen in the list of users, which will link to an account page for the new users. | PASS |  
 
 
-###2. Additional Test Cases
+### 2. Additional Test Cases
 
 |Test Case No.|Title|Steps|Result|
 | :-------------: | :-------------: | :------------- | :------------- |
@@ -32,7 +32,7 @@
 |9|Browsing Jobs|_Note_: The site must be populated with jobs for this test case. <br/> 1) Choose 'Browse Jobs' from the home page <br/> 2) Traverse the pages of the jobs <br/> **Expected Result**: All jobs are displayed in a number of different pages. They have different statuses: Open, In Progress, and Closed | PASS |
 |10| Canceling a Job | 1) Post a job and accept a worker for the job <br/> 2) As the owner of the job, enter the job page <br/> 3) Click 'Cancel Job' and approve the transaction <br/> **Expected Result**: The job status is marked as 'Closed' in the job list. The payment amount for the job is returned to the owners account. | PASS |
 
-###3. Smart Contract Unit Testing
+### 3. Smart Contract Unit Testing
 
 The Truffle framework which we used in the development of this project allowed for the creation of unit tests written in JavaScript. We created a number of these while developing the different contracts used in the application. They can be viewed here: [test directory](./code/test).
 
@@ -45,7 +45,7 @@ They cover all of the functions used in the smart contracts to provide the funct
 These tests can be run using the following command in the code directory: *truffle test* (_Note_: *testrpc* must be running in a separate terminal window)
 
 
-###4. Heuristic Testing
+### 4. Heuristic Testing
 
 ##### Nielsen's Heuristics
 
@@ -92,7 +92,7 @@ These tests can be run using the following command in the code directory: *truff
 - **Help and Documentation**: Users have access to the user manual for the application through the settings section of the navigation bar. This manual will walk them through the functionality of the application.
 **_ADD SCREENSHOT OF SETTINGS DROPDOWN WITH MANUAL_**
 
-###5. Accessibility Testing
+### 5. Accessibility Testing
 
 ##### Sight Difficulties
 
@@ -110,7 +110,7 @@ These tests can be run using the following command in the code directory: *truff
 - The buttons and links, etc. used in the application are kept large.
 - The dropdowns on the site do not disappear if the mouse moves off the dropdown as is the case on some sites. This can cause issues for users with Parkinsons, for example.
 
-###6. Real World Testing (User Testing)
+### 6. Real World Testing (User Testing)
 
 ##### Test Plan
 
@@ -193,7 +193,7 @@ Once the user had finished testing the application they were given a survey to c
 
 #### Issues Found
 | Issue | Fixed/Still Present |
-| ------------------------------------- |
+| ----- | ------------------- |
 | Users were dissapointed that they weren't returned to the homepage after registering. | Fixed |
 | The search page was broken on pages where the profanity filter JavaScript was also imported. | Fixed |
 | Errors occurred when users attempted to post a job which paid more then the funds that they had available in their account. | Fixed |
@@ -201,7 +201,7 @@ Once the user had finished testing the application they were given a survey to c
 | List scalability for jobs | Fixed |
 
 
-###6. Known Issues
+### 6. Known Issues
 
 | Issue | Notes: |
 | ----- | ------ |
